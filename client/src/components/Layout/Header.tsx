@@ -261,10 +261,12 @@ const Header = () => {
                   </div>
                   <div className="space-y-3">
                     {[
-                      { href: '/collections#novias', label: 'NOVIAS' },
-                      { href: '/collections#gala', label: 'GALA' },
-                      { href: '/collections#coctel', label: 'CÓCTEL' },
-                      { href: '/collections#rtw', label: 'READY-TO-WEAR' }
+                      { href: '/collections#novia', label: 'NOVIA' },
+                      { href: '/collections#xv', label: 'XV AÑOS' },
+                      { href: '/collections#noche', label: 'NOCHE' },
+                      { href: '/collections#cortos', label: 'CORTOS' },
+                      { href: '/collections#primavera', label: 'PRIMAVERA' },
+                      { href: '/collections#alquiler', label: 'ALQUILER' }
                     ].map((category, index) => (
                       <motion.div
                         key={category.href}

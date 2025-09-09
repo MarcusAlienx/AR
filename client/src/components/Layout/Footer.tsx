@@ -43,30 +43,44 @@ const Footer = () => {
             <h4 className="font-medium text-lg mb-4 tracking-luxury">COLECCIONES</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/collections#novias">
+                <Link href="/collections#novia">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
-                    Novias
+                    Novia
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/collections#gala">
+                <Link href="/collections#xv">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
-                    Gala
+                    XV Años
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/collections#coctel">
+                <Link href="/collections#noche">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
-                    Cóctel
+                    Noche
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/collections#rtw">
+                <Link href="/collections#cortos">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
-                    Ready-to-Wear
+                    Cortos
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/collections#primavera">
+                  <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
+                    Primavera
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/collections#alquiler">
+                  <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
+                    Alquiler
                   </span>
                 </Link>
               </li>
