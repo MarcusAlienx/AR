@@ -5,7 +5,7 @@ import CollectionCard from '@/components/UI/CollectionCard';
 import ServiceCard from '@/components/UI/ServiceCard';
 import { useGallery } from '@/hooks/useGallery';
 import { PhotoGallery } from '@/components/Gallery/PhotoGallery';
-import type { RedCarpetEvent } from '@/types/gallery';
+import type { RedCarpetEvent, GalleryImage } from '@/types/gallery';
 
 const Home = () => {
   const { activeGallery, isOpen, openGallery, closeGallery } = useGallery();
@@ -14,25 +14,89 @@ const Home = () => {
       title: 'NOVIA',
       subtitle: 'COLECCIÓN ETERNA',
       image: 'https://images.unsplash.com/photo-1594736797933-d0c02e8ec2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
-      href: '/collections#novia'
+      href: '/collections#novia',
+      gallery: [
+        {
+          id: 'home-novia-01',
+          cloudinaryId: 'collections/novia/novia_model_featured',
+          title: 'Vestido Emperatriz - Modelo Principal',
+          description: 'Nuestro diseño más icónico con cola catedral',
+          category: 'model' as const
+        },
+        {
+          id: 'home-novia-02',
+          cloudinaryId: 'collections/novia/novia_detail_featured',
+          title: 'Bordado Artesanal Premium',
+          description: 'Cada puntada hecha a mano con hilos dorados',
+          category: 'detail' as const
+        },
+        {
+          id: 'home-novia-03',
+          cloudinaryId: 'collections/novia/novia_process_featured',
+          title: 'Proceso de Creación',
+          description: 'Más de 200 horas de trabajo artesanal',
+          category: 'process' as const
+        }
+      ]
     },
     {
       title: 'XV AÑOS',
       subtitle: 'MOMENTO PRINCESA',
       image: 'https://images.unsplash.com/photo-1582639592587-6d82b83fcef8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
-      href: '/collections#xv'
+      href: '/collections#xv',
+      gallery: [
+        {
+          id: 'home-xv-01',
+          cloudinaryId: 'collections/xv/xv_model_featured',
+          title: 'Quinceañera de Ensueño',
+          description: 'Vestido con falda voluminosa y corset bordado',
+          category: 'model' as const
+        },
+        {
+          id: 'home-xv-02',
+          cloudinaryId: 'collections/xv/xv_detail_featured',
+          title: 'Corona de Cristal',
+          description: 'Tiara artesanal con cristales Swarovski',
+          category: 'detail' as const
+        }
+      ]
     },
     {
       title: 'NOCHE',
       subtitle: 'ELEGANCIA IMPERIAL',
       image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
-      href: '/collections#noche'
+      href: '/collections#noche',
+      gallery: [
+        {
+          id: 'home-noche-01',
+          cloudinaryId: 'collections/noche/noche_model_featured',
+          title: 'Gala de Medianoche',
+          description: 'Vestido largo con pedrería degradé',
+          category: 'model' as const
+        },
+        {
+          id: 'home-noche-02',
+          cloudinaryId: 'collections/noche/noche_event_featured',
+          title: 'Red Carpet México',
+          description: 'Presencia en los premios más importantes',
+          category: 'event' as const
+        }
+      ]
     },
     {
       title: 'CORTOS',
       subtitle: 'SOFISTICACIÓN DORADA',
       image: 'https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
-      href: '/collections#cortos'
+      href: '/collections#cortos',
+      gallery: [
+        {
+          id: 'home-cortos-01',
+          cloudinaryId: 'collections/cortos/cortos_model_featured',
+          title: 'Cóctel de Oro',
+          description: 'Vestido corto con lentejuelas doradas',
+          category: 'model' as const
+        }
+      ]
     },
   ];
 
@@ -194,17 +258,79 @@ const Home = () => {
     {
       icon: Lightbulb,
       title: 'DISEÑO PERSONALIZADO',
-      description: 'Asesoría directa del diseñador para crear piezas únicas adaptadas a cada cliente'
+      description: 'Asesoría directa del diseñador para crear piezas únicas adaptadas a cada cliente',
+      gallery: [
+        {
+          id: 'service-design-01',
+          cloudinaryId: 'services/design/sketch_process_01',
+          title: 'Proceso de Diseño',
+          description: 'Sketches iniciales y desarrollo de concepto',
+          category: 'inspiration' as const
+        },
+        {
+          id: 'service-design-02',
+          cloudinaryId: 'services/design/consultation_01',
+          title: 'Consulta Personalizada',
+          description: 'Primera cita con la clienta para entender su visión',
+          category: 'process' as const
+        },
+        {
+          id: 'service-design-03',
+          cloudinaryId: 'services/design/fabric_selection_01',
+          title: 'Selección de Telas',
+          description: 'Las mejores telas importadas de Europa',
+          category: 'detail' as const
+        }
+      ]
     },
     {
       icon: Clock,
       title: 'CITAS VIP',
-      description: 'Atención exclusiva en nuestro atelier con cita previa para una experiencia personalizada'
+      description: 'Atención exclusiva en nuestro atelier con cita previa para una experiencia personalizada',
+      gallery: [
+        {
+          id: 'service-attention-01',
+          cloudinaryId: 'services/attention/fitting_session_01',
+          title: 'Sesión de Pruebas',
+          description: 'Múltiples pruebas para el ajuste perfecto',
+          category: 'process' as const
+        },
+        {
+          id: 'service-attention-02',
+          cloudinaryId: 'services/attention/personal_consultation_01',
+          title: 'Asesoría Personal',
+          description: 'Orientación en cada decisión del diseño',
+          category: 'process' as const
+        }
+      ]
     },
     {
       icon: Award,
       title: 'ACABADOS DE LUJO',
-      description: 'Detalles exquisitos y acabados perfectos que distinguen cada creación de alta costura'
+      description: 'Detalles exquisitos y acabados perfectos que distinguen cada creación de alta costura',
+      gallery: [
+        {
+          id: 'service-quality-01',
+          cloudinaryId: 'services/quality/handcraft_detail_01',
+          title: 'Trabajo Artesanal',
+          description: 'Cada detalle bordado a mano por maestros artesanos',
+          category: 'detail' as const
+        },
+        {
+          id: 'service-quality-02',
+          cloudinaryId: 'services/quality/premium_materials_01',
+          title: 'Materiales Premium',
+          description: 'Sedas, encajes y cristales de la más alta calidad',
+          category: 'detail' as const
+        },
+        {
+          id: 'service-quality-03',
+          cloudinaryId: 'services/quality/quality_control_01',
+          title: 'Control de Calidad',
+          description: 'Inspección rigurosa antes de la entrega',
+          category: 'process' as const
+        }
+      ]
     },
   ];
 
@@ -247,6 +373,8 @@ const Home = () => {
                 subtitle={collection.subtitle}
                 image={collection.image}
                 href={collection.href}
+                gallery={collection.gallery as GalleryImage[]}
+                onGalleryClick={() => collection.gallery && openGallery(collection.gallery as GalleryImage[], `Colección: ${collection.title}`)}
               />
             ))}
           </div>
@@ -281,7 +409,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                onClick={() => openGallery(event.gallery, `Red Carpet: ${event.title}`)}
+                onClick={() => openGallery(event.gallery as GalleryImage[], `Red Carpet: ${event.title}`)}
               >
                 <div className="relative overflow-hidden bg-white">
                   <motion.img
@@ -399,6 +527,8 @@ const Home = () => {
                 icon={service.icon}
                 title={service.title}
                 description={service.description}
+                gallery={service.gallery as GalleryImage[]}
+                onGalleryClick={() => service.gallery && openGallery(service.gallery as GalleryImage[], `Servicio: ${service.title}`)}
               />
             ))}
           </div>
