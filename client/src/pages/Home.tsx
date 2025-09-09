@@ -373,8 +373,6 @@ const Home = () => {
                 subtitle={collection.subtitle}
                 image={collection.image}
                 href={collection.href}
-                gallery={collection.gallery as GalleryImage[]}
-                onGalleryClick={() => collection.gallery && openGallery(collection.gallery as GalleryImage[], `Colección: ${collection.title}`)}
               />
             ))}
           </div>

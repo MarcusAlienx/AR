@@ -27,6 +27,7 @@ const CollectionCard = ({
       e.preventDefault();
       onGalleryClick();
     }
+    // Si no hay galería, el enlace normal funcionará
   };
 
   return (
