@@ -61,42 +61,42 @@ const Collections = () => {
           cloudinaryId: 'collections/novia/novia_detail_01',
           title: 'Detalle de Encaje Francés',
           description: 'Trabajo artesanal de encaje importado de Francia',
-          category: 'detail'
+          category: 'detail' as const
         },
         {
           id: 'novia-02',
           cloudinaryId: 'collections/novia/novia_process_01',
           title: 'Proceso de Bordado',
           description: 'Bordado a mano con perlas y cristales Swarovski',
-          category: 'process'
+          category: 'process' as const
         },
         {
           id: 'novia-03',
           cloudinaryId: 'collections/novia/novia_model_01',
           title: 'Vestido Emperatriz',
           description: 'Modelo con cola catedral y mangas de tul',
-          category: 'model'
+          category: 'model' as const
         },
         {
           id: 'novia-04',
           cloudinaryId: 'collections/novia/novia_detail_02',
           title: 'Botones de Cristal',
           description: 'Detalles de botonadura en la espalda',
-          category: 'detail'
+          category: 'detail' as const
         },
         {
           id: 'novia-05',
           cloudinaryId: 'collections/novia/novia_model_02',
           title: 'Vestido Sirena Real',
           description: 'Corte sirena con detalles de pedrería',
-          category: 'model'
+          category: 'model' as const
         },
         {
           id: 'novia-06',
           cloudinaryId: 'collections/novia/novia_process_02',
           title: 'Prueba Final',
           description: 'Última prueba antes de la entrega',
-          category: 'process'
+          category: 'process' as const
         }
       ]
     },
@@ -115,35 +115,35 @@ const Collections = () => {
           cloudinaryId: 'collections/xv/xv_model_01',
           title: 'Princesa de Cristal',
           description: 'Vestido con falda de tul y corset bordado',
-          category: 'model'
+          category: 'model' as const
         },
         {
           id: 'xv-02',
           cloudinaryId: 'collections/xv/xv_detail_01',
           title: 'Corona de Quinceañera',
           description: 'Corona artesanal con cristales y perlas',
-          category: 'detail'
+          category: 'detail' as const
         },
         {
           id: 'xv-03',
           cloudinaryId: 'collections/xv/xv_process_01',
           title: 'Ajuste de Falda',
           description: 'Proceso de ajuste del volumen de la falda',
-          category: 'process'
+          category: 'process' as const
         },
         {
           id: 'xv-04',
           cloudinaryId: 'collections/xv/xv_model_02',
           title: 'Quinceañera Moderna',
           description: 'Diseño contemporáneo con toques clásicos',
-          category: 'model'
+          category: 'model' as const
         },
         {
           id: 'xv-05',
           cloudinaryId: 'collections/xv/xv_detail_02',
           title: 'Bordado del Corset',
           description: 'Detalles del bordado en hilo dorado',
-          category: 'detail'
+          category: 'detail' as const
         }
       ]
     },
@@ -162,28 +162,28 @@ const Collections = () => {
           cloudinaryId: 'collections/noche/noche_model_01',
           title: 'Gala Imperial',
           description: 'Vestido largo con escote en V y cola',
-          category: 'model'
+          category: 'model' as const
         },
         {
           id: 'noche-02',
           cloudinaryId: 'collections/noche/noche_detail_01',
           title: 'Pedrería Swarovski',
           description: 'Aplicaciones de cristales en degradé',
-          category: 'detail'
+          category: 'detail' as const
         },
         {
           id: 'noche-03',
           cloudinaryId: 'collections/noche/noche_event_01',
           title: 'Premio Nacional de Moda',
           description: 'Gala de premiación en Palacio de Bellas Artes',
-          category: 'event'
+          category: 'event' as const
         },
         {
           id: 'noche-04',
           cloudinaryId: 'collections/noche/noche_model_02',
           title: 'Sirena de Medianoche',
           description: 'Vestido sirena en terciopelo negro',
-          category: 'model'
+          category: 'model' as const
         }
       ]
     },
@@ -202,21 +202,21 @@ const Collections = () => {
           cloudinaryId: 'collections/cortos/cortos_model_01',
           title: 'Cóctel Dorado',
           description: 'Vestido corto con lentejuelas doradas',
-          category: 'model'
+          category: 'model' as const
         },
         {
           id: 'cortos-02',
           cloudinaryId: 'collections/cortos/cortos_detail_01',
           title: 'Manga de Encaje',
           description: 'Detalle de mangas en encaje francés',
-          category: 'detail'
+          category: 'detail' as const
         },
         {
           id: 'cortos-03',
           cloudinaryId: 'collections/cortos/cortos_model_02',
           title: 'Graduación Elegante',
           description: 'Perfecto para ceremonias de graduación',
-          category: 'model'
+          category: 'model' as const
         }
       ]
     },
@@ -235,21 +235,21 @@ const Collections = () => {
           cloudinaryId: 'collections/primavera/primavera_model_01',
           title: 'Jardín de Rosas',
           description: 'Vestido con estampado floral bordado',
-          category: 'model'
+          category: 'model' as const
         },
         {
           id: 'primavera-02',
           cloudinaryId: 'collections/primavera/primavera_detail_01',
           title: 'Flores de Seda',
           description: 'Aplicaciones florales hechas a mano',
-          category: 'detail'
+          category: 'detail' as const
         },
         {
           id: 'primavera-03',
           cloudinaryId: 'collections/primavera/primavera_inspiration_01',
           title: 'Sketch Primaveral',
           description: 'Boceto inicial de la colección',
-          category: 'inspiration'
+          category: 'inspiration' as const
         }
       ]
     },
@@ -268,21 +268,21 @@ const Collections = () => {
           cloudinaryId: 'collections/alquiler/alquiler_model_01',
           title: 'Gala Disponible',
           description: 'Vestido de gala disponible para alquiler',
-          category: 'model'
+          category: 'model' as const
         },
         {
           id: 'alquiler-02',
           cloudinaryId: 'collections/alquiler/alquiler_process_01',
           title: 'Proceso de Limpieza',
           description: 'Cuidado especial después de cada uso',
-          category: 'process'
+          category: 'process' as const
         },
         {
           id: 'alquiler-03',
           cloudinaryId: 'collections/alquiler/alquiler_model_02',
           title: 'Madrina Elegante',
           description: 'Perfecta para madrinas de boda',
-          category: 'model'
+          category: 'model' as const
         }
       ]
     }
