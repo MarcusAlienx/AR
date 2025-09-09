@@ -3,8 +3,12 @@ import { Lightbulb, Clock, Award, Phone } from 'lucide-react';
 import VideoHero from '@/components/UI/VideoHero';
 import CollectionCard from '@/components/UI/CollectionCard';
 import ServiceCard from '@/components/UI/ServiceCard';
+import { useGallery } from '@/hooks/useGallery';
+import { PhotoGallery } from '@/components/Gallery/PhotoGallery';
+import type { RedCarpetEvent } from '@/types/gallery';
 
 const Home = () => {
+  const { activeGallery, isOpen, openGallery, closeGallery } = useGallery();
   const collections = [
     {
       title: 'NOVIA',
@@ -37,21 +41,152 @@ const Home = () => {
       title: 'CELEBRITIES',
       subtitle: 'ESTRELLAS INTERNACIONALES',
       image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
+      category: 'celebrities' as const,
+      gallery: [
+        {
+          id: 'cel-01',
+          cloudinaryId: 'red-carpet/celebrities/cel_event_01',
+          title: 'Jacqueline Bracamontes - TVyNovelas',
+          description: 'Premios TVyNovelas 2024 en vestido AR dorado',
+          category: 'event'
+        },
+        {
+          id: 'cel-02',
+          cloudinaryId: 'red-carpet/celebrities/cel_event_02',
+          title: 'Gala de Cine Guadalajara',
+          description: 'Festival Internacional de Cine',
+          category: 'event'
+        },
+        {
+          id: 'cel-03',
+          cloudinaryId: 'red-carpet/celebrities/cel_detail_01',
+          title: 'Detalle del Vestido de Gala',
+          description: 'Bordado con cristales Swarovski',
+          category: 'detail'
+        },
+        {
+          id: 'cel-04',
+          cloudinaryId: 'red-carpet/celebrities/cel_event_03',
+          title: 'Alfombra Roja Cannes',
+          description: 'Presencia mexicana en el Festival de Cannes',
+          category: 'event'
+        },
+        {
+          id: 'cel-05',
+          cloudinaryId: 'red-carpet/celebrities/cel_process_01',
+          title: 'Preparación para la Gala',
+          description: 'Últimos ajustes antes del evento',
+          category: 'process'
+        }
+      ]
     },
     {
       title: 'CLIENTAS',
       subtitle: 'MOMENTOS ESPECIALES',
       image: 'https://images.unsplash.com/photo-1594736797933-d0c02e8ec2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
+      category: 'clientas' as const,
+      gallery: [
+        {
+          id: 'cli-01',
+          cloudinaryId: 'red-carpet/clientas/cli_event_01',
+          title: 'Boda en Hacienda San José',
+          description: 'Novia en vestido con cola catedral',
+          category: 'event'
+        },
+        {
+          id: 'cli-02',
+          cloudinaryId: 'red-carpet/clientas/cli_event_02',
+          title: 'XV Años en Club de Golf',
+          description: 'Quinceañera en vestido rosa pálido',
+          category: 'event'
+        },
+        {
+          id: 'cli-03',
+          cloudinaryId: 'red-carpet/clientas/cli_detail_01',
+          title: 'Velo Bordado a Mano',
+          description: 'Trabajo artesanal con hilos dorados',
+          category: 'detail'
+        },
+        {
+          id: 'cli-04',
+          cloudinaryId: 'red-carpet/clientas/cli_event_03',
+          title: 'Gala Benéfica Cruz Roja',
+          description: 'Madrina en vestido azul marino',
+          category: 'event'
+        }
+      ]
     },
     {
       title: 'FASHION WEEK',
       subtitle: 'PASARELAS INTERNACIONALES',
       image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
+      category: 'fashion-week' as const,
+      gallery: [
+        {
+          id: 'fw-01',
+          cloudinaryId: 'red-carpet/fashion-week/fw_event_01',
+          title: 'Mercedes-Benz Fashion Week México',
+          description: 'Desfile Primavera-Verano 2025',
+          category: 'event'
+        },
+        {
+          id: 'fw-02',
+          cloudinaryId: 'red-carpet/fashion-week/fw_process_01',
+          title: 'Backstage Preparación',
+          description: 'Modelos preparándose para el desfile',
+          category: 'process'
+        },
+        {
+          id: 'fw-03',
+          cloudinaryId: 'red-carpet/fashion-week/fw_event_02',
+          title: 'Pasarela Principal',
+          description: 'Momento culminante del desfile',
+          category: 'event'
+        },
+        {
+          id: 'fw-04',
+          cloudinaryId: 'red-carpet/fashion-week/fw_detail_01',
+          title: 'Detalles de Pasarela',
+          description: 'Close-up de los acabados premium',
+          category: 'detail'
+        }
+      ]
     },
     {
       title: 'DESFILES',
       subtitle: 'ALTA COSTURA MEXICANA',
       image: 'https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
+      category: 'desfiles' as const,
+      gallery: [
+        {
+          id: 'des-01',
+          cloudinaryId: 'red-carpet/desfiles/des_event_01',
+          title: 'Desfile Aniversario 35 Años',
+          description: 'Celebración en Teatro Degollado',
+          category: 'event'
+        },
+        {
+          id: 'des-02',
+          cloudinaryId: 'red-carpet/desfiles/des_inspiration_01',
+          title: 'Inspiración Mexicana',
+          description: 'Sketches con motivos prehispánicos',
+          category: 'inspiration'
+        },
+        {
+          id: 'des-03',
+          cloudinaryId: 'red-carpet/desfiles/des_event_02',
+          title: 'Gala de Caridad',
+          description: 'Desfile benéfico en Hospicio Cabañas',
+          category: 'event'
+        },
+        {
+          id: 'des-04',
+          cloudinaryId: 'red-carpet/desfiles/des_process_01',
+          title: 'Montaje del Desfile',
+          description: 'Preparación de la pasarela',
+          category: 'process'
+        }
+      ]
     },
   ];
 
@@ -141,11 +276,12 @@ const Home = () => {
             {redCarpetEvents.map((event, index) => (
               <motion.div
                 key={event.title}
-                className="group"
+                className="group cursor-pointer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                onClick={() => openGallery(event.gallery, `Red Carpet: ${event.title}`)}
               >
                 <div className="relative overflow-hidden bg-white">
                   <motion.img
@@ -156,9 +292,15 @@ const Home = () => {
                     transition={{ duration: 0.7 }}
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 text-white text-center transition-opacity duration-300">
+                      <p className="text-sm font-medium mb-1">Ver {event.gallery.length} fotos</p>
+                      <div className="w-8 h-px bg-luxury-gold mx-auto"></div>
+                    </div>
+                  </div>
                 </div>
                 <div className="pt-4 text-center">
-                  <h4 className="font-medium text-lg mb-1">{event.title}</h4>
+                  <h4 className="font-medium text-lg mb-1 group-hover:text-luxury-gold transition-colors duration-300">{event.title}</h4>
                   <p className="text-sm text-gray-600">{event.subtitle}</p>
                 </div>
               </motion.div>
@@ -375,6 +517,14 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Galería de Fotos */}
+      <PhotoGallery 
+        images={activeGallery?.images || []}
+        title={activeGallery?.title || ''}
+        isOpen={isOpen}
+        onClose={closeGallery}
+      />
     </div>
   );
 };
