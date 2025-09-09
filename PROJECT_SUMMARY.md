@@ -8,8 +8,9 @@
 - ✅ **Diseño de Lujo**: Estética premium inspirada en Louis Vuitton y Zuhair Murad
 - ✅ **Navegación Responsiva**: Menú hamburguesa animado con sidebar elegante
 - ✅ **Video Hero**: Sección inmersiva con controles personalizados
-- ✅ **Galería de Colecciones**: 4 categorías (Novias, Gala, Cóctel, RTW)
-- ✅ **Navegación Inteligente**: Enlaces directos a secciones específicas (#novias, #gala, etc.)
+- ✅ **Galería de Colecciones**: 6 categorías (NOVIA, XV, NOCHE, CORTOS, PRIMAVERA, ALQUILER)
+- ✅ **Red Carpet Section**: 4 categorías especializadas (CELEBRITIES, CLIENTAS, FASHION WEEK, DESFILES)
+- ✅ **Navegación Inteligente**: Enlaces directos a secciones específicas (#novia, #xv, #noche, etc.)
 - ✅ **Animaciones Suaves**: Framer Motion en toda la aplicación
 - ✅ **SEO Optimizado**: Meta tags, Open Graph, estructura semántica
 
@@ -55,14 +56,15 @@
 
 ### 🏠 **Home (`/`)**
 - Hero video inmersivo con overlays elegantes
-- 4 colecciones destacadas con enlaces directos a sections
-- Galería "Red Carpet Events" con 4 eventos
+- 4 colecciones destacadas con enlaces directos a nuevas categorías
+- Galería "Red Carpet" reorganizada: CELEBRITIES, CLIENTAS, FASHION WEEK, DESFILES
 - 3 servicios premium con iconografía
 - Estadísticas de empresa (35+ años, 124+ diseños, 6 colecciones)
 
 ### 👗 **Collections (`/collections`)**
-- Sistema de filtros por categoría funcionando
-- Hash routing: `/collections#novias`, `#gala`, `#coctel`, `#rtw`
+- Sistema de filtros por categoría completamente actualizado
+- Hash routing: `/collections#novia`, `#xv`, `#noche`, `#cortos`, `#primavera`, `#alquiler`
+- Navegación sincronizada en header, footer y mobile menu
 - Scroll automático a contenido al filtrar
 - Detección automática de cambios en URL hash
 - Galería responsive con efectos hover
@@ -228,13 +230,24 @@ NODE_ENV=production
 
 ---
 
-## 🎯 **Próximos Pasos (Roadmap)**
+## 🎯 **Próximos Pasos Inmediatos**
 
-### Fase 2: CMS Integration (2-3 semanas)
-- [ ] Configurar Sanity.io project
-- [ ] Migrar collections data
-- [ ] Configurar webhooks para auto-rebuild
-- [ ] Panel de administración para cliente
+### ✅ **COMPLETADO RECIENTEMENTE**
+- ✅ **Reorganización de Colecciones**: Actualizado orden a NOVIA, XV, NOCHE, CORTOS, PRIMAVERA, ALQUILER
+- ✅ **Red Carpet Update**: Reestructurado a CELEBRITIES, CLIENTAS, FASHION WEEK, DESFILES
+- ✅ **Navegación Completa**: Todos los menus, footer y enlaces móviles sincronizados
+- ✅ **Plan Strapi CMS**: Estrategia completa de 6 fases documentada y aprobada
+
+## 🎯 **Roadmap de Implementación**
+
+### Fase 2: Strapi CMS Integration (2-3 semanas) - PLANIFICADO
+- [ ] **Infraestructura**: Desplegar Strapi y configurar APIs
+- [ ] **Colecciones Core**: Migrar 6 categorías (NOVIA, XV, NOCHE, CORTOS, PRIMAVERA, ALQUILER)
+- [ ] **Red Carpet**: Migrar contenido (CELEBRITIES, CLIENTAS, FASHION WEEK, DESFILES)
+- [ ] **Contenido Corporativo**: Historia, milestones, valores empresariales
+- [ ] **Navegación Dinámica**: Menus y footer administrables
+- [ ] **Optimización**: Caché, SEO automático, optimización de imágenes
+- [ ] **Panel de Administración**: Interface completa para gestión de contenido
 
 ### Fase 3: E-commerce (1-2 meses)  
 - [ ] Carrito de compras

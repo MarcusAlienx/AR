@@ -211,11 +211,11 @@ El proyecto incluye `netlify.toml` preconfigurado:
    - Video hero inmersivo
    - Galería de colecciones destacadas
    - Servicios premium
-   - Eventos de alfombra roja
+   - Eventos de alfombra roja (CELEBRITIES, CLIENTAS, FASHION WEEK, DESFILES)
 
 2. **Collections (`/collections`)**
-   - Filtrado por categorías (Novias, Gala, Cóctel, RTW)
-   - Navegación directa con hashtags (`#novias`, `#gala`, etc.)
+   - Filtrado por categorías (NOVIA, XV, NOCHE, CORTOS, PRIMAVERA, ALQUILER)
+   - Navegación directa con hashtags (`#novia`, `#xv`, `#noche`, etc.)
    - Estadísticas de la empresa
    - Galería responsive
 
@@ -234,7 +234,7 @@ El proyecto incluye `netlify.toml` preconfigurado:
 ### Navegación Avanzada
 
 - **Enlaces Inteligentes**: Los botones del menú navegan directamente a secciones específicas
-- **Hash Routing**: URLs como `/collections#novias` filtran automáticamente
+- **Hash Routing**: URLs como `/collections#novia` filtran automáticamente
 - **Scroll Suave**: Animaciones de desplazamiento elegantes
 - **Menú Responsive**: Hamburguesa animada con sidebar en móviles
 
@@ -288,30 +288,61 @@ npm install contentful
 - Workflows de publicación
 - Integración con Netlify
 
-### Migración a CMS
+### Plan de Migración a Strapi CMS
 
-1. **Reemplazar datos mock** en `server/storage.ts`
-2. **Configurar cliente CMS** en `lib/cms.ts`
-3. **Actualizar queries** en componentes React
-4. **Configurar webhooks** para rebuild automático
+#### Estrategia de 6 Fases
 
-Ejemplo con Sanity:
+**Fase 1: Infraestructura Strapi**
+- Despliegue de instancia Strapi
+- Configuración de autenticación y API tokens
+- Preparación del frontend para consumir APIs
+
+**Fase 2: Gestión de Colecciones**
+- Modelos para categorías (NOVIA, XV, NOCHE, CORTOS, PRIMAVERA, ALQUILER)
+- Migración de las 6 colecciones actuales
+- Integración con navegación dinámica
+
+**Fase 3: Contenido Red Carpet y Servicios**
+- Eventos Red Carpet (CELEBRITIES, CLIENTAS, FASHION WEEK, DESFILES)
+- Servicios premium con iconografía personalizada
+
+**Fase 4: Contenido Corporativo**
+- Historia y milestones de la empresa
+- Valores corporativos
+- Información de contacto
+
+**Fase 5: Navegación Global**
+- Elementos de menú dinámicos
+- Configuración global del sitio
+- Enlaces de footer administrables
+
+**Fase 6: Optimización Avanzada**
+- Sistema de caché inteligente
+- SEO automático
+- Optimización de imágenes
+
+#### Ejemplo de Integración
 ```typescript
-// hooks/useCollections.ts
-import { useQuery } from '@tanstack/react-query'
-import { sanity } from '@/lib/sanity'
+// lib/strapi.ts
+import axios from 'axios'
 
+const api = axios.create({
+  baseURL: process.env.VITE_STRAPI_API_URL,
+  headers: {
+    Authorization: `Bearer ${process.env.VITE_STRAPI_API_TOKEN}`
+  }
+})
+
+export async function getCollections() {
+  const { data } = await api.get('/collections?populate=*')
+  return data.data
+}
+
+// hooks/useCollections.ts
 export function useCollections() {
   return useQuery({
     queryKey: ['collections'],
-    queryFn: () => sanity.fetch(`
-      *[_type == "collection"] {
-        title,
-        category,
-        "image": image.asset->url,
-        description
-      }
-    `)
+    queryFn: getCollections
   })
 }
 ```
@@ -403,9 +434,11 @@ npx husky install
 - [x] Galería de colecciones
 - [x] Despliegue en Netlify
 
-### Fase 2 - CMS Integration
-- [ ] Integración con Sanity.io
-- [ ] Panel de administración
+### Fase 2 - Strapi CMS Integration (En Progreso)
+- [ ] Configuración de infraestructura Strapi
+- [ ] Migración de colecciones (NOVIA, XV, NOCHE, CORTOS, PRIMAVERA, ALQUILER)
+- [ ] Contenido Red Carpet dinámico
+- [ ] Panel de administración completo
 - [ ] Gestión de imágenes optimizada
 - [ ] Blog/Noticias dinámico
 
