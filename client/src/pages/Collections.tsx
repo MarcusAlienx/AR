@@ -33,10 +33,12 @@ const Collections = () => {
 
   const categories = [
     { id: 'all', label: 'TODAS LAS COLECCIONES' },
-    { id: 'novias', label: 'NOVIAS' },
-    { id: 'gala', label: 'GALA' },
-    { id: 'coctel', label: 'CÓCTEL' },
-    { id: 'rtw', label: 'READY-TO-WEAR' }
+    { id: 'novia', label: 'NOVIA' },
+    { id: 'xv', label: 'XV' },
+    { id: 'noche', label: 'NOCHE' },
+    { id: 'cortos', label: 'CORTOS' },
+    { id: 'primavera', label: 'PRIMAVERA' },
+    { id: 'alquiler', label: 'ALQUILER' }
   ];
 
   const collections = [
@@ -46,65 +48,65 @@ const Collections = () => {
       description: 'Vestidos de novia únicos diseñados para el día más importante. Cada pieza es creada a medida con las mejores telas y técnicas de alta costura.',
       image: 'https://images.unsplash.com/photo-1594736797933-d0c02e8ec2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
       link: '/novias',
-      category: 'novias',
+      category: 'novia',
       season: 'Colección 2025',
       pieces: 12,
       price: 'Desde $85,000 MXN'
     },
     {
       id: 2,
-      title: 'Gala Imperial',
-      description: 'Elegancia y sofisticación para eventos especiales. Diseños que capturan la esencia de la realeza con un toque moderno y mexicano.',
+      title: 'XV Años Princesa',
+      description: 'Vestidos de quinceañera que marcan el paso a la feminidad. Diseños que capturan la magia de este momento único.',
+      image: 'https://images.unsplash.com/photo-1582639592587-6d82b83fcef8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
+      link: '/quince',
+      category: 'xv',
+      season: 'Colección 2025',
+      pieces: 20,
+      price: 'Desde $25,000 MXN'
+    },
+    {
+      id: 3,
+      title: 'Noche Elegante',
+      description: 'Vestidos de noche para eventos especiales. Elegancia y sofisticación que capturan la esencia de la realeza con un toque moderno.',
       image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/gala',
-      category: 'gala',
+      link: '/noche',
+      category: 'noche',
       season: 'Colección 2025',
       pieces: 18,
       price: 'Desde $45,000 MXN'
     },
     {
-      id: 3,
-      title: 'Cóctel Dorado',
+      id: 4,
+      title: 'Vestidos Cortos',
       description: 'Diseños sofisticados para ocasiones semi-formales. La perfecta combinación entre elegancia y versatilidad para la mujer moderna.',
       image: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/coctel',
-      category: 'coctel',
+      link: '/cortos',
+      category: 'cortos',
       season: 'Colección 2025',
       pieces: 24,
       price: 'Desde $28,000 MXN'
     },
     {
-      id: 4,
-      title: 'Ready-to-Wear Signature',
-      description: 'Piezas listas para usar con el sello de calidad AR. Elegancia cotidiana sin comprometer el estilo ni la calidad artesanal.',
-      image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/ready-to-wear',
-      category: 'rtw',
-      season: 'Colección 2025',
-      pieces: 35,
-      price: 'Desde $15,000 MXN'
-    },
-    {
       id: 5,
-      title: 'Madrina Celestial',
-      description: 'Diseños especiales para madrinas de boda. Elegancia que complementa sin competir, creando armonía en el día perfecto.',
-      image: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/madrina',
-      category: 'gala',
-      season: 'Colección 2025',
-      pieces: 15,
-      price: 'Desde $35,000 MXN'
+      title: 'Primavera Fresca',
+      description: 'Colección de primavera con diseños frescos y vibrantes. Piezas que celebran la renovación y la alegría de la temporada.',
+      image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
+      link: '/primavera',
+      category: 'primavera',
+      season: 'Colección Primavera 2025',
+      pieces: 30,
+      price: 'Desde $18,000 MXN'
     },
     {
       id: 6,
-      title: 'XV Años Princesa',
-      description: 'Vestidos de quinceañera que marcan el paso a la feminidad. Diseños que capturan la magia de este momento único.',
-      image: 'https://images.unsplash.com/photo-1582639592587-6d82b83fcef8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/quince',
-      category: 'gala',
-      season: 'Colección 2025',
-      pieces: 20,
-      price: 'Desde $25,000 MXN'
+      title: 'Alquiler Premium',
+      description: 'Servicio de alquiler de vestidos de alta costura. Elegancia accesible para ocasiones especiales sin comprometer la calidad.',
+      image: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
+      link: '/alquiler',
+      category: 'alquiler',
+      season: 'Disponible Todo el Año',
+      pieces: 50,
+      price: 'Desde $3,500 MXN'
     }
   ];
 
