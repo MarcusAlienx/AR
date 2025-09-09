@@ -7,50 +7,50 @@ import ServiceCard from '@/components/UI/ServiceCard';
 const Home = () => {
   const collections = [
     {
-      title: 'NOVIAS',
+      title: 'NOVIA',
       subtitle: 'COLECCIÓN ETERNA',
       image: 'https://images.unsplash.com/photo-1594736797933-d0c02e8ec2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
-      href: '/collections#novias'
+      href: '/collections#novia'
     },
     {
-      title: 'GALA',
+      title: 'XV AÑOS',
+      subtitle: 'MOMENTO PRINCESA',
+      image: 'https://images.unsplash.com/photo-1582639592587-6d82b83fcef8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
+      href: '/collections#xv'
+    },
+    {
+      title: 'NOCHE',
       subtitle: 'ELEGANCIA IMPERIAL',
       image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
-      href: '/collections#gala'
+      href: '/collections#noche'
     },
     {
-      title: 'CÓCTEL',
+      title: 'CORTOS',
       subtitle: 'SOFISTICACIÓN DORADA',
       image: 'https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
-      href: '/collections#coctel'
-    },
-    {
-      title: 'READY-TO-WEAR',
-      subtitle: 'ELEGANCIA COTIDIANA',
-      image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
-      href: '/collections#rtw'
+      href: '/collections#cortos'
     },
   ];
 
   const redCarpetEvents = [
     {
-      title: 'JACQUELINE BRACAMONTES',
-      subtitle: 'PREMIOS TVyNOVELAS 2024',
+      title: 'CELEBRITIES',
+      subtitle: 'ESTRELLAS INTERNACIONALES',
       image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
     },
     {
-      title: 'GALA BENÉFICA',
-      subtitle: 'CRUZ ROJA GUADALAJARA',
+      title: 'CLIENTAS',
+      subtitle: 'MOMENTOS ESPECIALES',
       image: 'https://images.unsplash.com/photo-1594736797933-d0c02e8ec2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
     },
     {
       title: 'FASHION WEEK',
-      subtitle: 'MERCEDES-BENZ MÉXICO',
+      subtitle: 'PASARELAS INTERNACIONALES',
       image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
     },
     {
-      title: 'BODA REAL',
-      subtitle: 'SOCIEDAD TAPATÍA',
+      title: 'DESFILES',
+      subtitle: 'ALTA COSTURA MEXICANA',
       image: 'https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
     },
   ];
