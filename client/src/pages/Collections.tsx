@@ -50,8 +50,7 @@ const Collections = () => {
       link: '/novias',
       category: 'novia',
       season: 'Colección 2025',
-      pieces: 12,
-      price: 'Desde $85,000 MXN'
+      pieces: 12
     },
     {
       id: 2,
@@ -61,8 +60,7 @@ const Collections = () => {
       link: '/quince',
       category: 'xv',
       season: 'Colección 2025',
-      pieces: 20,
-      price: 'Desde $25,000 MXN'
+      pieces: 20
     },
     {
       id: 3,
@@ -72,8 +70,7 @@ const Collections = () => {
       link: '/noche',
       category: 'noche',
       season: 'Colección 2025',
-      pieces: 18,
-      price: 'Desde $45,000 MXN'
+      pieces: 18
     },
     {
       id: 4,
@@ -83,8 +80,7 @@ const Collections = () => {
       link: '/cortos',
       category: 'cortos',
       season: 'Colección 2025',
-      pieces: 24,
-      price: 'Desde $28,000 MXN'
+      pieces: 24
     },
     {
       id: 5,
@@ -94,8 +90,7 @@ const Collections = () => {
       link: '/primavera',
       category: 'primavera',
       season: 'Colección Primavera 2025',
-      pieces: 30,
-      price: 'Desde $18,000 MXN'
+      pieces: 30
     },
     {
       id: 6,
@@ -105,8 +100,7 @@ const Collections = () => {
       link: '/alquiler',
       category: 'alquiler',
       season: 'Disponible Todo el Año',
-      pieces: 50,
-      price: 'Desde $3,500 MXN'
+      pieces: 50
     }
   ];
 
@@ -250,10 +244,7 @@ const Collections = () => {
                       {collection.description}
                     </p>
                     
-                    <div className="flex items-center justify-between">
-                      <span className="text-luxury-black font-medium">
-                        {collection.price}
-                      </span>
+                    <div className="flex justify-end">
                       <motion.button
                         className="flex items-center text-luxury-gold hover:text-luxury-black transition-colors duration-300"
                         whileHover={{ x: 5 }}
