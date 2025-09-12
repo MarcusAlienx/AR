@@ -1,26 +1,20 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { ChevronRight, Star, Calendar, User } from 'lucide-react';
-import { useGallery } from '@/hooks/useGallery';
-import { PhotoGallery } from '@/components/Gallery/PhotoGallery';
-import type { Collection } from '@/types/gallery';
+import { Link } from 'wouter';
+import { Star, Calendar, User } from 'lucide-react';
 
 const Collections = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const { activeGallery, isOpen, openGallery, closeGallery } = useGallery();
 
   useEffect(() => {
-    // Detectar fragmento de URL para navegar a categoría específica
     const hash = window.location.hash.replace('#', '');
     if (hash && ['novias', 'gala', 'coctel', 'rtw'].includes(hash)) {
       setSelectedCategory(hash);
-      // Scroll suave al contenido después de filtrar
       setTimeout(() => {
         window.scrollTo({ top: 300, behavior: 'smooth' });
       }, 200);
     }
 
-    // Listener para cambios en el hash
     const handleHashChange = () => {
       const newHash = window.location.hash.replace('#', '');
       if (newHash && ['novias', 'gala', 'coctel', 'rtw'].includes(newHash)) {
@@ -50,241 +44,49 @@ const Collections = () => {
       id: 1,
       title: 'Novias Eternas',
       description: 'Vestidos de novia únicos diseñados para el día más importante. Cada pieza es creada a medida con las mejores telas y técnicas de alta costura.',
-      image: 'https://images.unsplash.com/photo-1594736797933-d0c02e8ec2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/novias',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto/q_auto/novia_irdl3n?_a=BAMAAAa60',
       category: 'novia',
       season: 'Colección 2025',
-      pieces: 12,
-      gallery: [
-        {
-          id: 'novia-01',
-          cloudinaryId: 'collections/novia/novia_detail_01',
-          title: 'Detalle de Encaje Francés',
-          description: 'Trabajo artesanal de encaje importado de Francia',
-          category: 'detail' as const
-        },
-        {
-          id: 'novia-02',
-          cloudinaryId: 'collections/novia/novia_process_01',
-          title: 'Proceso de Bordado',
-          description: 'Bordado a mano con perlas y cristales Swarovski',
-          category: 'process' as const
-        },
-        {
-          id: 'novia-03',
-          cloudinaryId: 'collections/novia/novia_model_01',
-          title: 'Vestido Emperatriz',
-          description: 'Modelo con cola catedral y mangas de tul',
-          category: 'model' as const
-        },
-        {
-          id: 'novia-04',
-          cloudinaryId: 'collections/novia/novia_detail_02',
-          title: 'Botones de Cristal',
-          description: 'Detalles de botonadura en la espalda',
-          category: 'detail' as const
-        },
-        {
-          id: 'novia-05',
-          cloudinaryId: 'collections/novia/novia_model_02',
-          title: 'Vestido Sirena Real',
-          description: 'Corte sirena con detalles de pedrería',
-          category: 'model' as const
-        },
-        {
-          id: 'novia-06',
-          cloudinaryId: 'collections/novia/novia_process_02',
-          title: 'Prueba Final',
-          description: 'Última prueba antes de la entrega',
-          category: 'process' as const
-        }
-      ]
     },
     {
       id: 2,
       title: 'XV Años Princesa',
       description: 'Vestidos de quinceañera que marcan el paso a la feminidad. Diseños que capturan la magia de este momento único.',
-      image: 'https://images.unsplash.com/photo-1582639592587-6d82b83fcef8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/quince',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto/q_auto/xv_xqo9cb?_a=BAMAAAa60',
       category: 'xv',
       season: 'Colección 2025',
-      pieces: 20,
-      gallery: [
-        {
-          id: 'xv-01',
-          cloudinaryId: 'collections/xv/xv_model_01',
-          title: 'Princesa de Cristal',
-          description: 'Vestido con falda de tul y corset bordado',
-          category: 'model' as const
-        },
-        {
-          id: 'xv-02',
-          cloudinaryId: 'collections/xv/xv_detail_01',
-          title: 'Corona de Quinceañera',
-          description: 'Corona artesanal con cristales y perlas',
-          category: 'detail' as const
-        },
-        {
-          id: 'xv-03',
-          cloudinaryId: 'collections/xv/xv_process_01',
-          title: 'Ajuste de Falda',
-          description: 'Proceso de ajuste del volumen de la falda',
-          category: 'process' as const
-        },
-        {
-          id: 'xv-04',
-          cloudinaryId: 'collections/xv/xv_model_02',
-          title: 'Quinceañera Moderna',
-          description: 'Diseño contemporáneo con toques clásicos',
-          category: 'model' as const
-        },
-        {
-          id: 'xv-05',
-          cloudinaryId: 'collections/xv/xv_detail_02',
-          title: 'Bordado del Corset',
-          description: 'Detalles del bordado en hilo dorado',
-          category: 'detail' as const
-        }
-      ]
     },
     {
       id: 3,
       title: 'Noche Elegante',
       description: 'Vestidos de noche para eventos especiales. Elegancia y sofisticación que capturan la esencia de la realeza con un toque moderno.',
-      image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/noche',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757585447/noche_jmshmw.avif',
       category: 'noche',
       season: 'Colección 2025',
-      pieces: 18,
-      gallery: [
-        {
-          id: 'noche-01',
-          cloudinaryId: 'collections/noche/noche_model_01',
-          title: 'Gala Imperial',
-          description: 'Vestido largo con escote en V y cola',
-          category: 'model' as const
-        },
-        {
-          id: 'noche-02',
-          cloudinaryId: 'collections/noche/noche_detail_01',
-          title: 'Pedrería Swarovski',
-          description: 'Aplicaciones de cristales en degradé',
-          category: 'detail' as const
-        },
-        {
-          id: 'noche-03',
-          cloudinaryId: 'collections/noche/noche_event_01',
-          title: 'Premio Nacional de Moda',
-          description: 'Gala de premiación en Palacio de Bellas Artes',
-          category: 'event' as const
-        },
-        {
-          id: 'noche-04',
-          cloudinaryId: 'collections/noche/noche_model_02',
-          title: 'Sirena de Medianoche',
-          description: 'Vestido sirena en terciopelo negro',
-          category: 'model' as const
-        }
-      ]
     },
     {
       id: 4,
       title: 'Vestidos Cortos',
       description: 'Diseños sofisticados para ocasiones semi-formales. La perfecta combinación entre elegancia y versatilidad para la mujer moderna.',
-      image: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/cortos',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto/q_auto/cortos_i4vzwy?_a=BAMAAAa60',
       category: 'cortos',
       season: 'Colección 2025',
-      pieces: 24,
-      gallery: [
-        {
-          id: 'cortos-01',
-          cloudinaryId: 'collections/cortos/cortos_model_01',
-          title: 'Cóctel Dorado',
-          description: 'Vestido corto con lentejuelas doradas',
-          category: 'model' as const
-        },
-        {
-          id: 'cortos-02',
-          cloudinaryId: 'collections/cortos/cortos_detail_01',
-          title: 'Manga de Encaje',
-          description: 'Detalle de mangas en encaje francés',
-          category: 'detail' as const
-        },
-        {
-          id: 'cortos-03',
-          cloudinaryId: 'collections/cortos/cortos_model_02',
-          title: 'Graduación Elegante',
-          description: 'Perfecto para ceremonias de graduación',
-          category: 'model' as const
-        }
-      ]
     },
     {
       id: 5,
       title: 'Primavera Fresca',
       description: 'Colección de primavera con diseños frescos y vibrantes. Piezas que celebran la renovación y la alegría de la temporada.',
-      image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/primavera',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757585483/primavera_zwjor6.avif',
       category: 'primavera',
       season: 'Colección Primavera 2025',
-      pieces: 30,
-      gallery: [
-        {
-          id: 'primavera-01',
-          cloudinaryId: 'collections/primavera/primavera_model_01',
-          title: 'Jardín de Rosas',
-          description: 'Vestido con estampado floral bordado',
-          category: 'model' as const
-        },
-        {
-          id: 'primavera-02',
-          cloudinaryId: 'collections/primavera/primavera_detail_01',
-          title: 'Flores de Seda',
-          description: 'Aplicaciones florales hechas a mano',
-          category: 'detail' as const
-        },
-        {
-          id: 'primavera-03',
-          cloudinaryId: 'collections/primavera/primavera_inspiration_01',
-          title: 'Sketch Primaveral',
-          description: 'Boceto inicial de la colección',
-          category: 'inspiration' as const
-        }
-      ]
     },
     {
       id: 6,
       title: 'Alquiler Premium',
       description: 'Servicio de alquiler de vestidos de alta costura. Elegancia accesible para ocasiones especiales sin comprometer la calidad.',
-      image: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200',
-      link: '/alquiler',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757585477/alquiler_tjdn2b.avif',
       category: 'alquiler',
       season: 'Disponible Todo el Año',
-      pieces: 50,
-      gallery: [
-        {
-          id: 'alquiler-01',
-          cloudinaryId: 'collections/alquiler/alquiler_model_01',
-          title: 'Gala Disponible',
-          description: 'Vestido de gala disponible para alquiler',
-          category: 'model' as const
-        },
-        {
-          id: 'alquiler-02',
-          cloudinaryId: 'collections/alquiler/alquiler_process_01',
-          title: 'Proceso de Limpieza',
-          description: 'Cuidado especial después de cada uso',
-          category: 'process' as const
-        },
-        {
-          id: 'alquiler-03',
-          cloudinaryId: 'collections/alquiler/alquiler_model_02',
-          title: 'Madrina Elegante',
-          description: 'Perfecta para madrinas de boda',
-          category: 'model' as const
-        }
-      ]
     }
   ];
 
@@ -391,56 +193,50 @@ const Collections = () => {
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCollections.map((collection, index) => (
-              <motion.div
-                key={collection.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="relative overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-500">
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img
-                      src={collection.image}
-                      alt={collection.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      onError={(e) => {
-                        console.error('Collection image failed to load:', collection.image);
-                        const target = e.target as HTMLImageElement;
-                        target.src = 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200';
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500"></div>
-                  </div>
-                  
-                  <div className="p-8">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs text-luxury-gold font-medium tracking-wide uppercase">
-                        {collection.season}
-                      </span>
-                    </div>
-                    
-                    <h3 className="font-serif text-2xl font-light mb-4 tracking-luxury">
-                      {collection.title}
-                    </h3>
-                    
-                    <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                      {collection.description}
-                    </p>
-                    
-                    <div className="flex justify-end">
-                      <motion.button
-                        onClick={() => openGallery(collection.gallery, `Galería: ${collection.title}`)}
-                        className="flex items-center text-luxury-gold hover:text-luxury-black transition-colors duration-300"
-                        whileHover={{ x: 5 }}
-                      >
-                        <span className="text-sm font-medium mr-2">VER GALERÍA</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </motion.button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+                <Link key={collection.id} href={`/collections/${collection.category}`}>
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: index * 0.1 }}
+                        className="group cursor-pointer"
+                    >
+                        <div className="relative overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-500">
+                        <div className="aspect-[3/4] overflow-hidden">
+                            <img
+                            src={collection.image}
+                            alt={collection.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            onError={(e) => {
+                                console.error('Collection image failed to load:', collection.image);
+                                const target = e.target as HTMLImageElement;
+                                target.src = 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200';
+                            }}
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <span className="text-white text-lg font-medium border-2 border-white px-6 py-3">VER GALERÍA</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className="p-8">
+                            <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs text-luxury-gold font-medium tracking-wide uppercase">
+                                {collection.season}
+                            </span>
+                            </div>
+                            
+                            <h3 className="font-serif text-2xl font-light mb-4 tracking-luxury">
+                            {collection.title}
+                            </h3>
+                            
+                            <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                            {collection.description}
+                            </p>
+                        </div>
+                        </div>
+                    </motion.div>
+                </Link>
             ))}
           </div>
         </div>
@@ -472,14 +268,6 @@ const Collections = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Galería de Fotos */}
-      <PhotoGallery 
-        images={activeGallery?.images || []}
-        title={activeGallery?.title || ''}
-        isOpen={isOpen}
-        onClose={closeGallery}
-      />
     </div>
   );
 };

@@ -79,6 +79,11 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
                           alt={image.title}
                           className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                           loading="lazy"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.onerror = null; // prevent infinite loops
+                            target.src = `https://res.cloudinary.com/alberto-rodriguez-couture/image/upload/w_400,h_600,c_bg,co_rgb:2a2a2a/v1/empty.png`;
+                          }}
                         />
                         
                         {/* Overlay */}

@@ -13,6 +13,7 @@ import {
   type InsertContact
 } from "@shared/schema";
 import { randomUUID } from "crypto";
+import { getImagesFromFolder, type CloudinaryImage } from "./cloudinary";
 
 export interface IStorage {
   // User methods
@@ -51,6 +52,9 @@ export interface IStorage {
   // Contact methods
   createContact(contact: InsertContact): Promise<Contact>;
   getContacts(): Promise<Contact[]>;
+
+  // Gallery methods
+  getGalleryImages(folderName: string): Promise<any[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -323,6 +327,11 @@ export class MemStorage implements IStorage {
 
   async getContacts(): Promise<Contact[]> {
     return Array.from(this.contacts.values());
+  }
+
+  // Gallery methods
+  async getGalleryImages(folderName: string): Promise<CloudinaryImage[]> {
+    return getImagesFromFolder(folderName);
   }
 }
 

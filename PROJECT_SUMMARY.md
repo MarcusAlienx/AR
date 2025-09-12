@@ -6,11 +6,11 @@
 
 #### Frontend Completo
 - ✅ **Diseño de Lujo**: Estética premium inspirada en Louis Vuitton y Zuhair Murad
-- ✅ **Navegación Responsiva**: Menú hamburguesa animado con sidebar elegante
+- ✅ **Navegación Avanzada**: Menú desplegable para colecciones en escritorio y menús anidados en móvil y pie de página.
 - ✅ **Video Hero**: Sección inmersiva con controles personalizados
-- ✅ **Galería de Colecciones**: 6 categorías (NOVIA, XV, NOCHE, CORTOS, PRIMAVERA, ALQUILER)
+- ✅ **Galerías de Colección Dinámicas**: Páginas dedicadas por categoría (ej. `/collections/novia`) con carga de imágenes desde API.
 - ✅ **Red Carpet Section**: 4 categorías especializadas (CELEBRITIES, CLIENTAS, FASHION WEEK, DESFILES)
-- ✅ **Navegación Inteligente**: Enlaces directos a secciones específicas (#novia, #xv, #noche, etc.)
+- ✅ **Rutas Dinámicas**: Sistema de enrutamiento SPA con Wouter para una navegación fluida y URLs limpias.
 - ✅ **Animaciones Suaves**: Framer Motion en toda la aplicación
 - ✅ **SEO Optimizado**: Meta tags, Open Graph, estructura semántica
 
@@ -61,13 +61,12 @@
 - 3 servicios premium con iconografía
 - Estadísticas de empresa (35+ años, 124+ diseños, 6 colecciones)
 
-### 👗 **Collections (`/collections`)**
-- Sistema de filtros por categoría completamente actualizado
-- Hash routing: `/collections#novia`, `#xv`, `#noche`, `#cortos`, `#primavera`, `#alquiler`
-- Navegación sincronizada en header, footer y mobile menu
-- Scroll automático a contenido al filtrar
-- Detección automática de cambios en URL hash
-- Galería responsive con efectos hover
+### 👗 **Collections (`/collections` y `/collections/:slug`)**
+- Página principal de colecciones con sistema de filtros por categoría.
+- Páginas de galería dedicadas para cada colección (ej. `/collections/novia`).
+- Menú de navegación principal con desplegable para acceso directo a cada colección.
+- Menús en versión móvil y pie de página actualizados con enlaces directos.
+- Carga de imágenes dinámica desde la API de Cloudinary basada en la categoría.
 
 ### ℹ️ **About (`/about`)** 
 - Historia de Alberto Rodríguez

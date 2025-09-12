@@ -63,6 +63,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Gallery routes
+  app.get("/api/gallery/*", async (req, res) => {
+    try {
+      // req.params[0] will capture everything after /api/gallery/
+      const folderName = req.params[0];
+      if (!folderName) {
+        return res.status(400).json({ error: "Folder name is required" });
+      }
+      const images = await storage.getGalleryImages(folderName);
+      res.json(images);
+    } catch (error) {
+      const err = error as Error;
+      res.status(500).json({ error: "Failed to fetch gallery images", details: err.message });
+    }
+  });
+
   // Projects routes
   app.get("/api/projects", async (_req, res) => {
     try {

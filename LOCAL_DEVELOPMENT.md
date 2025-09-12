@@ -132,9 +132,10 @@ alberto-rodriguez-couture/
 │   └── tasks.json            # Tareas automatizadas
 ├── client/                    # Frontend React + Vite
 │   ├── src/
-│   │   ├── components/       # Componentes reutilizables
-│   │   ├── pages/           # Páginas principales
-│   │   ├── hooks/           # Custom hooks
+│   │   ├── components/       # Componentes reutilizables (UI, Layout, etc.)
+│   │   │   └── Layout/       # Componentes de maquetación (Header, Footer)
+│   │   ├── pages/           # Páginas principales (Home, Collections, CollectionPage)
+│   │   ├── hooks/           # Custom hooks (useCloudinaryGallery, etc.)
 │   │   ├── lib/             # Utilidades y configuración
 │   │   └── App.tsx          # Componente principal
 │   ├── public/              # Assets estáticos
@@ -170,10 +171,10 @@ npm run dev
 
 ### 2. Desarrollo Frontend
 
-- **Componentes**: `client/src/components/`
-- **Páginas**: `client/src/pages/`
-- **Estilos**: Tailwind CSS + CSS custom properties
-- **Rutas**: Wouter para SPA routing
+- **Componentes**: `client/src/components/`. La maquetación principal (Header, Footer) se encuentra en `client/src/components/Layout/`.
+- **Páginas**: `client/src/pages/`. La lógica de las galerías se divide entre `Collections.tsx` (el índice) y `CollectionPage.tsx` (la galería individual).
+- **Estilos**: Tailwind CSS + CSS custom properties.
+- **Rutas**: Wouter para SPA routing. La navegación principal en `Header.tsx` usa `NavigationMenu` de shadcn/ui para el menú desplegable.
 
 ### 3. Desarrollo Backend
 
@@ -273,32 +274,55 @@ netlify deploy --prod --dir=dist
 
 ### Problemas Comunes
 
-1. **Puerto ocupado**:
-   ```bash
-   # Cambiar puerto en package.json
-   # O matar proceso
-   lsof -ti:5000 | xargs kill -9
-   ```
+1.  **Puerto ocupado**:
+    ```bash
+    # En macOS/Linux, para encontrar y terminar el proceso
+    lsof -ti:5000 | xargs kill -9
+    ```
 
-2. **Errores de TypeScript**:
-   ```bash
-   npm run check
-   # Revisar errores en terminal
-   ```
+2.  **Error: `'cross-env' is not recognized` (Común en Windows)**:
+    - **Causa**: El ejecutable del paquete `cross-env` no se encuentra en el PATH del sistema, a menudo por un problema en la instalación de `node_modules`.
+    - **Solución**: Reinstalar las dependencias para que npm regenere los enlaces a los ejecutables.
+      ```bash
+      npm install
+      ```
 
-3. **Dependencias**:
-   ```bash
-   # Limpiar node_modules
-   rm -rf node_modules package-lock.json
-   npm install
-   ```
+3.  **Error de Vite: `Failed to load url /src/main.tsx`**:
+    - **Causa**: La configuración de Vite (`vite.config.ts`) no especifica cuál es el directorio raíz del proyecto de cliente.
+    - **Solución**: Asegúrate de que `vite.config.ts` contenga la opción `root: 'client'`.
+      ```typescript
+      // vite.config.ts
+      import { defineConfig } from "vite";
+      // ... otros imports
 
-4. **Cache de Vite**:
-   ```bash
-   # Limpiar cache
-   rm -rf .vite
-   npm run dev
-   ```
+      export default defineConfig({
+        root: 'client', // <--- Asegurar que esta línea exista
+        plugins: [
+          // ...
+        ],
+        // ... resto de la configuración
+      });
+      ```
+
+4.  **Errores de TypeScript**:
+    ```bash
+    npm run check
+    # Revisa los errores reportados en la terminal.
+    ```
+
+5.  **Dependencias corruptas o desactualizadas**:
+    ```bash
+    # Limpiar completamente node_modules y el lockfile
+    rm -rf node_modules package-lock.json
+    npm install
+    ```
+
+6.  **Cache de Vite corrupta**:
+    ```bash
+    # La caché de Vite ahora está dentro de la carpeta client
+    rm -rf client/node_modules/.vite
+    npm run dev
+    ```
 
 ### Logs y Debug
 

@@ -43,42 +43,42 @@ const Footer = () => {
             <h4 className="font-medium text-lg mb-4 tracking-luxury">COLECCIONES</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/collections#novia">
+                <Link href="/collections/novia">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
                     Novia
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/collections#xv">
+                <Link href="/collections/xv">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
                     XV Años
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/collections#noche">
+                <Link href="/collections/noche">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
                     Noche
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/collections#cortos">
+                <Link href="/collections/cortos">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
                     Cortos
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/collections#primavera">
+                <Link href="/collections/primavera">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
                     Primavera
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/collections#alquiler">
+                <Link href="/collections/alquiler">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
                     Alquiler
                   </span>

@@ -87,9 +87,9 @@ export const GALLERY_CATEGORIES: GalleryCategory[] = [
 ]
 
 /**
- * Estados del hook useGallery
+ * Estados del hook useGalleryState
  */
-export interface UseGalleryState {
+export interface GalleryState {
   activeGallery: {
     images: GalleryImage[]
     title: string
@@ -98,11 +98,11 @@ export interface UseGalleryState {
   isOpen: boolean
 }
 
-export interface UseGalleryActions {
+export interface GalleryStateActions {
   openGallery: (images: GalleryImage[], title: string, initialIndex?: number) => void
   closeGallery: () => void
   nextImage: () => void
   previousImage: () => void
 }
 
-export type UseGalleryReturn = UseGalleryState & UseGalleryActions
+export type UseGalleryStateReturn = GalleryState & GalleryStateActions

@@ -1,14 +1,19 @@
+import { useState } from 'react';
+import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { Lightbulb, Clock, Award, Phone } from 'lucide-react';
+import { Lightbulb, Clock, Award } from 'lucide-react';
 import VideoHero from '@/components/UI/VideoHero';
 import CollectionCard from '@/components/UI/CollectionCard';
 import ServiceCard from '@/components/UI/ServiceCard';
-import { useGallery } from '@/hooks/useGallery';
+import { useGalleryState as useGallery } from '@/hooks/useGalleryState';
 import { PhotoGallery } from '@/components/Gallery/PhotoGallery';
+import { CloudinaryGalleryOpener } from '@/components/Gallery/CloudinaryGalleryOpener';
 import type { RedCarpetEvent, GalleryImage } from '@/types/gallery';
 
 const Home = () => {
   const { activeGallery, isOpen, openGallery, closeGallery } = useGallery();
+  const [activeService, setActiveService] = useState<{ folder: string; title: string } | null>(null);
+
   const collections = [
     {
       title: 'NOVIA',
@@ -259,78 +264,19 @@ const Home = () => {
       icon: Lightbulb,
       title: 'DISEÑO PERSONALIZADO',
       description: 'Asesoría directa del diseñador para crear piezas únicas adaptadas a cada cliente',
-      gallery: [
-        {
-          id: 'service-design-01',
-          cloudinaryId: 'services/design/sketch_process_01',
-          title: 'Proceso de Diseño',
-          description: 'Sketches iniciales y desarrollo de concepto',
-          category: 'inspiration' as const
-        },
-        {
-          id: 'service-design-02',
-          cloudinaryId: 'services/design/consultation_01',
-          title: 'Consulta Personalizada',
-          description: 'Primera cita con la clienta para entender su visión',
-          category: 'process' as const
-        },
-        {
-          id: 'service-design-03',
-          cloudinaryId: 'services/design/fabric_selection_01',
-          title: 'Selección de Telas',
-          description: 'Las mejores telas importadas de Europa',
-          category: 'detail' as const
-        }
-      ]
+      folder: 'services/design',
     },
     {
       icon: Clock,
       title: 'CITAS VIP',
       description: 'Atención exclusiva en nuestro atelier con cita previa para una experiencia personalizada',
-      gallery: [
-        {
-          id: 'service-attention-01',
-          cloudinaryId: 'services/attention/fitting_session_01',
-          title: 'Sesión de Pruebas',
-          description: 'Múltiples pruebas para el ajuste perfecto',
-          category: 'process' as const
-        },
-        {
-          id: 'service-attention-02',
-          cloudinaryId: 'services/attention/personal_consultation_01',
-          title: 'Asesoría Personal',
-          description: 'Orientación en cada decisión del diseño',
-          category: 'process' as const
-        }
-      ]
+      folder: 'services/attention',
     },
     {
       icon: Award,
       title: 'ACABADOS DE LUJO',
       description: 'Detalles exquisitos y acabados perfectos que distinguen cada creación de alta costura',
-      gallery: [
-        {
-          id: 'service-quality-01',
-          cloudinaryId: 'services/quality/handcraft_detail_01',
-          title: 'Trabajo Artesanal',
-          description: 'Cada detalle bordado a mano por maestros artesanos',
-          category: 'detail' as const
-        },
-        {
-          id: 'service-quality-02',
-          cloudinaryId: 'services/quality/premium_materials_01',
-          title: 'Materiales Premium',
-          description: 'Sedas, encajes y cristales de la más alta calidad',
-          category: 'detail' as const
-        },
-        {
-          id: 'service-quality-03',
-          cloudinaryId: 'services/quality/quality_control_01',
-          title: 'Control de Calidad',
-          description: 'Inspección rigurosa antes de la entrega',
-          category: 'process' as const
-        }
-      ]
+      folder: 'services/quality',
     },
   ];
 
@@ -400,36 +346,36 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {redCarpetEvents.map((event, index) => (
-              <motion.div
-                key={event.title}
-                className="group cursor-pointer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                onClick={() => openGallery(event.gallery as GalleryImage[], `Red Carpet: ${event.title}`)}
-              >
-                <div className="relative overflow-hidden bg-white">
-                  <motion.img
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-80 object-cover"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.7 }}
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 text-white text-center transition-opacity duration-300">
-                      <p className="text-sm font-medium mb-1">Ver {event.gallery.length} fotos</p>
-                      <div className="w-8 h-px bg-luxury-gold mx-auto"></div>
+              <Link key={event.title} href={`/red-carpet/${event.category}`}>
+                <motion.div
+                  className="group cursor-pointer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <div className="relative overflow-hidden bg-white">
+                    <motion.img
+                      src={event.image}
+                      alt={event.title}
+                      className="w-full h-80 object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.7 }}
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 text-white text-center transition-opacity duration-300">
+                        <p className="text-sm font-medium mb-1">Ver Galería</p>
+                        <div className="w-8 h-px bg-luxury-gold mx-auto"></div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="pt-4 text-center">
-                  <h4 className="font-medium text-lg mb-1 group-hover:text-luxury-gold transition-colors duration-300">{event.title}</h4>
-                  <p className="text-sm text-gray-600">{event.subtitle}</p>
-                </div>
-              </motion.div>
+                  <div className="pt-4 text-center">
+                    <h4 className="font-medium text-lg mb-1 group-hover:text-luxury-gold transition-colors duration-300">{event.title}</h4>
+                    <p className="text-sm text-gray-600">{event.subtitle}</p>
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
@@ -519,14 +465,13 @@ const Home = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+            {services.map((service) => (
               <ServiceCard
                 key={service.title}
                 icon={service.icon}
                 title={service.title}
                 description={service.description}
-                gallery={service.gallery as GalleryImage[]}
-                onGalleryClick={() => service.gallery && openGallery(service.gallery as GalleryImage[], `Servicio: ${service.title}`)}
+                onGalleryClick={() => setActiveService({ folder: service.folder, title: service.title })}
               />
             ))}
           </div>
@@ -653,6 +598,15 @@ const Home = () => {
         isOpen={isOpen}
         onClose={closeGallery}
       />
+
+      {/* Galería dinámica para servicios */}
+      {activeService && (
+        <CloudinaryGalleryOpener
+          folderName={activeService.folder}
+          galleryTitle={`Servicio: ${activeService.title}`}
+          onClose={() => setActiveService(null)}
+        />
+      )}
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import { useState, useCallback, useEffect } from 'react'
-import type { GalleryImage, UseGalleryReturn } from '@/types/gallery'
+import type { GalleryImage, UseGalleryStateReturn } from '@/types/gallery'
 
 /**
  * Hook para gestionar el estado de las galerías de fotos
  */
-export const useGallery = (): UseGalleryReturn => {
+export const useGalleryState = (): UseGalleryStateReturn => {
   const [activeGallery, setActiveGallery] = useState<{
     images: GalleryImage[]
     title: string

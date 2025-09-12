@@ -1,0 +1,23 @@
+Neon API 
+napi_91t6ua8hy9ia8unbuc0r5jxy1pac7ydudpcm7c13tictn152k4f4fjrnq9f6arbt
+
+pass: #fmH.Jp!Evu28Ad
+
+
+Revisa el proyecto de nuevo, confirma si existen dos proyectos de neondb AR y ARweb y determina cual usar y si se requiere eliminar el otro
+
+Module "path" has been externalized for browser compatibility. Cannot access "path.isAbsolute" in client code. See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.
+
+https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756894902/favicon_75f5034604.png
+
+emember to replace https://res.cloudinary.com with the correct subdomain if your Cloudinary images are served from a different origin.
+
+Summary
+The image failed to load because its source URL was not allowed by the img-src directive of your Content Security Policy. To resolve this, update your CSP to include the domain where your Cloudinary images are hosted.
+
+npm install -g npm@11.6.0
+@strapi-community/cloudinary-media-library@*
+
+actualiza el archivo de configuracion de plugins en strapi para usar cloudinary-media-library
+
+$2b$10$AFoHyiRQ5esOSACpm0sKB.9cSfCHVI.s98di3XVpDoq.M.1IEU1ra
