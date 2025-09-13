@@ -9,6 +9,14 @@
   NETLIFY_SKIP_NEXT_DETECTION = "true"
   DISABLE_PREBUILD = "true"
 
+[functions]
+  directory = "netlify/functions" # Specify the functions directory
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat" # Redirect /api/* to our Netlify Function
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
