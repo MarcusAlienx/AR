@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
@@ -18,7 +19,7 @@ const Home = () => {
     {
       title: 'NOVIA',
       subtitle: 'COLECCIÓN ETERNA',
-      image: 'https://images.unsplash.com/photo-1594736797933-d0c02e8ec2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973406/novias_1_d4748af80d.jpg',
       href: '/collections#novia',
       gallery: [
         {
@@ -47,7 +48,7 @@ const Home = () => {
     {
       title: 'XV AÑOS',
       subtitle: 'MOMENTO PRINCESA',
-      image: 'https://images.unsplash.com/photo-1582639592587-6d82b83fcef8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973728/xv_3_0dca4fbaff.jpg',
       href: '/collections#xv',
       gallery: [
         {
@@ -69,7 +70,7 @@ const Home = () => {
     {
       title: 'NOCHE',
       subtitle: 'ELEGANCIA IMPERIAL',
-      image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973278/noche_34_9ac688fd81.jpg',
       href: '/collections#noche',
       gallery: [
         {
@@ -91,7 +92,7 @@ const Home = () => {
     {
       title: 'CORTOS',
       subtitle: 'SOFISTICACIÓN DORADA',
-      image: 'https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973127/cortos_4_5514996d00.jpg',
       href: '/collections#cortos',
       gallery: [
         {
@@ -109,7 +110,7 @@ const Home = () => {
     {
       title: 'CELEBRITIES',
       subtitle: 'ESTRELLAS INTERNACIONALES',
-      image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757674868/celebrities_2_cuubqm.jpg',
       category: 'celebrities' as const,
       gallery: [
         {
@@ -152,7 +153,7 @@ const Home = () => {
     {
       title: 'CLIENTAS',
       subtitle: 'MOMENTOS ESPECIALES',
-      image: 'https://images.unsplash.com/photo-1594736797933-d0c02e8ec2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757675008/clientas_14_vqyciu.jpg',
       category: 'clientas' as const,
       gallery: [
         {
@@ -281,7 +282,12 @@ const Home = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <>
+      <Helmet>
+        <title>Alberto Rodríguez Couture - Alta Costura en Guadalajara</title>
+        <meta name="description" content="Descubre las colecciones de alta costura y vestidos de novia del diseñador Alberto Rodríguez. Más de 35 años de experiencia en Guadalajara, México." />
+      </Helmet>
+      <div className="pt-20">
       {/* Video Hero Section */}
       <VideoHero
         title="ALTA COSTURA"

@@ -91,7 +91,7 @@ const Footer = () => {
             <h4 className="font-medium text-lg mb-4 tracking-luxury">EMPRESA</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/about">
+                <Link href="/about#historia">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
                     Historia
                   </span>
@@ -101,13 +101,6 @@ const Footer = () => {
                 <Link href="/about">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
                     Filosofía
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/about">
-                  <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
-                    Noticias
                   </span>
                 </Link>
               </li>

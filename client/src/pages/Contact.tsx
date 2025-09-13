@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Calendar, Send, Instagram, Facebook } from 'lucide-react';
@@ -100,7 +101,12 @@ const Contact = () => {
   ];
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
+    <>
+      <Helmet>
+        <title>Contacto y Citas - Alberto Rodríguez Couture</title>
+        <meta name="description" content="Agenda una cita personalizada en nuestro atelier en Guadalajara. Contáctanos para crear el vestido de tus sueños con el diseñador Alberto Rodríguez." />
+      </Helmet>
+      <div className="pt-20 min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
@@ -141,7 +147,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             
             {/* Contact Form */}
-            <div className="lg:col-span-2">
+            <div id="citas" className="lg:col-span-2">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -450,25 +456,30 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="aspect-[16/9] bg-gray-200 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-luxury-gold mx-auto mb-4" />
-                <p className="text-gray-600">
-                  Av. Vallarta #1300<br/>
-                  Guadalajara, Jalisco
-                </p>
-                <motion.a
-                  href="https://maps.google.com/?q=Av.+Vallarta+1300+Guadalajara"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 text-luxury-gold hover:text-luxury-black transition-colors duration-300"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Ver en Google Maps
-                </motion.a>
-              </div>
+            <div className="aspect-[16/9] bg-gray-200">
+              <iframe
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                scrolling="no"
+                marginHeight="0"
+                marginWidth="0"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-103.376,20.670,-103.356,20.680&amp;layer=mapnik&amp;marker=20.6749493,-103.3660783"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+              ></iframe>
             </div>
           </motion.div>
+          <div className="text-center mt-4">
+            <a
+              href="https://maps.google.com/?q=Av.+Vallarta+1300+Guadalajara"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-xs text-gray-500 hover:text-luxury-gold transition-colors duration-300"
+            >
+              Abrir en Google Maps
+            </a>
+          </div>
         </div>
       </section>
     </div>

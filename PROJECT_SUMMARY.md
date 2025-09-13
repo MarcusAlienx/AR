@@ -224,7 +224,7 @@ NODE_ENV=production
 
 ### 4. Deploy & Verificar
 - Tiempo de build: ~3 minutos
-- URL: `https://alberto-rodriguez-couture.netlify.app`
+- URL: `https://albertorodriguez.com`
 - Custom domain: Configurar DNS después
 
 ---

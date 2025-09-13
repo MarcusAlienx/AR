@@ -1,4 +1,6 @@
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
+import { Link } from 'wouter';
 import { Award, Heart, Users, Clock, Sparkles, MapPin } from 'lucide-react';
 
 const About = () => {
@@ -61,7 +63,12 @@ const About = () => {
   ];
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
+    <>
+      <Helmet>
+        <title>Nuestra Historia - Alberto Rodríguez Couture</title>
+        <meta name="description" content="Conoce la historia y filosofía de Alberto Rodríguez, diseñador de alta costura en Guadalajara con más de 35 años de experiencia creando vestidos de novia y gala." />
+      </Helmet>
+      <div className="pt-20 min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden">
         <div className="absolute inset-0">
@@ -97,7 +104,7 @@ const About = () => {
       </section>
 
       {/* Biography Section */}
-      <section className="py-20 bg-white">
+      <section id="historia" className="py-20 bg-white">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -115,12 +122,12 @@ const About = () => {
                   nació de una profunda admiración por la belleza femenina y el deseo de hacer 
                   realidad los sueños de cada mujer.
                 </p>
-                <p>
+                <p className="text-lg">
                   Formado en las mejores escuelas de diseño y con experiencia en casas de alta 
                   costura europeas, Alberto regresó a México con una visión clara: crear piezas 
                   que fusionaran la elegancia internacional con la calidez y tradición mexicana.
                 </p>
-                <p>
+                <p className="text-lg">
                   Cada vestido que sale de nuestro atelier es el resultado de un proceso artesanal 
                   meticuloso, donde la calidad de los materiales, la precisión en el corte y la 
                   atención al detalle son fundamentales para lograr la perfección que nos caracteriza.
@@ -340,25 +347,27 @@ const About = () => {
                   de la alta costura cobra vida. Cada rincón está diseñado para inspirar 
                   creatividad y facilitar el proceso artesanal que caracteriza nuestro trabajo.
                 </p>
-                <p>
+                <p className="text-lg">
                   Contamos con las mejores telas importadas de Europa, herramientas de precisión 
                   y un equipo de artesanos especializados que dominan técnicas tradicionales 
                   transmitidas de generación en generación.
                 </p>
-                <p>
+                <p className="text-lg">
                   La experiencia en nuestro atelier va más allá de una simple prueba de vestido. 
                   Es un momento íntimo donde cada clienta descubre cómo sus sueños toman forma 
                   a través de nuestras manos expertas.
                 </p>
               </div>
               
-              <motion.button
-                className="mt-8 inline-block border-2 border-luxury-gold text-luxury-gold px-8 py-3 text-sm font-medium tracking-luxury hover:bg-luxury-gold hover:text-white transition-all duration-500"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                VISITAR NUESTRO ATELIER
-              </motion.button>
+              <Link href="/contact#citas">
+                <motion.button
+                  className="mt-8 inline-block border-2 border-luxury-gold text-luxury-gold px-8 py-3 text-sm font-medium tracking-luxury hover:bg-luxury-gold hover:text-white transition-all duration-500 cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  VISITAR NUESTRO ATELIER
+                </motion.button>
+              </Link>
             </motion.div>
           </div>
         </div>

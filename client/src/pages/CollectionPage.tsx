@@ -1,4 +1,5 @@
 import { useRoute } from 'wouter';
+import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
@@ -16,10 +17,16 @@ const fetchImagesByFolder = async (slug: string): Promise<CloudinaryImage[]> => 
   return response.json();
 };
 
+// Helper para formatear el slug para títulos (ej. 'fashion-week' -> 'Fashion Week')
+const formatSlug = (slug: string = '') => {
+  return slug.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+};
+
 const CollectionPage = () => {
   // Usamos useRoute para obtener los parámetros de la URL con wouter
   const [, params] = useRoute("/collections/:slug");
   const slug = params?.slug;
+  const formattedTitle = formatSlug(slug);
 
   const { data: images, error, isLoading } = useQuery({
     queryKey: ['collectionImages', slug],
@@ -57,17 +64,28 @@ const CollectionPage = () => {
 
   if (!images || images.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8 pt-24 text-center">
-        <h1 className="text-3xl font-medium tracking-luxury mb-4 capitalize">
-          Colección: {slug?.replace('-', ' ')}
-        </h1>
-        <p className="text-gray-600">No se encontraron imágenes para esta colección.</p>
-      </div>
+      <>
+        <Helmet>
+          <title>{`Colección ${formattedTitle} - Alberto Rodríguez Couture`}</title>
+          <meta name="description" content={`Galería de la colección ${formattedTitle} de Alberto Rodríguez.`} />
+        </Helmet>
+        <div className="container mx-auto px-4 py-8 pt-24 text-center">
+          <h1 className="text-3xl font-medium tracking-luxury mb-4 capitalize">
+            Colección: {slug?.replace('-', ' ')}
+          </h1>
+          <p className="text-gray-600">No se encontraron imágenes para esta colección.</p>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 pt-24">
+    <>
+      <Helmet>
+        <title>{`Colección ${formattedTitle} - Alberto Rodríguez Couture`}</title>
+        <meta name="description" content={`Explora la galería de la colección de alta costura ${formattedTitle} del diseñador Alberto Rodríguez.`} />
+      </Helmet>
+      <div className="container mx-auto px-4 py-8 pt-24">
       <h1 className="text-3xl font-medium tracking-luxury text-center mb-8 capitalize">
         Colección: {slug?.replace('-', ' ')}
       </h1>

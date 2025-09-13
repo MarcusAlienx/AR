@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
@@ -101,7 +102,12 @@ const Collections = () => {
   ];
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
+    <>
+      <Helmet>
+        <title>Colecciones de Alta Costura - Alberto Rodríguez</title>
+        <meta name="description" content="Explora todas las colecciones de Alberto Rodríguez: vestidos de novia, XV años, vestidos de noche, de cóctel y más. Alta costura en Guadalajara." />
+      </Helmet>
+      <div className="pt-20 min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative h-[60vh] overflow-hidden">
         <div className="absolute inset-0">

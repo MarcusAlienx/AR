@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
@@ -19,7 +20,14 @@ interface RedCarpetPageProps {
   slug: string;
 }
 
+// Helper para formatear el slug para títulos (ej. 'fashion-week' -> 'Fashion Week')
+const formatSlug = (slug: string = '') => {
+  return slug.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+};
+
 const RedCarpetPage = ({ slug }: RedCarpetPageProps) => {
+  const formattedTitle = formatSlug(slug);
+
   const { data: images, error, isLoading } = useQuery({
     queryKey: ['redCarpetImages', slug],
     queryFn: () => fetchImagesByFolder(slug!),
@@ -55,17 +63,28 @@ const RedCarpetPage = ({ slug }: RedCarpetPageProps) => {
 
   if (!images || images.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8 pt-24 text-center">
-        <h1 className="text-3xl font-medium tracking-luxury mb-4 capitalize">
-          Red Carpet: {slug?.replace('-', ' ')}
-        </h1>
-        <p className="text-gray-600">No se encontraron imágenes para esta categoría.</p>
-      </div>
+      <>
+        <Helmet>
+          <title>{`Red Carpet: ${formattedTitle} - Alberto Rodríguez Couture`}</title>
+          <meta name="description" content={`Galería de eventos Red Carpet con diseños de Alberto Rodríguez en la categoría ${formattedTitle}.`} />
+        </Helmet>
+        <div className="container mx-auto px-4 py-8 pt-24 text-center">
+          <h1 className="text-3xl font-medium tracking-luxury mb-4 capitalize">
+            Red Carpet: {slug?.replace('-', ' ')}
+          </h1>
+          <p className="text-gray-600">No se encontraron imágenes para esta categoría.</p>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 pt-24">
+    <>
+      <Helmet>
+        <title>{`Red Carpet: ${formattedTitle} - Alberto Rodríguez Couture`}</title>
+        <meta name="description" content={`Explora la galería de eventos Red Carpet con diseños de alta costura de Alberto Rodríguez en la categoría ${formattedTitle}.`} />
+      </Helmet>
+      <div className="container mx-auto px-4 py-8 pt-24">
       <h1 className="text-3xl font-medium tracking-luxury text-center mb-8 capitalize">
         Red Carpet: {slug?.replace('-', ' ')}
       </h1>
