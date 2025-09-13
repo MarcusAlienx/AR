@@ -275,6 +275,7 @@ const Collections = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

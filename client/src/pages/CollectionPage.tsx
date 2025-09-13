@@ -103,6 +103,7 @@ const CollectionPage = () => {
         </div>
       </PhotoProvider>
     </div>
+    </>
   );
 };
 

@@ -102,6 +102,7 @@ const RedCarpetPage = ({ slug }: RedCarpetPageProps) => {
         </div>
       </PhotoProvider>
     </div>
+    </>
   );
 };
 

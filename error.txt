@@ -1,88 +1,107 @@
- VITE v5.4.20  ready in 1189 ms
+The Netlify deploy errored, with the following guidance provided:
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-  ➜  press h + enter to show help
-Error: The following dependencies are imported but could not be resolved:
+### Diagnosis
+The build failed due to errors in a JSX file `RedCarpetPage.tsx`. The error occurred because there is an invalid character ("}") inside a JSX element and an unexpected end of file before a closing fragment tag.
 
-  @/components/UI/toaster (imported by C:/Users/Black Soul/Documents/AlienWH/AR/client/src/App.tsx)
-  @/components/UI/tooltip (imported by C:/Users/Black Soul/Documents/AlienWH/AR/client/src/App.tsx)
-  @/pages/Home (imported by C:/Users/Black Soul/Documents/AlienWH/AR/client/src/App.tsx)
-  @/pages/Collections (imported by C:/Users/Black Soul/Documents/AlienWH/AR/client/src/App.tsx)
-  @/pages/About (imported by C:/Users/Black Soul/Documents/AlienWH/AR/client/src/App.tsx)
-  @/pages/Contact (imported by C:/Users/Black Soul/Documents/AlienWH/AR/client/src/App.tsx)
-  @/components/Layout/Header (imported by C:/Users/Black Soul/Documents/AlienWH/AR/client/src/App.tsx)
-  @/components/Layout/Footer (imported by C:/Users/Black Soul/Documents/AlienWH/AR/client/src/App.tsx)
-  @/pages/not-found (imported by C:/Users/Black Soul/Documents/AlienWH/AR/client/src/App.tsx)
+The specific errors in the file `RedCarpetPage.tsx`:
+- Line 106: The character "}" is not valid inside a JSX element.
+- Line 109: Unexpected end of file before a closing fragment tag.
 
-Are they installed?
-    at file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:50669:15     
-    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-    at async file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:50174:26
-4:51:05 AM [vite] page reload index.html
-4:51:06 AM [vite] page reload index.html (x2)
-4:53:55 AM [vite] Pre-transform error: Failed to resolve import "@/components/UI/toaster" from "src/App.tsx". Does the file exist?
-4:53:55 AM [vite] Internal server error: Failed to resolve import "@/components/UI/toaster" from "src/App.tsx". Does the file exist?
-  Plugin: vite:import-analysis
-  File: C:/Users/Black Soul/Documents/AlienWH/AR/client/src/App.tsx:4:24
-  2  |  import { queryClient } from "./lib/queryClient";
-  3  |  import { QueryClientProvider } from "@tanstack/react-query";
-  4  |  import { Toaster } from "@/components/UI/toaster";
-     |                           ^
-  5  |  import { TooltipProvider } from "@/components/UI/tooltip";
-  6  |  import Home from "@/pages/Home";
-      at TransformPluginContext._formatError (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:49258:41)
-      at TransformPluginContext.error (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:49253:16)
-      at normalizeUrl (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:64306:23)
-      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-      at async file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:64438:39
-      at async Promise.all (index 3)
-      at async TransformPluginContext.transform (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:64365:7)
-      at async PluginContainer.transform (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:49099:18)
-      at async loadAndTransform (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:51977:27)
-      at async viteTransformMiddleware (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:62105:24)
+### Solution
+1. **Fix Errors in RedCarpetPage.tsx**:
+   - Address the invalid character within the JSX element on line 106 and ensure there are no syntax errors.
+   - Rectify the unexpected end of file error before a closing fragment tag on line 109 by properly closing any open tags or components.
 
-warn - The `content` option in your Tailwind CSS configuration is missing or empty.
-warn - Configure your content sources or your generated CSS will be missing styles.
-warn - https://tailwindcss.com/docs/content-configuration
-4:54:02 AM [vite] Internal server error: [postcss] C:/Users/Black Soul/Documents/AlienWH/AR/client/src/index.css:3:1: The 
-`border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
-  Plugin: vite:css
-  File: C:/Users/Black Soul/Documents/AlienWH/AR/client/src/index.css:3:0
-  1  |  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-  2  |  
-  3  |  @tailwind base;
-     |  ^
-  4  |  @tailwind components;
-  5  |  @tailwind utilities;
-      at Input.error (C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\postcss\lib\input.js:106:16)
-      at AtRule.error (C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\postcss\lib\node.js:115:32)
-      at processApply (C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:380:29)
-      at C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:551:9
-      at C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\tailwindcss\lib\processTailwindFeatures.js:55:50
-      at async plugins (C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\tailwindcss\lib\plugin.js:38:17)
-      at async LazyResult.runAsync (C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\postcss\lib\lazy-result.js:261:11)
-      at async compileCSS (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:36898:21)
-      at async TransformPluginContext.transform (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:36171:11)
-      at async PluginContainer.transform (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:49099:18)
-4:54:02 AM [vite] Pre-transform error: [postcss] C:/Users/Black Soul/Documents/AlienWH/AR/client/src/index.css:3:1: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+2. Once the errors are fixed, commit the changes and trigger a new build to ensure the project can build successfully.
 
-error en browser: [plugin:vite:css] [postcss] C:/Users/Black Soul/Documents/AlienWH/AR/client/src/index.css:3:1: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
-C:/Users/Black Soul/Documents/AlienWH/AR/client/src/index.css:3:0
-1  |  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-2  |  
-3  |  @tailwind base;
-   |  ^
-4  |  @tailwind components;
-5  |  @tailwind utilities;
-    at Input.error (C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\postcss\lib\input.js:106:16)
-    at AtRule.error (C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\postcss\lib\node.js:115:32)
-    at processApply (C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:380:29)
-    at C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:551:9
-    at C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\tailwindcss\lib\processTailwindFeatures.js:55:50
-    at async plugins (C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\tailwindcss\lib\plugin.js:38:17)
-    at async LazyResult.runAsync (C:\Users\Black Soul\Documents\AlienWH\AR\node_modules\postcss\lib\lazy-result.js:261:11)
-    at async compileCSS (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:36898:21)
-    at async TransformPluginContext.transform (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:36171:11)
-    at async PluginContainer.transform (file:///C:/Users/Black%20Soul/Documents/AlienWH/AR/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:49099:18
-    
+If you need more details on JSX syntax or resolving JSX errors, you can refer to the [official React documentation](https://reactjs.org/docs/introducing-jsx.html).
+
+The relevant error logs are:
+
+Line 0: build-image version: 4a8ac839785702e700079d30b165ce05e5b74e43 (noble)
+Line 1: buildbot version: ea492e86968abb8ab1c6f00e7c4b5466855f8c43
+Line 2: Fetching cached dependencies
+Line 3: Failed to fetch cache, continuing with build
+Line 4: Starting to prepare the repo for build
+Line 5: No cached dependencies found. Cloning fresh repo
+Line 6: git clone --filter=blob:none https://github.com/MarcusAlienx/AR
+Line 7: Preparing Git Reference refs/heads/AR
+Line 8: Custom publish path detected. Proceeding with the specified path: 'client/dist'
+Line 9: Custom ignore command detected. Proceeding with the specified command: '/bin/false'
+Line 10: Starting to install dependencies
+Line 11: Downloading and installing node v18.20.8...
+Line 12: Downloading https://nodejs.org/dist/v18.20.8/node-v18.20.8-linux-x64.tar.xz...
+Line 13: Computing checksum with sha256sum
+Line 69: [96m[1m​[22m[39m
+Line 70: [96m[1mbuild.command from netlify.toml                               [22m[39m
+Line 71: [96m[1m────────────────────────────────────────────────────────────────[22m[39m
+Line 72: ​
+Line 73: [36m$ npm run build[39m
+Line 74: > rest-express@1.0.0 build
+Line 75: > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+Line 76: [36mvite v5.4.20 [32mbuilding for production...[36m[39m
+Line 77: transforming...
+Line 78: [32m✓[39m 12 modules transformed.
+Line 79: [31mx[39m Build failed in 639ms
+Line 80: [31merror during build:
+Line 81: [31m[vite:esbuild] Transform failed with 2 errors:
+Line 82: /opt/build/repo/client/src/pages/RedCarpetPage.tsx:106:0: ERROR: The character "}" is not valid inside a JSX element
+Line 83: /opt/build/repo/client/src/pages/RedCarpetPage.tsx:109:0: ERROR: Unexpected end of file before a closing fragment tag[31m
+Line 84: file: [36m/opt/build/repo/client/src/pages/RedCarpetPage.tsx:106:0[31m
+Line 85: [33m
+Line 86: [33mThe character "}" is not valid inside a JSX element[33m
+Line 87: 104|      </div>
+Line 88: 105|    );
+Line 89: 106|  };
+Line 90:    |  ^
+Line 91: 107|
+Line 92: 108|  export default RedCarpetPage;
+Line 93: [33mUnexpected end of file before a closing fragment tag[33m
+Line 94: 107|
+Line 95: 108|  export default RedCarpetPage;
+Line 96: 109|
+Line 97:    |  ^
+Line 98: [31m
+Line 99:     at failureErrorWithLog (/opt/build/repo/node_modules/vite/node_modules/esbuild/lib/main.js:1472:15)
+Line 100:     at /opt/build/repo/node_modules/vite/node_modules/esbuild/lib/main.js:755:50
+Line 101:     at responseCallbacks.<computed> (/opt/build/repo/node_modules/vite/node_modules/esbuild/lib/main.js:622:9)
+Line 102:     at handleIncomingPacket (/opt/build/repo/node_modules/vite/node_modules/esbuild/lib/main.js:677:12)
+Line 103:     at Socket.readFromStdout (/opt/build/repo/node_modules/vite/node_modules/esbuild/lib/main.js:600:7)
+Line 104:     at Socket.emit (node:events:517:28)
+Line 105:     at addChunk (node:internal/streams/readable:368:12)
+Line 106:     at readableAddChunk (node:internal/streams/readable:341:9)
+Line 107:     at Readable.push (node:internal/streams/readable:278:10)
+Line 108:     at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)[39m
+Line 109: [91m[1m​[22m[39m
+Line 110: [91m[1m"build.command" failed                                        [22m[39m
+Line 111: [91m[1m────────────────────────────────────────────────────────────────[22m[39m
+Line 112: ​
+Line 113:   [31m[1mError message[22m[39m
+Line 114:   Command failed with exit code 1: npm run build
+Line 115: ​
+Line 116:   [31m[1mError location[22m[39m
+Line 117:   In build.command from netlify.toml:
+Line 118:   npm run build
+Line 119: ​
+Line 120:   [31m[1mResolved config[22m[39m
+Line 121:   build:
+Line 122:     command: npm run build
+Line 123:     commandOrigin: config
+Line 124:     environment:
+Line 125:       - NODE_VERSION
+Line 126:       - NPM_FLAGS
+Line 127:       - NETLIFY_SKIP_NEXT_DETECTION
+Line 128:       - DISABLE_PREBUILD
+Line 129:     ignore: /bin/false
+Line 130:     publish: /opt/build/repo/client/dist
+Line 131:     publishOrigin: config
+Line 132:   headers:
+Line 133:     - for: /*
+      values:
+        Referrer-Policy: strict-origin-when-cross-origin
+        X-Content-Type-Options: nosniff
+   
+Line 134: Build failed due to a user error: Build script returned non-zero exit code: 2
+Line 135: Failed during stage 'building site': Build script returned non-zero exit code: 2
+Line 136: Failing build: Failed to build site
+Line 137: Finished processing build request in 16.523s
