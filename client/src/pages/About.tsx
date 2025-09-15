@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { Award, Heart, Users, Clock, Sparkles, MapPin } from 'lucide-react';
+import { getOptimizedImageUrl } from '@/lib/cloudinary';
 
 const About = () => {
   const milestones = [
@@ -154,8 +155,8 @@ const About = () => {
             >
               <div className="aspect-[4/5] overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1583846288791-3a6e0ac36b46?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000"
-                  alt="Alberto Rodríguez Designer"
+                  src={getOptimizedImageUrl('albertorodriguez', 800, 1000)}
+                  alt="Alberto Rodríguez"
                   className="w-full h-full object-cover"
                 />
               </div>
