@@ -9,9 +9,9 @@ import {
   insertContactSchema
 } from "@shared/schema";
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export function registerRoutes(app: Express): void {
   // Collections routes
-  app.get("/api/collections", async (_req, res) => {
+  app.get("/collections", async (_req, res) => {
     try {
       const collections = await storage.getCollections();
       res.json(collections);
@@ -20,7 +20,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/collections/featured", async (_req, res) => {
+  app.get("/collections/featured", async (_req, res) => {
     try {
       const collections = await storage.getFeaturedCollections();
       res.json(collections);
@@ -29,7 +29,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/collections/:id", async (req, res) => {
+  app.get("/collections/:id", async (req, res) => {
     try {
       const collection = await storage.getCollection(req.params.id);
       if (!collection) {
@@ -41,7 +41,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/collections/slug/:slug", async (req, res) => {
+  app.get("/collections/slug/:slug", async (req, res) => {
     try {
       const collection = await storage.getCollectionBySlug(req.params.slug);
       if (!collection) {
@@ -53,7 +53,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/collections", async (req, res) => {
+  app.post("/collections", async (req, res) => {
     try {
       const validatedData = insertCollectionSchema.parse(req.body);
       const collection = await storage.createCollection(validatedData);
@@ -64,10 +64,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Gallery routes
-  app.get("/api/gallery/*", async (req, res) => {
+  app.get("/gallery/*", async (req, res) => {
     try {
-      // req.params[0] will capture everything after /api/gallery/
+      // req.params[0] will capture everything after /gallery/
       const folderName = req.params[0];
+      console.log("Extracted folderName (inside function):", folderName); // Added for debugging
       if (!folderName) {
         return res.status(400).json({ error: "Folder name is required" });
       }
@@ -80,7 +81,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Projects routes
-  app.get("/api/projects", async (_req, res) => {
+  app.get("/projects", async (_req, res) => {
     try {
       const projects = await storage.getProjects();
       res.json(projects);
@@ -89,7 +90,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/projects/featured", async (_req, res) => {
+  app.get("/projects/featured", async (_req, res) => {
     try {
       const projects = await storage.getFeaturedProjects();
       res.json(projects);
@@ -98,7 +99,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/projects/collection/:collectionId", async (req, res) => {
+  app.get("/projects/collection/:collectionId", async (req, res) => {
     try {
       const projects = await storage.getProjectsByCollection(req.params.collectionId);
       res.json(projects);
@@ -107,7 +108,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/projects/:id", async (req, res) => {
+  app.get("/projects/:id", async (req, res) => {
     try {
       const project = await storage.getProject(req.params.id);
       if (!project) {
@@ -119,7 +120,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/projects", async (req, res) => {
+  app.post("/projects", async (req, res) => {
     try {
       const validatedData = insertProjectSchema.parse(req.body);
       const project = await storage.createProject(validatedData);
@@ -130,7 +131,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Biography routes
-  app.get("/api/biography", async (_req, res) => {
+  app.get("/biography", async (_req, res) => {
     try {
       const biography = await storage.getBiography();
       if (!biography) {
@@ -142,7 +143,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.put("/api/biography", async (req, res) => {
+  app.put("/biography", async (req, res) => {
     try {
       const validatedData = insertBiographySchema.parse(req.body);
       const biography = await storage.updateBiography(validatedData);
@@ -153,7 +154,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // News routes
-  app.get("/api/news", async (_req, res) => {
+  app.get("/news", async (_req, res) => {
     try {
       const news = await storage.getNews();
       res.json(news);
@@ -162,7 +163,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/news/published", async (_req, res) => {
+  app.get("/news/published", async (_req, res) => {
     try {
       const news = await storage.getPublishedNews();
       res.json(news);
@@ -171,7 +172,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/news/:id", async (req, res) => {
+  app.get("/news/:id", async (req, res) => {
     try {
       const newsItem = await storage.getNewsItem(req.params.id);
       if (!newsItem) {
@@ -183,7 +184,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/news/slug/:slug", async (req, res) => {
+  app.get("/news/slug/:slug", async (req, res) => {
     try {
       const newsItem = await storage.getNewsBySlug(req.params.slug);
       if (!newsItem) {
@@ -195,7 +196,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/news", async (req, res) => {
+  app.post("/news", async (req, res) => {
     try {
       const validatedData = insertNewsSchema.parse(req.body);
       const newsItem = await storage.createNews(validatedData);
@@ -206,7 +207,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Contact routes
-  app.post("/api/contact", async (req, res) => {
+  app.post("/contact", async (req, res) => {
     try {
       const validatedData = insertContactSchema.parse(req.body);
       const contact = await storage.createContact(validatedData);
@@ -219,7 +220,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/contacts", async (_req, res) => {
+  app.get("/contacts", async (_req, res) => {
     try {
       const contacts = await storage.getContacts();
       res.json(contacts);
@@ -228,6 +229,5 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  const httpServer = createServer(app);
-  return httpServer;
+  
 }

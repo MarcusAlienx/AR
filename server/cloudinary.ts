@@ -22,6 +22,7 @@ export interface CloudinaryImage {
  */
 export async function getImagesFromFolder(prefix: string): Promise<CloudinaryImage[]> {
   console.log(`[SERVER] Buscando imágenes en Cloudinary con el prefijo: ${prefix}`);
+  console.log(`[SERVER] Cloudinary Config: Cloud Name - ${process.env.CLOUDINARY_CLOUD_NAME}, API Key - ${process.env.CLOUDINARY_API_KEY ? 'Set' : 'Not Set'}`); // Added for debugging
 
   try {
     const result = await cloudinary.api.resources({
@@ -31,6 +32,7 @@ export async function getImagesFromFolder(prefix: string): Promise<CloudinaryIma
     });
 
     console.log(`[SERVER] Cloudinary encontró ${result.resources.length} imágenes.`);
+    console.log(`[SERVER] Cloudinary API Result (first 5):`, result.resources.slice(0, 5).map((r: any) => r.public_id)); // Added for debugging
 
     return result.resources.map((res: any) => ({
       public_id: res.public_id,

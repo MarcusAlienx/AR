@@ -112,7 +112,7 @@ function startDevelopment() {
   log('🚀 Iniciando servidor de desarrollo...', 'blue');
   log('', 'reset');
   log('📱 Frontend: http://localhost:5000', 'cyan');
-  log('🔧 Backend API: http://localhost:5000/api', 'cyan');
+  log('🔧 Backend: http://localhost:5000', 'cyan');
   log('', 'reset');
   log('💡 Comandos útiles:', 'yellow');
   log('   - Ctrl+C: Detener servidor', 'reset');
