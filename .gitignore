@@ -84,7 +84,7 @@ temp/
 # Netlify Configuration
 # ====================================
 .netlify/
-functions/
+
 
 # ====================================
 # OS Generated Files
