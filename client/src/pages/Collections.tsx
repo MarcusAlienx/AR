@@ -45,7 +45,7 @@ const Collections = () => {
       id: 1,
       title: 'Novias Eternas',
       description: 'Vestidos de novia únicos diseñados para el día más importante. Cada pieza es creada a medida con las mejores telas y técnicas de alta costura.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto/q_auto/novia_irdl3n?_a=BAMAAAa60',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973406/novias_1_d4748af80d.jpg',
       category: 'novia',
       season: 'Colección 2025',
     },
@@ -53,7 +53,7 @@ const Collections = () => {
       id: 2,
       title: 'XV Años Princesa',
       description: 'Vestidos de quinceañera que marcan el paso a la feminidad. Diseños que capturan la magia de este momento único.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto/q_auto/xv_xqo9cb?_a=BAMAAAa60',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973728/xv_3_0dca4fbaff.jpg',
       category: 'xv',
       season: 'Colección 2025',
     },
@@ -69,7 +69,7 @@ const Collections = () => {
       id: 4,
       title: 'Vestidos Cortos',
       description: 'Diseños sofisticados para ocasiones semi-formales. La perfecta combinación entre elegancia y versatilidad para la mujer moderna.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto/q_auto/cortos_i4vzwy?_a=BAMAAAa60',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973127/cortos_4_5514996d00.jpg',
       category: 'cortos',
       season: 'Colección 2025',
     },
@@ -112,7 +112,7 @@ const Collections = () => {
       <section className="relative h-[60vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
+            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/pages/collections/hero-background"
             alt="Colecciones Alberto Rodríguez"
             className="w-full h-full object-cover"
           />
@@ -215,7 +215,7 @@ const Collections = () => {
                             onError={(e) => {
                                 console.error('Collection image failed to load:', collection.image);
                                 const target = e.target as HTMLImageElement;
-                                target.src = 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200';
+                                target.src = 'https://res.cloudinary.com/dyzlfyyv3/image/upload/placeholders/fashion-model-fallback';
                             }}
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">

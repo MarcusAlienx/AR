@@ -189,3 +189,4 @@ playwright-report/
 # - .vscode/ configuration files (team setup)
 # - README.md and documentation
 # ====================================
+*.txt

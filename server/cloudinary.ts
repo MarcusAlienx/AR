@@ -15,26 +15,42 @@ export interface CloudinaryImage {
   height: number;
 }
 
+// Interface for the raw resource object from Cloudinary API
+interface CloudinaryResource {
+  public_id: string;
+  secure_url: string;
+  width: number;
+  height: number;
+}
+
 /**
  * Fetches all images from a specific folder in Cloudinary.
  * @param prefix The prefix to search for (e.g., 'noche').
  * @returns A promise that resolves to an array of image resources.
  */
 export async function getImagesFromFolder(prefix: string): Promise<CloudinaryImage[]> {
-  console.log(`[SERVER] Buscando imágenes en Cloudinary con el prefijo: ${prefix}`);
-  console.log(`[SERVER] Cloudinary Config: Cloud Name - ${process.env.CLOUDINARY_CLOUD_NAME}, API Key - ${process.env.CLOUDINARY_API_KEY ? 'Set' : 'Not Set'}`); // Added for debugging
+  const lowerCasePrefix = prefix.toLowerCase();
+  console.log(`[SERVER] Buscando imágenes en Cloudinary con el prefijo original: ${prefix} (normalizado a: ${lowerCasePrefix})`);
+  console.log(`[SERVER] Cloudinary Config: Cloud Name - ${process.env.CLOUDINARY_CLOUD_NAME}, API Key - ${process.env.CLOUDINARY_API_KEY ? 'Set' : 'Not Set'}`);
 
   try {
-    const result = await cloudinary.api.resources({
+    const { resources } = await cloudinary.api.resources({
       type: 'upload',
-      prefix: prefix, // Usamos el prefijo directamente (ej. 'noche')
-      max_results: 100, 
+      prefix: lowerCasePrefix, // Usamos el prefijo en minúsculas para búsqueda case-insensitive
+      max_results: 500, // Aumentamos el límite al máximo permitido
     });
 
-    console.log(`[SERVER] Cloudinary encontró ${result.resources.length} imágenes.`);
-    console.log(`[SERVER] Cloudinary API Result (first 5):`, result.resources.slice(0, 5).map((r: any) => r.public_id)); // Added for debugging
+    console.log(`[SERVER] Cloudinary encontró ${resources.length} imágenes con el prefijo '${lowerCasePrefix}'.`);
 
-    return result.resources.map((res: any) => ({
+    // Filtramos para excluir variaciones de tamaño como 'large_*' y 'medium_*'
+    const filteredResources = resources.filter((res: CloudinaryResource) => 
+      !res.public_id.includes('large_') && !res.public_id.includes('medium_')
+    );
+
+    console.log(`[SERVER] Después de filtrar 'large_' y 'medium_', quedan ${filteredResources.length} imágenes.`);
+    console.log(`[SERVER] Cloudinary API Result (first 5):`, filteredResources.slice(0, 5).map((r: CloudinaryResource) => r.public_id));
+
+    return filteredResources.map((res: CloudinaryResource) => ({
       public_id: res.public_id,
       secure_url: res.secure_url,
       width: res.width,

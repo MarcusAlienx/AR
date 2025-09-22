@@ -1,135 +1,48 @@
 import { motion } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { AdvancedVideo } from '@cloudinary/react';
+import { Cloudinary } from '@cloudinary/url-gen';
 
 interface VideoHeroProps {
   title: string;
   subtitle?: string;
   description?: string;
-  videoSrc: string;
-  posterImage: string;
   buttonText?: string;
   buttonLink?: string;
-  autoPlay?: boolean;
-  muted?: boolean;
+  publicId: string;
 }
 
 const VideoHero = ({
   title,
   subtitle,
   description,
-  videoSrc,
-  posterImage,
   buttonText,
   buttonLink = '#',
-  autoPlay = true,
-  muted = true,
+  publicId,
 }: VideoHeroProps) => {
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
-  const [isMuted, setIsMuted] = useState(muted);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'dyzlfyyv3',
+    },
+  });
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handleLoadedData = () => {
-      setIsLoaded(true);
-      if (autoPlay) {
-        video.play().catch(console.error);
-      }
-    };
-
-    const handlePlay = () => setIsPlaying(true);
-    const handlePause = () => setIsPlaying(false);
-
-    video.addEventListener('loadeddata', handleLoadedData);
-    video.addEventListener('play', handlePlay);
-    video.addEventListener('pause', handlePause);
-
-    return () => {
-      video.removeEventListener('loadeddata', handleLoadedData);
-      video.removeEventListener('play', handlePlay);
-      video.removeEventListener('pause', handlePause);
-    };
-  }, [autoPlay]);
-
-  const togglePlay = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (isPlaying) {
-      video.pause();
-    } else {
-      video.play().catch(console.error);
-    }
-  };
-
-  const toggleMute = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.muted = !video.muted;
-    setIsMuted(video.muted);
-  };
+  const cldVid = cld.video(publicId);
 
   return (
     <section className="relative h-screen overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0">
-        <video
-          ref={videoRef}
+        <AdvancedVideo
+          cldVid={cldVid}
           className="w-full h-full object-cover"
-          poster={posterImage}
-          muted={isMuted}
+          autoPlay
+          muted
           loop
           playsInline
-          preload="metadata"
-        >
-          <source src={videoSrc} type="video/mp4" />
-          {/* Fallback image if video doesn't load */}
-          <img
-            src={posterImage}
-            alt={title}
-            className="w-full h-full object-cover"
-          />
-        </video>
+        />
       </div>
 
       {/* Video Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
-
-      {/* Video Controls */}
-      <div className="absolute bottom-8 right-8 z-20 flex space-x-4">
-        <motion.button
-          onClick={togglePlay}
-          className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          aria-label={isPlaying ? 'Pause video' : 'Play video'}
-        >
-          {isPlaying ? (
-            <Pause className="w-5 h-5 text-white" />
-          ) : (
-            <Play className="w-5 h-5 text-white ml-0.5" />
-          )}
-        </motion.button>
-
-        <motion.button
-          onClick={toggleMute}
-          className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-        >
-          {isMuted ? (
-            <VolumeX className="w-5 h-5 text-white" />
-          ) : (
-            <Volume2 className="w-5 h-5 text-white" />
-          )}
-        </motion.button>
-      </div>
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center justify-center text-center">

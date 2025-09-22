@@ -35,24 +35,28 @@ const About = () => {
 
   const values = [
     {
-      icon: Heart,
-      title: 'Pasión',
-      description: 'Cada puntada refleja nuestra pasión por crear piezas únicas que marquen momentos especiales.'
-    },
-    {
       icon: Award,
-      title: 'Excelencia',
-      description: 'Compromiso inquebrantable con la calidad y perfección en cada detalle de nuestras creaciones.'
-    },
-    {
-      icon: Users,
-      title: 'Personalización',
-      description: 'Cada clienta es única, por eso cada diseño se adapta perfectamente a su personalidad y figura.'
+      title: 'Artesanía Excepcional',
+      description: 'Cada vestido es una obra de arte, cosida a mano con técnicas de alta costura.',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/pages/about/value-craftsmanship'
     },
     {
       icon: Sparkles,
-      title: 'Innovación',
-      description: 'Fusionamos técnicas tradicionales con tendencias contemporáneas para crear diseños atemporales.'
+      title: 'Exclusividad Garantizada',
+      description: 'Diseños únicos y personalizados que aseguran que no habrá otro igual.',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/pages/about/value-exclusivity'
+    },
+    {
+      icon: Heart,
+      title: 'Atelier Privado',
+      description: 'Una experiencia de lujo y personalizada en nuestro exclusivo atelier en Guadalajara.',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/pages/about/value-atelier'
+    },
+    {
+      icon: Users,
+      title: 'Materiales de Primera',
+      description: 'Seleccionamos solo las telas y materiales más finos de todo el mundo.',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/pages/about/value-materials'
     }
   ];
 
@@ -74,9 +78,9 @@ const About = () => {
       <section className="relative h-[70vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
-            alt="Alberto Rodríguez Atelier"
-            className="w-full h-full object-cover"
+            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189126/alberto_rodriguez_nk5gsz.jpg"
+            alt="Alberto Rodríguez"
+            className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
@@ -155,7 +159,7 @@ const About = () => {
             >
               <div className="aspect-[4/5] overflow-hidden shadow-2xl">
                 <img
-                  src={getOptimizedImageUrl('albertorodriguez', 800, 1000)}
+                  src="https://res.cloudinary.com/dyzlfyyv3/image/upload/albertorodriguez_lysomc.png"
                   alt="Alberto Rodríguez"
                   className="w-full h-full object-cover"
                 />
@@ -304,28 +308,28 @@ const About = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600"
+                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189126/fashion-model-fallback_pezpft.jpg"
                     alt="Atelier Interior"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600"
+                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189175/value-atelier_rswhpl.jpg"
                     alt="Design Process"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1558618047-2dd793e17ee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600"
+                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189202/value-materials_f1ucgm.jpg"
                     alt="Fabric Selection"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1558618047-3e31ca0dd2f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600"
+                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189175/value-craftsmanship.jpg"
                     alt="Final Details"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />

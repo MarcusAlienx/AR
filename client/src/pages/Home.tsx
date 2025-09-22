@@ -9,10 +9,9 @@ import ServiceCard from '@/components/UI/ServiceCard';
 import { useGalleryState as useGallery } from '@/hooks/useGalleryState';
 import { PhotoGallery } from '@/components/Gallery/PhotoGallery';
 import { CloudinaryGalleryOpener } from '@/components/Gallery/CloudinaryGalleryOpener';
-import type { RedCarpetEvent, GalleryImage } from '@/types/gallery';
 
 const Home = () => {
-  const { activeGallery, isOpen, openGallery, closeGallery } = useGallery();
+  const { activeGallery, isOpen, closeGallery } = useGallery();
   const [activeService, setActiveService] = useState<{ folder: string; title: string } | null>(null);
 
   const collections = [
@@ -189,7 +188,7 @@ const Home = () => {
     {
       title: 'FASHION WEEK',
       subtitle: 'PASARELAS INTERNACIONALES',
-      image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758580482/fashionweek_a7su8b.avif',
       category: 'fashion-week' as const,
       gallery: [
         {
@@ -225,7 +224,7 @@ const Home = () => {
     {
       title: 'DESFILES',
       subtitle: 'ALTA COSTURA MEXICANA',
-      image: 'https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758581713/Alberto_Rodrguez_pasarela_bsftzo.jpg',
       category: 'desfiles' as const,
       gallery: [
         {
@@ -293,12 +292,9 @@ const Home = () => {
         title="ALTA COSTURA"
         subtitle="ALBERTO RODRÍGUEZ COUTURE"
         description="Más de 35 años creando momentos únicos a través del diseño de alta costura y vestidos de novia excepcionales"
-        videoSrc="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69fabf212b686ebe8c87b2c96e2d37b2e&profile_id=164&oauth2_token_id=57447761"
-        posterImage="https://images.unsplash.com/photo-1594736797933-d0c02e8ec2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
         buttonText="DESCUBRIR COLECCIONES"
         buttonLink="#colecciones"
-        autoPlay={true}
-        muted={true}
+        publicId="video_hero_d2swad"
       />
 
       {/* Collections Section */}
@@ -318,13 +314,13 @@ const Home = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {collections.map((collection, index) => (
+            {collections.map((_collection, index) => (
               <CollectionCard
-                key={collection.title}
-                title={collection.title}
-                subtitle={collection.subtitle}
-                image={collection.image}
-                href={collection.href}
+                key={_collection.title}
+                title={_collection.title}
+                subtitle={_collection.subtitle}
+                image={_collection.image}
+                href={_collection.href}
               />
             ))}
           </div>
@@ -414,7 +410,7 @@ const Home = () => {
                   bases clásicas con propuestas innovadoras.
                 </p>
                 <p className="text-white/90">
-                  Su filosofía: "En la moda hay que evolucionar más allá de las tendencias y estilos", 
+                  Su filosofía: &quot;En la moda hay que evolucionar más allá de las tendencias y estilos&quot;, 
                   se refleja en cada pieza que sale de su atelier en Guadalajara.
                 </p>
               </div>
@@ -437,14 +433,14 @@ const Home = () => {
               transition={{ duration: 0.8 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189126/fashion-model-fallback_2_tcfnxd.jpg"
                 alt="Luxury fashion atelier workspace"
                 className="w-full h-64 object-cover"
                 loading="lazy"
               />
               
               <img
-                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+                src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189202/value-exclusivity_w1sonw.jpg"
                 alt="Premium fashion accessories display"
                 className="w-full h-48 object-cover"
                 loading="lazy"
@@ -477,7 +473,6 @@ const Home = () => {
                 icon={service.icon}
                 title={service.title}
                 description={service.description}
-                onGalleryClick={() => setActiveService({ folder: service.folder, title: service.title })}
               />
             ))}
           </div>
@@ -495,7 +490,7 @@ const Home = () => {
               transition={{ duration: 0.8 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757933446/259307_10151151540912267_997551934_o-1024x680_qnmhg0.jpg"
                 alt="Luxury fashion boutique interior"
                 className="w-full h-96 object-cover"
                 loading="lazy"
@@ -618,4 +613,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home;;

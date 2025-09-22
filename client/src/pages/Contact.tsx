@@ -111,7 +111,7 @@ const Contact = () => {
       <section className="relative h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
+            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757933446/259307_10151151540912267_997551934_o-1024x680_qnmhg0.jpg"
             alt="Contacto Alberto Rodríguez"
             className="w-full h-full object-cover"
           />
@@ -462,8 +462,6 @@ const Contact = () => {
                 height="100%"
                 frameBorder="0"
                 scrolling="no"
-                marginHeight="0"
-                marginWidth="0"
                 src="https://www.openstreetmap.org/export/embed.html?bbox=-103.376,20.670,-103.356,20.680&amp;layer=mapnik&amp;marker=20.6749493,-103.3660783"
                 style={{ border: 0 }}
                 allowFullScreen={true}

@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-import { CloudinaryImage } from '@/server/cloudinary';
+import { CloudinaryImage } from '@/types/gallery';
 import { Skeleton } from '@/components/UI/skeleton';
 import { useEffect } from 'react';
 

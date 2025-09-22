@@ -1,31 +1,17 @@
-import { useRoute } from 'wouter';
 import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-import { CloudinaryImage } from '@/server/cloudinary';
 import { Skeleton } from '@/components/UI/skeleton';
 import { useEffect } from 'react';
+import { fetchImagesByFolder } from '@/lib/gallery';
+import { formatSlug } from '@/lib/utils';
 
-// Función para llamar a nuestra API del backend
-const fetchImagesByFolder = async (slug: string): Promise<CloudinaryImage[]> => {
-  // La URL ahora es más simple, solo con el slug de la categoría
-  const response = await fetch(`/api/gallery/${slug}`);
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  return response.json();
-};
+interface CollectionPageProps {
+  slug: string;
+}
 
-// Helper para formatear el slug para títulos (ej. 'fashion-week' -> 'Fashion Week')
-const formatSlug = (slug: string = '') => {
-  return slug.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
-};
-
-const CollectionPage = () => {
-  // Usamos useRoute para obtener los parámetros de la URL con wouter
-  const [, params] = useRoute("/collections/:slug");
-  const slug = params?.slug;
+const CollectionPage = ({ slug }: CollectionPageProps) => {
   const formattedTitle = formatSlug(slug);
 
   const { data: images, error, isLoading } = useQuery({

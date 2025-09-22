@@ -106,3 +106,8 @@ export interface GalleryStateActions {
 }
 
 export type UseGalleryStateReturn = GalleryState & GalleryStateActions
+
+export type CloudinaryImage = {
+  public_id: string;
+  secure_url: string;
+};

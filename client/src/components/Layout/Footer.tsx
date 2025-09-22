@@ -1,5 +1,6 @@
 import { Link } from 'wouter';
-import { Instagram, Facebook, Twitter } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
+import TiktokIcon from '@/components/UI/icons/TiktokIcon';
 
 const Footer = () => {
   return (
@@ -16,25 +17,31 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.instagram.com/albertorodriguezmoda/"
                 className="w-10 h-10 bg-luxury-light rounded-full flex items-center justify-center hover:bg-luxury-gold hover:text-white transition-colors duration-300"
                 aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/albertorodriguez.mx"
                 className="w-10 h-10 bg-luxury-light rounded-full flex items-center justify-center hover:bg-luxury-gold hover:text-white transition-colors duration-300"
                 aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.tiktok.com/@arodriguezmoda"
                 className="w-10 h-10 bg-luxury-light rounded-full flex items-center justify-center hover:bg-luxury-gold hover:text-white transition-colors duration-300"
-                aria-label="Twitter"
+                aria-label="TikTok"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Twitter className="w-5 h-5" />
+                <TiktokIcon className="w-5 h-5" />
               </a>
             </div>
           </div>

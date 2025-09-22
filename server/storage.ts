@@ -34,21 +34,28 @@ export interface IStorage {
   
   // Project methods
   getProjects(): Promise<Project[]>;
-  
+  getFeaturedProjects(): Promise<Project[]>;
+  getProjectsByCollection(collectionId: string): Promise<Project[]>;
+  getProject(id: string): Promise<Project | undefined>;
+  createProject(project: InsertProject): Promise<Project>;
+
   // Biography methods
   getBiography(): Promise<Biography | undefined>;
-  
+  updateBiography(bio: InsertBiography): Promise<Biography>;
+
   // News methods
   getNews(): Promise<News[]>;
+  getPublishedNews(): Promise<News[]>;
   getNewsItem(id: string): Promise<News | undefined>;
   getNewsBySlug(slug: string): Promise<News | undefined>;
+  createNews(news: InsertNews): Promise<News>;
   
   // Contact methods
   createContact(contact: InsertContact): Promise<Contact>;
   getContacts(): Promise<Contact[]>;
 
   // Gallery methods
-  getGalleryImages(folderName: string): Promise<any[]>;
+  getGalleryImages(folderName: string): Promise<CloudinaryImage[]>;
 }
 
 // DrizzleStorage is an implementation of IStorage that uses a Drizzle ORM client 
@@ -89,31 +96,52 @@ export class DrizzleStorage implements IStorage {
   // The following methods are not yet implemented with Drizzle and will throw an error.
   // This is to focus on the primary goal of fixing the gallery display.
 
-  async getUser(id: string): Promise<User | undefined> {
+  async getUser(_id: string): Promise<User | undefined> {
     throw new Error("Method not implemented.");
   }
-  async getUserByUsername(username: string): Promise<User | undefined> {
+  async getUserByUsername(_username: string): Promise<User | undefined> {
     throw new Error("Method not implemented.");
   }
-  async createUser(user: InsertUser): Promise<User> {
+  async createUser(_user: InsertUser): Promise<User> {
     throw new Error("Method not implemented.");
   }
   async getProjects(): Promise<Project[]> {
     throw new Error("Method not implemented.");
   }
+  async getFeaturedProjects(): Promise<Project[]> {
+    throw new Error("Method not implemented.");
+  }
+  async getProjectsByCollection(_collectionId: string): Promise<Project[]> {
+    throw new Error("Method not implemented.");
+  }
+  async getProject(_id: string): Promise<Project | undefined> {
+    throw new Error("Method not implemented.");
+  }
+  async createProject(_project: InsertProject): Promise<Project> {
+    throw new Error("Method not implemented.");
+  }
   async getBiography(): Promise<Biography | undefined> {
+    throw new Error("Method not implemented.");
+  }
+  async updateBiography(_bio: InsertBiography): Promise<Biography> {
     throw new Error("Method not implemented.");
   }
   async getNews(): Promise<News[]> {
     throw new Error("Method not implemented.");
   }
-  async getNewsItem(id: string): Promise<News | undefined> {
+  async getPublishedNews(): Promise<News[]> {
     throw new Error("Method not implemented.");
   }
-  async getNewsBySlug(slug: string): Promise<News | undefined> {
+  async getNewsItem(_id: string): Promise<News | undefined> {
     throw new Error("Method not implemented.");
   }
-  async createContact(contact: InsertContact): Promise<Contact> {
+  async getNewsBySlug(_slug: string): Promise<News | undefined> {
+    throw new Error("Method not implemented.");
+  }
+  async createNews(_news: InsertNews): Promise<News> {
+    throw new Error("Method not implemented.");
+  }
+  async createContact(_contact: InsertContact): Promise<Contact> {
     throw new Error("Method not implemented.");
   }
   async getContacts(): Promise<Contact[]> {

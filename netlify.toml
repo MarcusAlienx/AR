@@ -17,9 +17,3 @@
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
-
-# SPA rewrite rule - MUST BE LAST
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

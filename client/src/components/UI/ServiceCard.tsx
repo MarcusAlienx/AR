@@ -5,7 +5,7 @@ interface ServiceCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
-  onGalleryClick: () => void;
+  onGalleryClick?: () => void;
 }
 
 const ServiceCard = ({ 
@@ -23,24 +23,26 @@ const ServiceCard = ({
 
   return (
     <motion.div
-      className="text-center group cursor-pointer"
+      className={`text-center group ${onGalleryClick ? 'cursor-pointer' : ''}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       onClick={handleClick}
-      whileHover={{ y: -5 }}
+      whileHover={onGalleryClick ? { y: -5 } : {}}
     >
       <div className="w-20 h-20 mx-auto mb-6 bg-luxury-light rounded-full flex items-center justify-center group-hover:bg-luxury-gold transition-all duration-300 relative">
         <Icon className="w-8 h-8 text-luxury-gray group-hover:text-white transition-colors duration-300" />
         
-        <motion.div 
-          className="absolute -top-2 -right-2 w-6 h-6 bg-luxury-gold rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          initial={{ scale: 0 }}
-          whileHover={{ scale: 1 }}
-        >
-          <Eye className="w-3 h-3 text-white" />
-        </motion.div>
+        {onGalleryClick && (
+          <motion.div 
+            className="absolute -top-2 -right-2 w-6 h-6 bg-luxury-gold rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            initial={{ scale: 0 }}
+            whileHover={{ scale: 1 }}
+          >
+            <Eye className="w-3 h-3 text-white" />
+          </motion.div>
+        )}
       </div>
       
       <h3 className="font-serif text-xl font-medium mb-4 tracking-luxury group-hover:text-luxury-gold transition-colors duration-300">
@@ -51,16 +53,18 @@ const ServiceCard = ({
         {description}
       </p>
       
-      <motion.div 
-        className="opacity-0 group-hover:opacity-100 transition-all duration-300"
-        initial={{ y: 10 }}
-        whileHover={{ y: 0 }}
-      >
-        <span className="inline-flex items-center text-luxury-gold text-sm font-medium">
-          <Eye className="w-4 h-4 mr-2" />
-          Ver Galería
-        </span>
-      </motion.div>
+      {onGalleryClick && (
+        <motion.div 
+          className="opacity-0 group-hover:opacity-100 transition-all duration-300"
+          initial={{ y: 10 }}
+          whileHover={{ y: 0 }}
+        >
+          <span className="inline-flex items-center text-luxury-gold text-sm font-medium">
+            <Eye className="w-4 h-4 mr-2" />
+            Ver Galería
+          </span>
+        </motion.div>
+      )}
     </motion.div>
   );
 };

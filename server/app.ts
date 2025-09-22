@@ -2,6 +2,12 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { log } from "./log";
 
+// Custom error type for HTTP errors
+interface HttpError extends Error {
+  status?: number;
+  statusCode?: number;
+}
+
 // Create and configure the Express app
 const app = express();
 
@@ -18,10 +24,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
   const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  res.json = function (bodyJson: any, ...args: any[]) {
     capturedJsonResponse = bodyJson;
     return originalResJson.apply(res, [bodyJson, ...args]);
   };
@@ -49,7 +57,7 @@ app.use((req, res, next) => {
 registerRoutes(app);
 
 // Error handling middleware
-app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+app.use((err: HttpError, _req: Request, res: Response, _next: NextFunction) => {
   const status = err.status || err.statusCode || 500;
   const message = err.message || "Internal Server Error";
 

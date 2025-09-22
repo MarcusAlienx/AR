@@ -1,7 +1,7 @@
 import React from 'react'
 import { PhotoProvider, PhotoView } from 'react-photo-view'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ZoomIn, RotateCw, Download } from 'lucide-react'
+import { X, ZoomIn } from 'lucide-react'
 import { CloudinaryUrls } from '@/lib/cloudinary'
 import type { PhotoGalleryProps } from '@/types/gallery'
 import 'react-photo-view/dist/react-photo-view.css'
@@ -9,12 +9,11 @@ import 'react-photo-view/dist/react-photo-view.css'
 /**
  * Componente de galería de fotos premium con react-photo-view
  */
-export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ 
-  images, 
-  title, 
-  isOpen, 
-  onClose, 
-  initialIndex = 0 
+export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
+  images,
+  title,
+  isOpen,
+  onClose,
 }) => {
   if (!isOpen) return null
 

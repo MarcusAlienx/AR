@@ -68,7 +68,7 @@ Contact (id, name, email, message, created_at)
 ## 📁 Estructura del Proyecto
 
 ```
-alberto-rodriguez-couture/
+AR/
 ├── client/                     # Frontend React/Vite
 │   ├── public/                 # Archivos estáticos
 │   ├── src/
@@ -133,7 +133,6 @@ NODE_ENV="development"
 4. **Configurar base de datos**
 ```bash
 npm run db:push
-npm run db:seed  # (opcional) datos de ejemplo
 ```
 
 5. **Iniciar desarrollo**
@@ -148,10 +147,12 @@ La aplicación estará disponible en `http://localhost:5000`
 ```bash
 npm run dev          # Inicia servidor de desarrollo
 npm run build        # Construye para producción
-npm run preview      # Previsualiza build de producción
-npm run db:push      # Aplica cambios de esquema
-npm run db:studio    # Abre Drizzle Studio
-npm run type-check   # Verifica tipos TypeScript
+npm run start        # Inicia el servidor de producción
+npm run check        # Verifica tipos con TypeScript
+npm run db:push      # Aplica cambios de esquema a la DB
+npm run test         # Ejecuta todas las pruebas (unitarias y de integración)
+npm run test:ui      # Abre la interfaz gráfica de Vitest
+npm run lint         # Ejecuta el linter para análisis de código
 ```
 
 ## 🌐 Despliegue en Netlify
@@ -351,7 +352,6 @@ export function useCollections() {
 
 ### Sistema Actual
 - Autenticación con Passport.js
-- Sesiones con express-session
 - Hash de contraseñas con bcrypt
 - Middleware de autorización
 
@@ -384,23 +384,27 @@ export function setupAnalytics() {
 
 ## 🧪 Testing
 
-### Configuración Recomendada
-```bash
-npm install -D vitest @testing-library/react @testing-library/jest-dom
-```
+### Configuración Actual
+El proyecto está configurado con **Vitest** para pruebas unitarias y de integración, y **React Testing Library** para componentes.
 
-### Estructura de Tests
-```
-tests/
-├── components/        # Tests de componentes
-├── pages/            # Tests de páginas
-├── utils/            # Tests de utilidades
-└── e2e/              # Tests end-to-end con Playwright
+- **Pruebas Unitarias**: `*.test.ts` para lógica de negocio.
+- **Pruebas de Componentes**: `*.test.tsx` para componentes de React.
+- **Pruebas de Integración**: Pruebas para los endpoints de las Netlify Functions.
+
+### Ejecutar Pruebas
+```bash
+# Ejecutar todas las pruebas en la terminal
+npm test
+
+# Abrir la interfaz gráfica de Vitest
+npm run test:ui
 ```
 
 ## 🔄 CI/CD
 
 ### GitHub Actions
+El workflow en `.github/workflows/deploy.yml` automatiza el despliegue a Netlify. Se ha mejorado para incluir verificación de código y pruebas.
+
 ```yaml
 # .github/workflows/deploy.yml
 name: Deploy to Netlify
@@ -416,8 +420,9 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-      - run: npm run build
+      - run: npm run lint
       - run: npm run test
+      - run: npm run build
 ```
 
 ### Pre-commit Hooks

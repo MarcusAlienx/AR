@@ -1,0 +1,85 @@
+# Documentación de la API
+
+Esta documentación describe los endpoints de la API del backend de Alberto Rodríguez Couture.
+
+## Endpoints Principales
+
+### Colecciones
+
+#### `GET /api/collections`
+
+Recupera una lista de todas las colecciones.
+
+- **Método:** `GET`
+- **Respuesta Exitosa (200):**
+  ```json
+  [
+    {
+      "id": "1",
+      "name": "Colección Novia",
+      "slug": "novia",
+      "image": "https://url.to/image.jpg",
+      "featured": true,
+      "createdAt": "2025-09-22T10:00:00.000Z",
+      "updatedAt": "2025-09-22T10:00:00.000Z"
+    },
+    // ...otras colecciones
+  ]
+  ```
+
+#### `GET /api/collections/featured`
+
+Recupera solo las colecciones marcadas como destacadas (`featured: true`).
+
+- **Método:** `GET`
+- **Respuesta Exitosa (200):** Un array de objetos de tipo `Collection`.
+
+#### `GET /api/collections/slug/:slug`
+
+Recupera una colección específica por su `slug`.
+
+- **Método:** `GET`
+- **Parámetros:**
+  - `slug` (string): El slug de la colección (ej. `novia`).
+- **Respuesta Exitosa (200):**
+  ```json
+  {
+    "id": "1",
+    "name": "Colección Novia",
+    "slug": "novia",
+    // ...otros campos
+  }
+  ```
+- **Respuesta de Error (404):** Si la colección no se encuentra.
+
+---
+
+### Galería
+
+#### `GET /api/gallery/:folderName`
+
+Recupera todas las imágenes de una carpeta (prefijo) específica de Cloudinary.
+
+- **Método:** `GET`
+- **Parámetros:**
+  - `folderName` (string): El nombre de la carpeta/prefijo a buscar en Cloudinary. La búsqueda es **case-insensitive**.
+- **Respuesta Exitosa (200):**
+  ```json
+  [
+    {
+      "public_id": "novia/imagen_1",
+      "secure_url": "https://res.cloudinary.com/.../novia/imagen_1.jpg",
+      "width": 1200,
+      "height": 1800
+    },
+    // ...otras imágenes
+  ]
+  ```
+- **Notas:**
+  - El endpoint automáticamente filtra las imágenes que contengan `large_` o `medium_` en su `public_id` para devolver solo las imágenes base.
+
+---
+
+## Esquemas de Datos
+
+Los tipos de datos principales (`Collection`, `Project`, `User`, etc.) están definidos en el archivo `shared/schema.ts` y son compartidos entre el frontend y el backend.

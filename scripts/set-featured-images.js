@@ -1,12 +1,4 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
-// Recrear __dirname para ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const homePagePath = path.join(__dirname, '..', 'client', 'src', 'pages', 'Home.tsx');
 
 // Helper para obtener una imagen aleatoria de una galería
 async function getRandomImageFromApi(category) {

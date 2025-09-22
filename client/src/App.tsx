@@ -1,23 +1,24 @@
+import React, { Suspense, lazy } from "react";
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/UI/toaster.tsx";
 import { TooltipProvider } from "@/components/UI/tooltip";
-import Home from "@/pages/Home";
-import Collections from "@/pages/Collections";
-import CollectionPage from "@/pages/CollectionPage";
-import RedCarpetPage from "@/pages/RedCarpetPage"; // Importar la nueva página
-import About from "@/pages/About";
-import Contact from "@/pages/Contact";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
-import NotFound from "@/pages/not-found";
+
+const Home = lazy(() => import("@/pages/Home"));
+const Collections = lazy(() => import("@/pages/Collections"));
+const CollectionPage = lazy(() => import("@/pages/CollectionPage"));
+const RedCarpetPage = lazy(() => import("@/pages/RedCarpetPage"));
+const About = lazy(() => import("@/pages/About"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const NotFound = lazy(() => import("@/pages/not-found"));
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      {/* La ruta dinámica ahora usa un render prop para pasar el slug */}
       <Route path="/collections/:slug">{params => <CollectionPage slug={params.slug} />}</Route>
       <Route path="/collections" component={Collections} />
       <Route path="/red-carpet/:slug">{params => <RedCarpetPage slug={params.slug} />}</Route>
@@ -35,7 +36,9 @@ function App() {
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-1">
-            <Router />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Router />
+            </Suspense>
           </main>
           <Footer />
         </div>

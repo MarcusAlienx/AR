@@ -1,5 +1,4 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { 
   insertCollectionSchema,
@@ -15,7 +14,7 @@ export function registerRoutes(app: Express): void {
     try {
       const collections = await storage.getCollections();
       res.json(collections);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch collections" });
     }
   });
@@ -24,7 +23,7 @@ export function registerRoutes(app: Express): void {
     try {
       const collections = await storage.getFeaturedCollections();
       res.json(collections);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch featured collections" });
     }
   });
@@ -36,7 +35,7 @@ export function registerRoutes(app: Express): void {
         return res.status(404).json({ error: "Collection not found" });
       }
       res.json(collection);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch collection" });
     }
   });
@@ -48,7 +47,7 @@ export function registerRoutes(app: Express): void {
         return res.status(404).json({ error: "Collection not found" });
       }
       res.json(collection);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch collection" });
     }
   });
@@ -58,7 +57,7 @@ export function registerRoutes(app: Express): void {
       const validatedData = insertCollectionSchema.parse(req.body);
       const collection = await storage.createCollection(validatedData);
       res.status(201).json(collection);
-    } catch (error) {
+    } catch (_error) {
       res.status(400).json({ error: "Invalid collection data" });
     }
   });
@@ -67,7 +66,7 @@ export function registerRoutes(app: Express): void {
   app.get("/gallery/*", async (req, res) => {
     try {
       // req.params[0] will capture everything after /gallery/
-      const folderName = req.params[0];
+      const folderName = (req.params as { [key: string]: string })[0];
       console.log("Extracted folderName (inside function):", folderName); // Added for debugging
       if (!folderName) {
         return res.status(400).json({ error: "Folder name is required" });
@@ -85,7 +84,7 @@ export function registerRoutes(app: Express): void {
     try {
       const projects = await storage.getProjects();
       res.json(projects);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch projects" });
     }
   });
@@ -94,7 +93,7 @@ export function registerRoutes(app: Express): void {
     try {
       const projects = await storage.getFeaturedProjects();
       res.json(projects);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch featured projects" });
     }
   });
@@ -103,7 +102,7 @@ export function registerRoutes(app: Express): void {
     try {
       const projects = await storage.getProjectsByCollection(req.params.collectionId);
       res.json(projects);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch projects for collection" });
     }
   });
@@ -115,7 +114,7 @@ export function registerRoutes(app: Express): void {
         return res.status(404).json({ error: "Project not found" });
       }
       res.json(project);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch project" });
     }
   });
@@ -125,7 +124,7 @@ export function registerRoutes(app: Express): void {
       const validatedData = insertProjectSchema.parse(req.body);
       const project = await storage.createProject(validatedData);
       res.status(201).json(project);
-    } catch (error) {
+    } catch (_error) {
       res.status(400).json({ error: "Invalid project data" });
     }
   });
@@ -138,7 +137,7 @@ export function registerRoutes(app: Express): void {
         return res.status(404).json({ error: "Biography not found" });
       }
       res.json(biography);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch biography" });
     }
   });
@@ -148,7 +147,7 @@ export function registerRoutes(app: Express): void {
       const validatedData = insertBiographySchema.parse(req.body);
       const biography = await storage.updateBiography(validatedData);
       res.json(biography);
-    } catch (error) {
+    } catch (_error) {
       res.status(400).json({ error: "Invalid biography data" });
     }
   });
@@ -158,7 +157,7 @@ export function registerRoutes(app: Express): void {
     try {
       const news = await storage.getNews();
       res.json(news);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch news" });
     }
   });
@@ -167,7 +166,7 @@ export function registerRoutes(app: Express): void {
     try {
       const news = await storage.getPublishedNews();
       res.json(news);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch published news" });
     }
   });
@@ -179,7 +178,7 @@ export function registerRoutes(app: Express): void {
         return res.status(404).json({ error: "News item not found" });
       }
       res.json(newsItem);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch news item" });
     }
   });
@@ -191,7 +190,7 @@ export function registerRoutes(app: Express): void {
         return res.status(404).json({ error: "News item not found" });
       }
       res.json(newsItem);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch news item" });
     }
   });
@@ -201,7 +200,7 @@ export function registerRoutes(app: Express): void {
       const validatedData = insertNewsSchema.parse(req.body);
       const newsItem = await storage.createNews(validatedData);
       res.status(201).json(newsItem);
-    } catch (error) {
+    } catch (_error) {
       res.status(400).json({ error: "Invalid news data" });
     }
   });
@@ -215,7 +214,7 @@ export function registerRoutes(app: Express): void {
         message: "Solicitud de contacto enviada exitosamente", 
         contact 
       });
-    } catch (error) {
+    } catch (_error) {
       res.status(400).json({ error: "Datos de contacto inválidos" });
     }
   });
@@ -224,7 +223,7 @@ export function registerRoutes(app: Express): void {
     try {
       const contacts = await storage.getContacts();
       res.json(contacts);
-    } catch (error) {
+    } catch (_error) {
       res.status(500).json({ error: "Failed to fetch contacts" });
     }
   });

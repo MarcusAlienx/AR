@@ -4,6 +4,15 @@
 
 Gracias por tu interés en contribuir al proyecto Alberto Rodríguez Couture. Este documento te guiará a través del proceso.
 
+### ✅ Estándares de Calidad
+
+Para mantener la calidad y consistencia del código, todas las contribuciones deben cumplir con los siguientes requisitos antes de ser consideradas para merge:
+
+- **Pasar el Linter:** El código no debe tener errores ni advertencias de ESLint. Ejecuta `npm run lint` para verificar.
+- **Pasar las Pruebas:** Todas las pruebas unitarias y de integración deben pasar correctamente. Ejecuta `npm test` para verificar.
+
+El pipeline de Integración Continua (CI) validará estos dos puntos automáticamente en cada Pull Request.
+
 ### Antes de Empezar
 
 1. **Fork el repositorio** en GitHub
@@ -55,8 +64,9 @@ git checkout -b docs/actualizacion-documentacion
 
 3. **Verifica que todo funciona**:
 ```bash
+npm run lint
+npm run test
 npm run build
-npm run type-check
 ```
 
 4. **Commit tus cambios**:
@@ -157,30 +167,23 @@ style(footer): mejora espaciado en enlaces
 
 ### Tests
 
-#### Tests de Componentes
+El proyecto usa **Vitest** para pruebas unitarias y de integración, y **React Testing Library** para componentes.
+
 ```bash
-# Instalar dependencias de testing
-npm install -D vitest @testing-library/react
+# Ejecutar todas las pruebas en la terminal
+npm test
 
-# Ejecutar tests
-npm run test
-```
-
-#### Tests E2E
-```bash
-# Instalar Playwright
-npm install -D @playwright/test
-
-# Ejecutar tests E2E
-npm run test:e2e
+# Abrir la interfaz gráfica de Vitest para desarrollo interactivo
+npm run test:ui
 ```
 
 ### Revisión de Código
 
 #### Criterios de Aceptación
 - [ ] El código funciona según lo especificado
-- [ ] Tests pasan (si existen)
-- [ ] Build es exitoso
+- [ ] Todas las pruebas pasan (`npm test`)
+- [ ] El linter pasa sin errores (`npm run lint`)
+- [ ] Build es exitoso (`npm run build`)
 - [ ] Documentación actualizada
 - [ ] No hay console.logs olvidados
 - [ ] Accesibilidad considerada

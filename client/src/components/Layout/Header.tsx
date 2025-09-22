@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Instagram, Facebook, Phone, ChevronDown } from 'lucide-react';
+import { Menu, Instagram, Facebook } from 'lucide-react';
+import TiktokIcon from '@/components/UI/icons/TiktokIcon';
 import { 
   NavigationMenu, 
   NavigationMenuContent, 
@@ -63,17 +64,39 @@ const Header = () => {
       >
         <nav className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Mobile Menu Button */}
-            <div className="lg:hidden">
-              <motion.button
-                className="relative z-50 p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300"
-                onClick={toggleMenu}
-                aria-label="Toggle menu"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Menu className="w-6 h-6" />
-              </motion.button>
+            {/* Mobile Header */}
+            <div className="lg:hidden flex items-center justify-between w-full">
+              <div className="flex-1">
+                <motion.button
+                  className="relative z-50 p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300"
+                  onClick={toggleMenu}
+                  aria-label="Toggle menu"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Menu className="w-6 h-6" />
+                </motion.button>
+              </div>
+
+              <div className="flex-1 text-center">
+                <Link href="/">
+                  <span className="text-xl font-light tracking-luxury text-luxury-black whitespace-nowrap" style={{ fontFamily: 'var(--font-logo)' }}>
+                    ALBERTO RODRÍGUEZ
+                  </span>
+                </Link>
+              </div>
+
+              <div className="flex-1 flex justify-end items-center space-x-2">
+                <a href="https://www.instagram.com/albertorodriguezmoda/" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="https://www.facebook.com/albertorodriguez.mx" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="https://www.tiktok.com/@arodriguezmoda" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300">
+                  <TiktokIcon className="w-5 h-5" />
+                </a>
+              </div>
             </div>
 
             {/* Desktop Navigation Wrapper */}
@@ -89,7 +112,11 @@ const Header = () => {
                 <NavigationMenu>
                   <NavigationMenuList>
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger className="text-sm font-medium tracking-luxury">COLECCIONES</NavigationMenuTrigger>
+                      <Link href="/collections">
+                        <NavigationMenuTrigger className="text-sm font-medium tracking-luxury hover:text-luxury-gold">
+                          COLECCIONES
+                        </NavigationMenuTrigger>
+                      </Link>
                       <NavigationMenuContent>
                         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                           {collections.map((component) => (

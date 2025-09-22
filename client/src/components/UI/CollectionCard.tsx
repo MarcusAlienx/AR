@@ -51,7 +51,7 @@ const CollectionCard = ({
               console.error('Collection image failed to load:', image);
               // Fallback to a more reliable image if current one fails
               const target = e.target as HTMLImageElement;
-              target.src = 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1200';
+              target.src = 'https://res.cloudinary.com/dyzlfyyv3/image/upload/placeholders/fashion-model-fallback';
             }}
           />
           
