@@ -2,6 +2,8 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Calendar, Send, Instagram, Facebook } from 'lucide-react';
+import TiktokIcon from '@/components/UI/icons/TiktokIcon';
+import PinterestIcon from '@/components/UI/icons/PinterestIcon';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -97,6 +99,20 @@ const Contact = () => {
       handle: 'Alberto Rodriguez Couture',
       link: 'https://facebook.com/albertorodriguezco',
       color: 'from-blue-600 to-blue-700'
+    },
+    {
+      icon: TiktokIcon, // Assuming you have a TiktokIcon component
+      name: 'TikTok',
+      handle: '@arodriguezmoda',
+      link: 'https://www.tiktok.com/@arodriguezmoda',
+      color: 'from-gray-800 to-black'
+    },
+    {
+      icon: PinterestIcon, // Assuming you have a PinterestIcon component
+      name: 'Pinterest',
+      handle: 'arodriguezmoda',
+      link: 'https://es.pinterest.com/arodriguezmoda/',
+      color: 'from-red-600 to-red-700'
     }
   ];
 

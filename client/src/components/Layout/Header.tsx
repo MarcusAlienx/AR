@@ -3,6 +3,7 @@ import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, Instagram, Facebook } from 'lucide-react';
 import TiktokIcon from '@/components/UI/icons/TiktokIcon';
+import PinterestIcon from '@/components/UI/icons/PinterestIcon';
 import { 
   NavigationMenu, 
   NavigationMenuContent, 
@@ -95,6 +96,9 @@ const Header = () => {
                 </a>
                 <a href="https://www.tiktok.com/@arodriguezmoda" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300">
                   <TiktokIcon className="w-5 h-5" />
+                </a>
+                <a href="https://es.pinterest.com/arodriguezmoda/" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300">
+                  <PinterestIcon className="w-5 h-5" />
                 </a>
               </div>
             </div>

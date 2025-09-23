@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import { Instagram, Facebook } from 'lucide-react';
 import TiktokIcon from '@/components/UI/icons/TiktokIcon';
+import PinterestIcon from '@/components/UI/icons/PinterestIcon';
 
 const Footer = () => {
   return (
@@ -42,6 +43,15 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <TiktokIcon className="w-5 h-5" />
+              </a>
+              <a
+                href="https://es.pinterest.com/arodriguezmoda/"
+                className="w-10 h-10 bg-luxury-light rounded-full flex items-center justify-center hover:bg-luxury-gold hover:text-white transition-colors duration-300"
+                aria-label="Pinterest"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PinterestIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
