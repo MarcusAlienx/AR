@@ -1,10 +1,39 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
+import { useEffect } from 'react';
 import { Award, Heart, Users, Clock, Sparkles, MapPin } from 'lucide-react';
 import { getOptimizedImageUrl } from '@/lib/cloudinary';
 
 const About = () => {
+  // Scroll to element matching current hash (SPA-friendly)
+  useEffect(() => {
+    const scrollToHash = () => {
+      try {
+        const hash = window.location.hash;
+        if (!hash) return;
+        // Remove the leading '#'
+        const id = decodeURIComponent(hash.substring(1));
+        const el = document.getElementById(id);
+        if (el) {
+          // Use smooth scroll and offset a bit for fixed headers if present
+          const y = el.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      } catch (e) {
+        // Fail silently
+        // console.debug('hash scroll error', e);
+      }
+    };
+
+    // Scroll on mount in case the URL already contains a hash
+    scrollToHash();
+
+    // Listen for future hash changes
+    window.addEventListener('hashchange', scrollToHash);
+    return () => window.removeEventListener('hashchange', scrollToHash);
+  }, []);
+
   const milestones = [
     {
       year: '1986',
