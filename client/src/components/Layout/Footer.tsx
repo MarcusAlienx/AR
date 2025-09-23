@@ -105,9 +105,9 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/about">
+                <Link href="/about#atelier">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
-                    Filosofía
+                    Atelier
                   </span>
                 </Link>
               </li>

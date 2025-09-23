@@ -11,7 +11,7 @@ const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
     strokeLinejoin="round"
     {...props}
   >
-    <path d="M12 12a4 4 0 1 0 4 4V8a8 8 0 1 1-8-8" />
+    <path d="M21 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3a1 1 0 0 0-1-1H9a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h11a1 1 0 0 0 1-1z" />
   </svg>
 );
 
