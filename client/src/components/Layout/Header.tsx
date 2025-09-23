@@ -203,7 +203,7 @@ const Header = () => {
                 <ul className="space-y-4">
                   <li><Link href="/" onClick={closeMenu} className="text-lg font-medium tracking-luxury">INICIO</Link></li>
                   <li>
-                    <div className="text-lg font-medium tracking-luxury text-luxury-gold">COLECCIONES</div>
+                    <Link href="/collections" onClick={closeMenu} className="text-lg font-medium tracking-luxury text-luxury-gold">COLECCIONES</Link>
                     <ul className="pl-4 mt-2 space-y-2">
                       {collections.map(item => (
                         <li key={item.href}>

@@ -61,7 +61,7 @@ const Collections = () => {
       id: 3,
       title: 'Noche Elegante',
       description: 'Vestidos de noche para eventos especiales. Elegancia y sofisticación que capturan la esencia de la realeza con un toque moderno.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757585447/noche_jmshmw.avif',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973312/noche_59_41f801fcdc.jpg',
       category: 'noche',
       season: 'Colección 2025',
     },
@@ -77,7 +77,7 @@ const Collections = () => {
       id: 5,
       title: 'Primavera Fresca',
       description: 'Colección de primavera con diseños frescos y vibrantes. Piezas que celebran la renovación y la alegría de la temporada.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757585483/primavera_zwjor6.avif',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973491/primavera_17_2ae317c57e.jpg',
       category: 'primavera',
       season: 'Colección Primavera 2025',
     },
@@ -85,7 +85,7 @@ const Collections = () => {
       id: 6,
       title: 'Alquiler Premium',
       description: 'Servicio de alquiler de vestidos de alta costura. Elegancia accesible para ocasiones especiales sin comprometer la calidad.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757585477/alquiler_tjdn2b.avif',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756972727/alquiler_3_cef249d16e.jpg',
       category: 'alquiler',
       season: 'Disponible Todo el Año',
     }
@@ -112,7 +112,7 @@ const Collections = () => {
       <section className="relative h-[60vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/pages/collections/hero-background"
+            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758587478/Joyas-Eternas_m2678p.png"
             alt="Colecciones Alberto Rodríguez"
             className="w-full h-full object-cover"
           />
