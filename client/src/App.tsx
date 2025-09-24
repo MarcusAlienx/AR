@@ -13,6 +13,8 @@ const CollectionPage = lazy(() => import("@/pages/CollectionPage"));
 const RedCarpetPage = lazy(() => import("@/pages/RedCarpetPage"));
 const About = lazy(() => import("@/pages/About"));
 const Contact = lazy(() => import("@/pages/Contact"));
+const PrivacyPolicy = lazy(() => import("@/pages/Privacy"));
+const TermsOfService = lazy(() => import("@/pages/Terms"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function Router() {
@@ -24,6 +26,8 @@ function Router() {
       <Route path="/red-carpet/:slug">{params => <RedCarpetPage slug={params.slug} />}</Route>
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
+      <Route path="/privacy" component={PrivacyPolicy} />
+      <Route path="/terms" component={TermsOfService} />
       <Route component={NotFound} />
     </Switch>
   );

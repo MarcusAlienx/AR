@@ -151,20 +151,16 @@ const About = () => {
               </h2>
               <div className="space-y-6 text-gray-700 leading-relaxed">
                 <p className="text-lg">
-                  Desde 1986, Alberto Rodríguez ha sido sinónimo de elegancia y sofisticación 
-                  en el mundo de la alta costura mexicana. Su pasión por crear vestidos únicos 
-                  nació de una profunda admiración por la belleza femenina y el deseo de hacer 
-                  realidad los sueños de cada mujer.
+La casa de modas Alberto Rodríguez nace en 1986, en pleno auge de la revolución creativa de los años 80, una era vibrante que vio emerger a grandes firmas internacionales como Lacroix, Mugler, Herrera, Versace y Armani. En ese entorno efervescente, el diseñador tapatío Alberto Rodríguez encontró su vocación, transitando del mundo del diseño gráfico y la publicidad hacia la alta moda, inspirado por su primer contacto directo con piezas de Chanel, Dior y Oscar de la Renta durante un viaje a Nueva York.
                 </p>
                 <p className="text-lg">
-                  Formado en las mejores escuelas de diseño y con experiencia en casas de alta 
-                  costura europeas, Alberto regresó a México con una visión clara: crear piezas 
-                  que fusionaran la elegancia internacional con la calidez y tradición mexicana.
+Movido por la pasión y la mística de la alta costura, inició su camino profesional con estudios de corte y confección, creando piezas a medida para clientas particulares. Su enfoque meticuloso, la observación directa de los grandes maestros y su constante experimentación con proporciones, cortes y volúmenes, fueron forjando su estilo propio: barroco, audaz y profundamente romántico.
                 </p>
                 <p className="text-lg">
-                  Cada vestido que sale de nuestro atelier es el resultado de un proceso artesanal 
-                  meticuloso, donde la calidad de los materiales, la precisión en el corte y la 
-                  atención al detalle son fundamentales para lograr la perfección que nos caracteriza.
+Su talento pronto lo llevó a escenarios relevantes de la moda en México, desde certámenes como Nuestra Belleza México, hasta plataformas icónicas como la Muestra de Alta Moda y Fashion International View de la institución Jannette Klein. También participó en espacios de televisión nacional y presentó sus colecciones en foros internacionales en San Antonio, Texas y Vancouver, Canadá.
+                </p>
+                <p className="text-lg">
+Hoy, después de décadas de trayectoria, Alberto Rodríguez ha definido un lenguaje estético único, que fusiona la tradición del patronaje clásico con la innovación contemporánea. Sus creaciones se distinguen por acabados prolijos, decorados vanguardistas y un sello emocional que exalta la elegancia, la fuerza femenina y la belleza sin concesiones. Cada prenda es una declaración de arte, identidad y legado.
                 </p>
               </div>
               
@@ -188,7 +184,7 @@ const About = () => {
             >
               <div className="aspect-[4/5] overflow-hidden shadow-2xl">
                 <img
-                  src="https://res.cloudinary.com/dyzlfyyv3/image/upload/albertorodriguez_lysomc.png"
+                  src="https://res.cloudinary.com/dyzlfyyv3/image/upload/c_fill,g_auto,h_800,w_640,f_auto,q_auto/AR_slxaon.webp"
                   alt="Alberto Rodríguez"
                   className="w-full h-full object-cover"
                 />

@@ -286,7 +286,7 @@ const Home = () => {
         <title>Alberto Rodríguez Couture - Alta Costura en Guadalajara</title>
         <meta name="description" content="Descubre las colecciones de alta costura y vestidos de novia del diseñador Alberto Rodríguez. Más de 35 años de experiencia en Guadalajara, México." />
       </Helmet>
-      <div className="pt-20">
+      <div className="pt-20 overflow-x-hidden">
       {/* Video Hero Section */}
       <VideoHero
         title="ALTA COSTURA"
@@ -313,15 +313,16 @@ const Home = () => {
             <div className="w-24 h-px bg-luxury-gold mx-auto"></div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {collections.map((_collection, index) => (
-              <CollectionCard
-                key={_collection.title}
-                title={_collection.title}
-                subtitle={_collection.subtitle}
-                image={_collection.image}
-                href={_collection.href}
-              />
+              <div key={_collection.title} className={index === 3 ? 'lg:hidden xl:block' : ''}>
+                <CollectionCard
+                  title={_collection.title}
+                  subtitle={_collection.subtitle}
+                  image={_collection.image}
+                  href={_collection.href}
+                />
+              </div>
             ))}
           </div>
         </div>

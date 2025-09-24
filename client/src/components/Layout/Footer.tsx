@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import { Instagram, Facebook } from 'lucide-react';
 import TiktokIcon from '@/components/UI/icons/TiktokIcon';
+import PinterestIcon from '@/components/UI/icons/PinterestIcon.tsx';
 
 const Footer = () => {
   return (
@@ -42,6 +43,15 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <TiktokIcon className="w-5 h-5" />
+              </a>
+              <a
+                href="https://es.pinterest.com/arodriguezmoda/"
+                className="w-10 h-10 bg-luxury-light rounded-full flex items-center justify-center hover:bg-luxury-gold hover:text-white transition-colors duration-300"
+                aria-label="Pinterest"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PinterestIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -98,6 +108,13 @@ const Footer = () => {
             <h4 className="font-medium text-lg mb-4 tracking-luxury">EMPRESA</h4>
             <ul className="space-y-2">
               <li>
+                <Link href="/">
+                  <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
+                    Inicio
+                  </span>
+                </Link>
+              </li>
+              <li>
                 <Link href="/about#historia">
                   <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
                     Historia
@@ -127,12 +144,12 @@ const Footer = () => {
             © 2025 Alberto Rodríguez Couture. Todos los derechos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/contact">
+            <Link href="/privacy">
               <span className="text-gray-600 hover:text-luxury-gold text-sm transition-colors duration-300 cursor-pointer">
                 Privacidad
               </span>
             </Link>
-            <Link href="/contact">
+            <Link href="/terms">
               <span className="text-gray-600 hover:text-luxury-gold text-sm transition-colors duration-300 cursor-pointer">
                 Términos
               </span>

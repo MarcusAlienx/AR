@@ -2,6 +2,8 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Calendar, Send, Instagram, Facebook } from 'lucide-react';
+import TiktokIcon from '@/components/UI/icons/TiktokIcon.tsx';
+import PinterestIcon from '@/components/UI/icons/PinterestIcon.tsx';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -37,23 +39,41 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      eventType: '',
-      eventDate: '',
-      message: '',
-      preferredContact: 'phone'
-    });
-    
-    setIsSubmitting(false);
-    alert('¡Mensaje enviado! Nos pondremos en contacto contigo pronto.');
+
+    try {
+      const response = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'contact',
+          ...formData,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        eventType: '',
+        eventDate: '',
+        message: '',
+        preferredContact: 'phone'
+      });
+
+      alert('¡Mensaje enviado! Nos pondremos en contacto contigo pronto.');
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -66,19 +86,19 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Teléfono',
-      details: ['(33) 3826 2041', 'WhatsApp: (33) 1234 5678'],
+      details: ['(33) 3826 2041', 'WhatsApp: +523331968024'],
       link: 'tel:+523338262041'
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['info@albertorodriguez.com', 'citas@albertorodriguez.com'],
+      details: ['info@albertorodriguez.com', 'ventasfashion@albertorodriguez.com'],
       link: 'mailto:info@albertorodriguez.com'
     },
     {
       icon: Clock,
       title: 'Horarios',
-      details: ['Lunes - Viernes: 10:00 - 19:00', 'Sábado: 10:00 - 16:00', 'Domingo: Cerrado'],
+      details: ['Lunes - Viernes: 10:00 - 14:00 y 15:00 - 19:00', 'Sábado: 10:00 - 15:00', 'Domingo: Cerrado'],
       link: null
     }
   ];
@@ -87,16 +107,26 @@ const Contact = () => {
     {
       icon: Instagram,
       name: 'Instagram',
-      handle: '@albertorodriguezco',
-      link: 'https://instagram.com/albertorodriguezco',
-      color: 'from-purple-600 to-pink-600'
+      handle: 'albertorodriguezmoda',
+      link: 'https://www.instagram.com/albertorodriguezmoda/'
     },
     {
       icon: Facebook,
       name: 'Facebook',
-      handle: 'Alberto Rodriguez Couture',
-      link: 'https://facebook.com/albertorodriguezco',
-      color: 'from-blue-600 to-blue-700'
+      handle: 'albertorodriguez.mx',
+      link: 'https://www.facebook.com/albertorodriguez.mx'
+    },
+    {
+      icon: TiktokIcon,
+      name: 'TikTok',
+      handle: 'arodriguezmoda',
+      link: 'https://www.tiktok.com/@arodriguezmoda'
+    },
+    {
+      icon: PinterestIcon,
+      name: 'Pinterest',
+      handle: 'arodriguezmoda',
+      link: 'https://es.pinterest.com/arodriguezmoda/'
     }
   ];
 
@@ -159,7 +189,7 @@ const Contact = () => {
                 <p className="text-gray-600 mb-8 leading-relaxed">
                   Completa el formulario y nos pondremos en contacto contigo para agendar 
                   una cita personalizada en nuestro atelier. Cada consulta incluye asesoría 
-                  de diseño sin costo.
+                  de diseño.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -385,14 +415,14 @@ const Contact = () => {
                         href={social.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-4 p-4 bg-gradient-to-r hover:shadow-lg transition-all duration-300 group border border-gray-100 hover:border-transparent"
+                        className="flex items-center space-x-4 p-4 bg-white hover:shadow-lg transition-all duration-300 group border border-gray-100 hover:border-transparent"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                         whileHover={{ scale: 1.02 }}
                       >
-                        <div className={`w-10 h-10 bg-gradient-to-r ${social.color} rounded-full flex items-center justify-center`}>
-                          <social.icon className="w-5 h-5 text-white" />
+                        <div className="w-10 h-10 bg-luxury-light rounded-full flex items-center justify-center group-hover:bg-luxury-gold transition-colors duration-300">
+                          <social.icon className="w-5 h-5 text-luxury-black group-hover:text-white transition-colors duration-300" />
                         </div>
                         <div>
                           <h4 className="font-medium text-gray-900 group-hover:text-gray-700">
@@ -418,7 +448,7 @@ const Contact = () => {
                     directamente por WhatsApp para verificar disponibilidad.
                   </p>
                   <motion.a
-                    href="https://wa.me/523312345678"
+                    href="https://wa.me/523331968024"
                     className="inline-flex items-center text-green-600 hover:text-green-700 transition-colors duration-300"
                     whileHover={{ x: 5 }}
                   >
@@ -462,7 +492,7 @@ const Contact = () => {
                 height="100%"
                 frameBorder="0"
                 scrolling="no"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-103.376,20.670,-103.356,20.680&amp;layer=mapnik&amp;marker=20.6749493,-103.3660783"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-103.376,20.670,-103.356,20.680&amp;layer=mapnik&amp;marker=20.6749688,-103.3674786"
                 style={{ border: 0 }}
                 allowFullScreen={true}
               ></iframe>
@@ -473,7 +503,7 @@ const Contact = () => {
               href="https://maps.google.com/?q=Av.+Vallarta+1300+Guadalajara"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block text-xs text-gray-500 hover:text-luxury-gold transition-colors duration-300"
+              className="inline-block text-sm text-gray-500 hover:text-luxury-gold transition-all duration-300 transform hover:scale-110"
             >
               Abrir en Google Maps
             </a>

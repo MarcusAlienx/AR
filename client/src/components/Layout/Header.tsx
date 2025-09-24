@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, Instagram, Facebook } from 'lucide-react';
-import TiktokIcon from '@/components/UI/icons/TiktokIcon';
+import TiktokIcon from '@/components/UI/icons/TiktokIcon.tsx';
+import PinterestIcon from '@/components/UI/icons/PinterestIcon.tsx';
 import { 
   NavigationMenu, 
   NavigationMenuContent, 
@@ -80,9 +81,7 @@ const Header = () => {
 
               <div className="flex-1 text-center">
                 <Link href="/">
-                  <span className="text-xl font-light tracking-luxury text-luxury-black whitespace-nowrap" style={{ fontFamily: 'var(--font-logo)' }}>
-                    ALBERTO RODRÍGUEZ
-                  </span>
+                  <img src="https://res.cloudinary.com/dyzlfyyv3/image/upload/h_48,c_scale,f_auto,q_auto/AR_logo_rylshw.webp" alt="Alberto Rodríguez Logo" className="h-6 mx-auto" />
                 </Link>
               </div>
 
@@ -93,8 +92,11 @@ const Header = () => {
                 <a href="https://www.facebook.com/albertorodriguez.mx" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="https://www.tiktok.com/@arodriguezmoda" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300">
+                <a href="https://www.tiktok.com/@arodriguezmoda" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300 hidden sm:inline-block">
                   <TiktokIcon className="w-5 h-5" />
+                </a>
+                <a href="https://es.pinterest.com/arodriguezmoda/" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-50/80 rounded-full transition-all duration-300 hidden sm:inline-block">
+                  <PinterestIcon className="w-5 h-5" />
                 </a>
               </div>
             </div>
@@ -104,7 +106,7 @@ const Header = () => {
               {/* Left Section */}
               <div className="flex-1 flex justify-start items-center space-x-1">
                 <Link href="/">
-                  <span className={cn(navigationMenuTriggerStyle(), "text-sm font-medium tracking-luxury cursor-pointer", location === '/' ? 'text-luxury-gold' : 'text-luxury-black hover:text-luxury-gold')}>
+                  <span className={cn(navigationMenuTriggerStyle(), "text-sm font-medium tracking-luxury cursor-pointer", location === '/' ? 'text-luxury-gold' : 'text-luxury-black')}>
                     INICIO
                   </span>
                 </Link>
@@ -112,13 +114,26 @@ const Header = () => {
                 <NavigationMenu>
                   <NavigationMenuList>
                     <NavigationMenuItem>
-                      <Link href="/collections">
-                        <NavigationMenuTrigger className="text-sm font-medium tracking-luxury hover:text-luxury-gold">
-                          COLECCIONES
-                        </NavigationMenuTrigger>
-                      </Link>
+                      <NavigationMenuTrigger className={cn(navigationMenuTriggerStyle(), "text-sm font-medium tracking-luxury", location.startsWith('/collections') ? 'text-luxury-gold' : 'text-luxury-black')}>
+                        COLECCIONES
+                      </NavigationMenuTrigger>
                       <NavigationMenuContent>
                         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                          <li className="row-span-3">
+                            <NavigationMenuLink asChild>
+                              <a
+                                className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                href="/collections"
+                              >
+                                <div className="mb-2 mt-4 text-lg font-medium">
+                                  Ver Todas las Colecciones
+                                </div>
+                                <p className="text-sm leading-tight text-muted-foreground">
+                                  Explora el universo completo de Alberto Rodríguez, desde novias hasta alta noche.
+                                </p>
+                              </a>
+                            </NavigationMenuLink>
+                          </li>
                           {collections.map((component) => (
                             <ListItem
                               key={component.title}
@@ -148,9 +163,7 @@ const Header = () => {
                       whileHover={{ scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 400 }}
                     >
-                      <span className="text-2xl font-light tracking-luxury text-luxury-black whitespace-nowrap" style={{ fontFamily: 'var(--font-logo)' }}>
-                        ALBERTO RODRÍGUEZ
-                      </span>
+                      <img src="https://res.cloudinary.com/dyzlfyyv3/image/upload/h_64,c_scale,f_auto,q_auto/AR_logo_rylshw.webp" alt="Alberto Rodríguez Logo" className="h-8" />
                     </motion.div>
                   </Link>
                 </motion.div>
@@ -160,7 +173,7 @@ const Header = () => {
               <div className="flex-1 flex justify-end items-center space-x-1">
                 {navigationItems.slice(1).map((item) => (
                   <Link href={item.href} key={item.href}>
-                    <span className={cn(navigationMenuTriggerStyle(), "text-sm font-medium tracking-luxury cursor-pointer", location === item.href ? 'text-luxury-gold' : 'text-luxury-black hover:text-luxury-gold')}>
+                    <span className={cn(navigationMenuTriggerStyle(), "text-sm font-medium tracking-luxury cursor-pointer", location === item.href ? 'text-luxury-gold' : 'text-luxury-black')}>
                       {item.label}
                     </span>
                   </Link>
@@ -194,9 +207,7 @@ const Header = () => {
             >
               <div className="pt-24 pb-8 px-8">
                 <Link href="/" onClick={closeMenu}>
-                  <span className="text-xl font-light tracking-luxury text-luxury-black" style={{ fontFamily: 'var(--font-logo)' }}>
-                    ALBERTO RODRÍGUEZ
-                  </span>
+                  <img src="https://res.cloudinary.com/dyzlfyyv3/image/upload/h_64,c_scale,f_auto,q_auto/AR_logo_rylshw.webp" alt="Alberto Rodríguez Logo" className="h-8" />
                 </Link>
                 <div className="w-16 h-px bg-luxury-gold mt-2 mb-12" />
 
