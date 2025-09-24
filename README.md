@@ -190,7 +190,9 @@ El proyecto incluye `netlify.toml` preconfigurado:
    ```
    DATABASE_URL=tu_url_de_neon_database
    NODE_ENV=production
+   RESEND_API_KEY=tu_api_key_de_resend
    ```
+   **Nota:** La `RESEND_API_KEY` es necesaria para que el envío de correos desde los formularios de contacto y newsletter funcione.
 
 4. **Desplegar**
    - Netlify detectará automáticamente los cambios
@@ -475,9 +477,10 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
 **Alberto Rodríguez Couture**
 - 📍 Av. Vallarta #1300, Guadalajara, Jalisco, México
-- 📞 +52 (33) 1234-5678
-- 📧 info@albertorodriguezc.com
-- 🌐 [www.albertorodriguezc.com](https://www.albertorodriguezc.com)
+- 📞 (33) 3826 2041
+- 📱 WhatsApp: +52 33 3196 8024
+- 📧 info@albertorodriguez.com
+- 🌐 [albertorodriguezcom.netlify.app](https://albertorodriguezcom.netlify.app)
 
 ---
 

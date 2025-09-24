@@ -264,13 +264,15 @@ const Collections = () => {
               con nuestro proceso de diseño exclusivo.
             </p>
             
-            <motion.button
-              className="inline-block border-2 border-luxury-gold text-luxury-gold px-12 py-4 text-sm font-medium tracking-luxury hover:bg-luxury-gold hover:text-black transition-all duration-500"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              AGENDAR CITA PRIVADA
-            </motion.button>
+            <Link href="/contact#citas">
+              <motion.button
+                className="inline-block border-2 border-luxury-gold text-luxury-gold px-12 py-4 text-sm font-medium tracking-luxury hover:bg-luxury-gold hover:text-white transition-all duration-500"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                AGENDAR CITA PRIVADA
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </section>
