@@ -44,7 +44,7 @@ const CollectionCard = ({
           <motion.img
             src={image}
             alt={title}
-            className="w-full h-96 object-cover transition-transform duration-700"
+            className="w-full h-full object-cover transition-transform duration-700"
             whileHover={{ scale: 1.05 }}
             loading="lazy"
             onError={(e) => {

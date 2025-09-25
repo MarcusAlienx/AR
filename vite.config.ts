@@ -8,7 +8,6 @@ export default defineConfig({
   plugins: [
     react(),
   ],
-  assetsInclude: ['**/*.html'],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

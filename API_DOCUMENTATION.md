@@ -2,6 +2,15 @@
 
 Esta documentación describe los endpoints de la API del backend de Alberto Rodríguez Couture.
 
+## Arquitectura de la API
+
+La API está construida con una arquitectura dual para optimizar tanto el desarrollo como la producción:
+
+-   **Producción:** Las funciones serverless de Netlify se ejecutan en el borde. El enrutamiento es gestionado por Netlify, que redirige las peticiones de `/api/` a las funciones correspondientes.
+-   **Desarrollo:** Un servidor Express.js local se utiliza para un desarrollo rápido y pruebas.
+
+Todos los endpoints listados a continuación deben ser llamados usando el prefijo `/api/`. Por ejemplo, `GET /collections` se convierte en `GET /api/collections`.
+
 ## Endpoints Principales
 
 ### Colecciones

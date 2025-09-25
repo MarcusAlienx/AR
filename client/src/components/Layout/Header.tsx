@@ -81,7 +81,7 @@ const Header = () => {
 
               <div className="flex-1 text-center">
                 <Link href="/">
-                  <img src="https://res.cloudinary.com/dyzlfyyv3/image/upload/h_48,c_scale,f_auto,q_auto/AR_logo_rylshw.webp" alt="Alberto Rodríguez Logo" className="h-6 mx-auto" />
+                  <img src="https://res.cloudinary.com/dyzlfyyv3/image/upload/h_48,c_scale,f_auto,q_auto/AR_logo_rylshw.webp" alt="Alberto Rodríguez Logo" className="h-12 mx-auto" />
                 </Link>
               </div>
 
@@ -148,7 +148,7 @@ const Header = () => {
                       whileHover={{ scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 400 }}
                     >
-                      <img src="https://res.cloudinary.com/dyzlfyyv3/image/upload/h_64,c_scale,f_auto,q_auto/AR_logo_rylshw.webp" alt="Alberto Rodríguez Logo" className="h-8" />
+                      <img src="https://res.cloudinary.com/dyzlfyyv3/image/upload/h_64,c_scale,f_auto,q_auto/AR_logo_rylshw.webp" alt="Alberto Rodríguez Logo" className="h-16" />
                     </motion.div>
                   </Link>
                 </motion.div>

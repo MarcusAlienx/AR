@@ -109,7 +109,7 @@ const Home = () => {
     {
       title: 'CELEBRITIES',
       subtitle: 'ESTRELLAS INTERNACIONALES',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757674868/celebrities_2_cuubqm.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/celebrities_11_ubte2h.jpg',
       category: 'celebrities' as const,
       gallery: [
         {
@@ -315,7 +315,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {collections.map((_collection, index) => (
-              <div key={_collection.title} className={index === 3 ? 'lg:hidden xl:block' : ''}>
+              <div key={_collection.title} className={`h-full flex flex-col ${index === 3 ? 'lg:hidden xl:block' : ''}`}>
                 <CollectionCard
                   title={_collection.title}
                   subtitle={_collection.subtitle}

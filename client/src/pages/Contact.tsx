@@ -1,22 +1,43 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Calendar, Send, Instagram, Facebook } from 'lucide-react';
 import TiktokIcon from '@/components/UI/icons/TiktokIcon.tsx';
 import PinterestIcon from '@/components/UI/icons/PinterestIcon.tsx';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    eventType: '',
-    eventDate: '',
-    message: '',
-    preferredContact: 'phone'
-  });
+// 1. Esquema de Validación con Zod
+const contactFormSchema = z.object({
+  name: z.string().min(3, 'El nombre debe tener al menos 3 caracteres.'),
+  email: z.string().email('Por favor, introduce un email válido.'),
+  phone: z.string().min(10, 'El teléfono debe tener al menos 10 dígitos.'),
+  eventType: z.string({ required_error: 'Debes seleccionar un tipo de evento.' }).min(1, 'Debes seleccionar un tipo de evento.'),
+  eventDate: z.string().optional(),
+  message: z.string().optional(),
+  preferredContact: z.string(),
+});
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+const Contact = () => {
+  // 2. Integración de React Hook Form y useToast
+  const { toast } = useToast();
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      eventType: '',
+      eventDate: '',
+      message: '',
+      preferredContact: 'phone',
+    },
+  });
+  const { isSubmitting } = form.formState;
 
   const eventTypes = [
     'Vestido de Novia',
@@ -28,18 +49,7 @@ const Contact = () => {
     'Consulta General'
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
+  const onSubmit = async (data: ContactFormValues) => {
     try {
       const response = await fetch('/.netlify/functions/send-email', {
         method: 'POST',
@@ -48,7 +58,7 @@ const Contact = () => {
         },
         body: JSON.stringify({
           type: 'contact',
-          ...formData,
+          ...data,
         }),
       });
 
@@ -56,23 +66,19 @@ const Contact = () => {
         throw new Error('Failed to send message');
       }
 
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        eventType: '',
-        eventDate: '',
-        message: '',
-        preferredContact: 'phone'
+      form.reset();
+      toast({
+        title: '¡Mensaje Enviado!',
+        description: 'Nos pondremos en contacto contigo pronto.',
       });
 
-      alert('¡Mensaje enviado! Nos pondremos en contacto contigo pronto.');
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.');
-    } finally {
-      setIsSubmitting(false);
+      toast({
+        variant: 'destructive',
+        title: 'Error al enviar',
+        description: 'Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.',
+      });
     }
   };
 
@@ -192,7 +198,7 @@ const Contact = () => {
                   de diseño.
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -201,13 +207,11 @@ const Contact = () => {
                       <input
                         type="text"
                         id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleInputChange}
+                        {...form.register('name')}
                         className="w-full px-4 py-3 border border-gray-300 focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold transition-colors duration-300"
                         placeholder="Tu nombre completo"
                       />
+                      {form.formState.errors.name && <p className="text-red-500 text-sm mt-1">{form.formState.errors.name.message}</p>}
                     </div>
 
                     <div>
@@ -217,13 +221,11 @@ const Contact = () => {
                       <input
                         type="email"
                         id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleInputChange}
+                        {...form.register('email')}
                         className="w-full px-4 py-3 border border-gray-300 focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold transition-colors duration-300"
                         placeholder="tu@email.com"
                       />
+                      {form.formState.errors.email && <p className="text-red-500 text-sm mt-1">{form.formState.errors.email.message}</p>}
                     </div>
                   </div>
 
@@ -235,13 +237,11 @@ const Contact = () => {
                       <input
                         type="tel"
                         id="phone"
-                        name="phone"
-                        required
-                        value={formData.phone}
-                        onChange={handleInputChange}
+                        {...form.register('phone')}
                         className="w-full px-4 py-3 border border-gray-300 focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold transition-colors duration-300"
                         placeholder="(33) 1234 5678"
                       />
+                      {form.formState.errors.phone && <p className="text-red-500 text-sm mt-1">{form.formState.errors.phone.message}</p>}
                     </div>
 
                     <div>
@@ -250,10 +250,7 @@ const Contact = () => {
                       </label>
                       <select
                         id="eventType"
-                        name="eventType"
-                        required
-                        value={formData.eventType}
-                        onChange={handleInputChange}
+                        {...form.register('eventType')}
                         className="w-full px-4 py-3 border border-gray-300 focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold transition-colors duration-300"
                       >
                         <option value="">Selecciona una opción</option>
@@ -261,6 +258,7 @@ const Contact = () => {
                           <option key={type} value={type}>{type}</option>
                         ))}
                       </select>
+                      {form.formState.errors.eventType && <p className="text-red-500 text-sm mt-1">{form.formState.errors.eventType.message}</p>}
                     </div>
                   </div>
 
@@ -271,9 +269,7 @@ const Contact = () => {
                     <input
                       type="date"
                       id="eventDate"
-                      name="eventDate"
-                      value={formData.eventDate}
-                      onChange={handleInputChange}
+                      {...form.register('eventDate')}
                       className="w-full px-4 py-3 border border-gray-300 focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold transition-colors duration-300"
                     />
                   </div>
@@ -286,10 +282,8 @@ const Contact = () => {
                       <label className="flex items-center">
                         <input
                           type="radio"
-                          name="preferredContact"
                           value="phone"
-                          checked={formData.preferredContact === 'phone'}
-                          onChange={handleInputChange}
+                          {...form.register('preferredContact')}
                           className="text-luxury-gold focus:ring-luxury-gold border-gray-300"
                         />
                         <span className="ml-2 text-sm text-gray-700">Teléfono</span>
@@ -297,10 +291,8 @@ const Contact = () => {
                       <label className="flex items-center">
                         <input
                           type="radio"
-                          name="preferredContact"
                           value="email"
-                          checked={formData.preferredContact === 'email'}
-                          onChange={handleInputChange}
+                          {...form.register('preferredContact')}
                           className="text-luxury-gold focus:ring-luxury-gold border-gray-300"
                         />
                         <span className="ml-2 text-sm text-gray-700">Email</span>
@@ -308,10 +300,8 @@ const Contact = () => {
                       <label className="flex items-center">
                         <input
                           type="radio"
-                          name="preferredContact"
                           value="whatsapp"
-                          checked={formData.preferredContact === 'whatsapp'}
-                          onChange={handleInputChange}
+                          {...form.register('preferredContact')}
                           className="text-luxury-gold focus:ring-luxury-gold border-gray-300"
                         />
                         <span className="ml-2 text-sm text-gray-700">WhatsApp</span>
@@ -325,10 +315,8 @@ const Contact = () => {
                     </label>
                     <textarea
                       id="message"
-                      name="message"
                       rows={5}
-                      value={formData.message}
-                      onChange={handleInputChange}
+                      {...form.register('message')}
                       className="w-full px-4 py-3 border border-gray-300 focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold transition-colors duration-300"
                       placeholder="Cuéntanos sobre tu visión, inspiración o cualquier detalle especial que quieras compartir..."
                     />
