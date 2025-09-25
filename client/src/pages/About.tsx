@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { useEffect } from 'react';
 import { Award, Heart, Users, Clock, Sparkles, MapPin } from 'lucide-react';
-import { getOptimizedImageUrl } from '@/lib/cloudinary';
 
 const About = () => {
   // Scroll to element matching current hash (SPA-friendly)

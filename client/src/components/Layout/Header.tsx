@@ -81,7 +81,7 @@ const Header = () => {
 
               <div className="flex-1 text-center">
                 <Link href="/">
-                  <img src="https://res.cloudinary.com/dyzlfyyv3/image/upload/h_48,c_scale,f_auto,q_auto/AR_logo_rylshw.webp" alt="Alberto Rodríguez Logo" className="h-12 mx-auto" />
+                  <img src="https://res.cloudinary.com/dyzlfyyv3/image/upload/h_48,c_scale,f_auto,q_auto/AR_logo_rylshw.webp" alt="Alberto Rodríguez Logo" className="h-12 w-auto object-contain mx-auto" />
                 </Link>
               </div>
 

@@ -69,7 +69,7 @@ const Home = () => {
     {
       title: 'NOCHE',
       subtitle: 'ELEGANCIA IMPERIAL',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973278/noche_34_9ac688fd81.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/large_noche_14_5d97d1c3ad.jpg',
       href: '/collections#noche',
       gallery: [
         {
