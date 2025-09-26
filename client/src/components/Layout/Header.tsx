@@ -25,7 +25,7 @@ const collections = [
 ];
 
 const Header = () => {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -114,7 +114,7 @@ const Header = () => {
                 <NavigationMenu>
                   <NavigationMenuList>
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger className={cn(navigationMenuTriggerStyle(), "text-sm font-medium tracking-luxury", location.startsWith('/collections') ? 'text-luxury-gold' : 'text-luxury-black')}>
+                      <NavigationMenuTrigger onClick={() => setLocation('/collections')} className={cn(navigationMenuTriggerStyle(), "text-sm font-medium tracking-luxury cursor-pointer", location.startsWith('/collections') ? 'text-luxury-gold' : 'text-luxury-black')}>
                         COLECCIONES
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>

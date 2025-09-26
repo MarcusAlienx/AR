@@ -522,8 +522,7 @@ const Home = () => {
                 <div>
                   <h3 className="font-medium text-lg mb-2 tracking-luxury">HORARIOS</h3>
                   <p className="text-gray-600">
-                    Lunes a Viernes: 10:00 AM - 3:00 PM y 4:00 PM - 7:00 PM<br />
-                    Lunes a Viernes: 10:00 AM - 2:00 PM<br />
+                    Lunes a Viernes: 10:00 AM - 2:00 PM y 3:00 PM - 7:00 PM<br />
                     Sábados: 10:00 AM - 3:00 PM<br />
                     <span className="text-luxury-gold">Atención con cita previa</span>
                   </p>
