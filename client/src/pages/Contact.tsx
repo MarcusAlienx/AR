@@ -86,7 +86,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Dirección',
-      details: ['Av. Vallarta #1300', 'Guadalajara, Jalisco', 'México C.P. 44100'],
+      details: ['Av. Vallarta #1300, Col. Americana', 'Guadalajara, Jalisco', 'México C.P. 44100'],
       link: 'https://maps.google.com/?q=Av.+Vallarta+1300+Guadalajara'
     },
     {

@@ -394,7 +394,7 @@ const Home = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-serif text-4xl md:text-5xl font-light mb-8 tracking-wide">
+              <h2 className="font-serif text-4xl md:text-5xl font-light mb-8 tracking-wide ml-4">
                 MUNDO ALBERTO RODRÍGUEZ
               </h2>
               <div className="w-24 h-px bg-luxury-gold mb-8"></div>
