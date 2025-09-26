@@ -45,7 +45,7 @@ const Collections = () => {
       id: 1,
       title: 'Novias Eternas',
       description: 'Vestidos de novia únicos diseñados para el día más importante. Cada pieza es creada a medida con las mejores telas y técnicas de alta costura.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973406/novias_1_d4748af80d.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973406/novias_1_d4748af80d.jpg',
       category: 'novia',
       season: 'Colección 2025',
     },
@@ -53,7 +53,7 @@ const Collections = () => {
       id: 2,
       title: 'XV Años Princesa',
       description: 'Vestidos de quinceañera que marcan el paso a la feminidad. Diseños que capturan la magia de este momento único.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973728/xv_3_0dca4fbaff.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973728/xv_3_0dca4fbaff.jpg',
       category: 'xv',
       season: 'Colección 2025',
     },
@@ -61,7 +61,7 @@ const Collections = () => {
       id: 3,
       title: 'Noche Elegante',
       description: 'Vestidos de noche para eventos especiales. Elegancia y sofisticación que capturan la esencia de la realeza con un toque moderno.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973312/noche_59_41f801fcdc.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973312/noche_59_41f801fcdc.jpg',
       category: 'noche',
       season: 'Colección 2025',
     },
@@ -69,7 +69,7 @@ const Collections = () => {
       id: 4,
       title: 'Vestidos Cortos',
       description: 'Diseños sofisticados para ocasiones semi-formales. La perfecta combinación entre elegancia y versatilidad para la mujer moderna.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973127/cortos_4_5514996d00.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/cortos_3_0058c31947.jpg',
       category: 'cortos',
       season: 'Colección 2025',
     },
@@ -77,7 +77,7 @@ const Collections = () => {
       id: 5,
       title: 'Primavera Fresca',
       description: 'Colección de primavera con diseños frescos y vibrantes. Piezas que celebran la renovación y la alegría de la temporada.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973491/primavera_17_2ae317c57e.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973491/primavera_17_2ae317c57e.jpg',
       category: 'primavera',
       season: 'Colección Primavera 2025',
     },
@@ -85,7 +85,7 @@ const Collections = () => {
       id: 6,
       title: 'Alquiler Premium',
       description: 'Servicio de alquiler de vestidos de alta costura. Elegancia accesible para ocasiones especiales sin comprometer la calidad.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756972727/alquiler_3_cef249d16e.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756972727/alquiler_3_cef249d16e.jpg',
       category: 'alquiler',
       season: 'Disponible Todo el Año',
     }
@@ -112,7 +112,7 @@ const Collections = () => {
       <section className="relative h-[60vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758587478/Joyas-Eternas_m2678p.png"
+            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1758587478/Joyas-Eternas_m2678p.png"
             alt="Colecciones Alberto Rodríguez"
             className="w-full h-full object-cover"
           />

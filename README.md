@@ -19,6 +19,7 @@ Este sitio web replica la estética de lujo de marcas como Louis Vuitton y Zuhai
 ## 🏗️ Arquitectura del Proyecto
 
 ### Frontend
+
 - **React 18** con **Vite** para desarrollo rápido
 - **TypeScript** para seguridad de tipos
 - **Tailwind CSS** con sistema de colores de lujo personalizado
@@ -28,6 +29,7 @@ Este sitio web replica la estética de lujo de marcas como Louis Vuitton y Zuhai
 - **TanStack Query** para gestión de estado y caché
 
 ### Backend
+
 - **Express.js** con TypeScript
 - **Drizzle ORM** para gestión de base de datos
 - **Neon Database** (PostgreSQL serverless)
@@ -35,6 +37,7 @@ Este sitio web replica la estética de lujo de marcas como Louis Vuitton y Zuhai
 - Middleware para logging y manejo de errores
 
 ### Base de Datos
+
 ```sql
 -- Esquema principal
 Collections (id, name, description, category, images, seasonal_info)
@@ -48,17 +51,20 @@ Contact (id, name, email, message, created_at)
 ## 🎨 Sistema de Diseño
 
 ### Paleta de Colores
+
 - **Oro Luxury**: `#D4AF37` - Color principal de acento
 - **Negro Luxury**: `#1a1a1a` - Texto principal
 - **Gris Suave**: `#f8f8f8` - Fondos neutros
 - **Blanco Premium**: `#ffffff` - Fondos principales
 
 ### Tipografía
+
 - **Playfair Display**: Serif para títulos elegantes
 - **Inter**: Sans-serif para texto de lectura
 - **Stevens Titling**: Fuente del logo (personalizada)
 
 ### Componentes Clave
+
 - `VideoHero`: Sección hero inmersiva con video
 - `CollectionCard`: Tarjetas de colección con efectos hover
 - `ServiceCard`: Servicios con iconografía Lucide
@@ -102,6 +108,7 @@ AR/
 ## 🚀 Desarrollo Local
 
 ### Prerrequisitos
+
 - Node.js 18+
 - npm o yarn
 - Base de datos PostgreSQL (Neon recomendado)
@@ -109,33 +116,39 @@ AR/
 ### Instalación
 
 1. **Clonar el repositorio**
+
 ```bash
 git clone https://github.com/tu-usuario/alberto-rodriguez-couture.git
 cd alberto-rodriguez-couture
 ```
 
 2. **Instalar dependencias**
+
 ```bash
 npm install
 ```
 
 3. **Configurar variables de entorno**
+
 ```bash
 cp .env.example .env
 ```
 
 Edita `.env` con tus credenciales:
+
 ```env
 DATABASE_URL="postgresql://usuario:password@host/database"
 NODE_ENV="development"
 ```
 
 4. **Configurar base de datos**
+
 ```bash
 npm run db:push
 ```
 
 5. **Iniciar desarrollo**
+
 ```bash
 npm run dev
 ```
@@ -178,20 +191,24 @@ El proyecto incluye `netlify.toml` preconfigurado:
 ### Pasos de Despliegue
 
 1. **Conectar con GitHub**
+
    - Fork o clona este repositorio
    - Conecta tu cuenta de Netlify con GitHub
 
 2. **Configurar Build**
+
    - Build command: `npm run build`
    - Publish directory: `dist`
    - Node version: `18`
 
 3. **Variables de Entorno**
+
    ```
    DATABASE_URL=tu_url_de_neon_database
    NODE_ENV=production
    RESEND_API_KEY=tu_api_key_de_resend
    ```
+
    **Nota:** La `RESEND_API_KEY` es necesaria para que el envío de correos desde los formularios de contacto y newsletter funcione.
 
 4. **Desplegar**
@@ -211,18 +228,21 @@ El proyecto incluye `netlify.toml` preconfigurado:
 ### Páginas Principales
 
 1. **Home (`/`)**
+
    - Video hero inmersivo
    - Galería de colecciones destacadas
    - Servicios premium
    - Eventos de alfombra roja (CELEBRITIES, CLIENTAS, FASHION WEEK, DESFILES)
 
 2. **Collections (`/collections`)**
+
    - Filtrado por categorías (NOVIA, XV, NOCHE, CORTOS, PRIMAVERA, ALQUILER)
    - Navegación directa con hashtags (`#novia`, `#xv`, `#noche`, etc.)
    - Estadísticas de la empresa
    - Galería responsive
 
 3. **About (`/about`)**
+
    - Historia de Alberto Rodríguez
    - Filosofía de diseño
    - Timeline de logros
@@ -246,46 +266,53 @@ El proyecto incluye `netlify.toml` preconfigurado:
 ### Opciones Recomendadas de Headless CMS
 
 #### 1. **Sanity.io** (Recomendado)
+
 ```bash
 npm install @sanity/client @sanity/image-url
 ```
 
 **Ventajas**:
+
 - Excelente para galerías de imágenes
 - Editores visuales intuitivos
 - CDN global optimizado
 - Esquemas personalizables
 
 **Integración**:
+
 ```typescript
 // lib/sanity.ts
-import { createClient } from '@sanity/client'
+import { createClient } from "@sanity/client";
 
 export const sanity = createClient({
-  projectId: 'tu-project-id',
-  dataset: 'production',
+  projectId: "tu-project-id",
+  dataset: "production",
   useCdn: true,
-  apiVersion: '2024-01-01'
-})
+  apiVersion: "2024-01-01",
+});
 ```
 
 #### 2. **Strapi**
+
 ```bash
 npm install @strapi/strapi @strapi/plugin-upload
 ```
 
 **Ventajas**:
+
 - Panel de administración completo
 - Gestión de usuarios y roles
 - API REST/GraphQL automática
 - Plugins para SEO y media
 
 #### 3. **Contentful**
+
 ```bash
 npm install contentful
 ```
 
 **Ventajas**:
+
 - CDN global premium
 - Previsualizaciones en tiempo real
 - Workflows de publicación
@@ -296,68 +323,77 @@ npm install contentful
 #### Estrategia de 6 Fases
 
 **Fase 1: Infraestructura Strapi**
+
 - Despliegue de instancia Strapi
 - Configuración de autenticación y API tokens
 - Preparación del frontend para consumir APIs
 
 **Fase 2: Gestión de Colecciones**
+
 - Modelos para categorías (NOVIA, XV, NOCHE, CORTOS, PRIMAVERA, ALQUILER)
 - Migración de las 6 colecciones actuales
 - Integración con navegación dinámica
 
 **Fase 3: Contenido Red Carpet y Servicios**
+
 - Eventos Red Carpet (CELEBRITIES, CLIENTAS, FASHION WEEK, DESFILES)
 - Servicios premium con iconografía personalizada
 
 **Fase 4: Contenido Corporativo**
+
 - Historia y milestones de la empresa
 - Valores corporativos
 - Información de contacto
 
 **Fase 5: Navegación Global**
+
 - Elementos de menú dinámicos
 - Configuración global del sitio
 - Enlaces de footer administrables
 
 **Fase 6: Optimización Avanzada**
+
 - Sistema de caché inteligente
 - SEO automático
 - Optimización de imágenes
 
 #### Ejemplo de Integración
+
 ```typescript
 // lib/strapi.ts
-import axios from 'axios'
+import axios from "axios";
 
 const api = axios.create({
   baseURL: process.env.VITE_STRAPI_API_URL,
   headers: {
-    Authorization: `Bearer ${process.env.VITE_STRAPI_API_TOKEN}`
-  }
-})
+    Authorization: `Bearer ${process.env.VITE_STRAPI_API_TOKEN}`,
+  },
+});
 
 export async function getCollections() {
-  const { data } = await api.get('/collections?populate=*')
-  return data.data
+  const { data } = await api.get("/collections?populate=*");
+  return data.data;
 }
 
 // hooks/useCollections.ts
 export function useCollections() {
   return useQuery({
-    queryKey: ['collections'],
-    queryFn: getCollections
-  })
+    queryKey: ["collections"],
+    queryFn: getCollections,
+  });
 }
 ```
 
 ## 🔒 Seguridad y Autenticación
 
 ### Sistema Actual
+
 - Autenticación con Passport.js
 - Hash de contraseñas con bcrypt
 - Middleware de autorización
 
 ### Mejoras Recomendadas
+
 - OAuth con Google/Facebook
 - JWT tokens para API
 - Rate limiting
@@ -366,6 +402,7 @@ export function useCollections() {
 ## 📊 Analytics y SEO
 
 ### SEO Implementado
+
 - Meta tags dinámicos por página
 - Open Graph para redes sociales
 - Structured data (JSON-LD)
@@ -373,9 +410,10 @@ export function useCollections() {
 - URLs semánticas
 
 ### Analytics Recomendados
+
 ```typescript
 // lib/analytics.ts
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export function setupAnalytics() {
   // Google Analytics 4
@@ -387,6 +425,7 @@ export function setupAnalytics() {
 ## 🧪 Testing
 
 ### Configuración Actual
+
 El proyecto está configurado con **Vitest** para pruebas unitarias y de integración, y **React Testing Library** para componentes.
 
 - **Pruebas Unitarias**: `*.test.ts` para lógica de negocio.
@@ -394,6 +433,7 @@ El proyecto está configurado con **Vitest** para pruebas unitarias y de integra
 - **Pruebas de Integración**: Pruebas para los endpoints de las Netlify Functions.
 
 ### Ejecutar Pruebas
+
 ```bash
 # Ejecutar todas las pruebas en la terminal
 npm test
@@ -405,6 +445,7 @@ npm run test:ui
 ## 🔄 CI/CD
 
 ### GitHub Actions
+
 El workflow en `.github/workflows/deploy.yml` automatiza el despliegue a Netlify. Se ha mejorado para incluir verificación de código y pruebas.
 
 ```yaml
@@ -428,6 +469,7 @@ jobs:
 ```
 
 ### Pre-commit Hooks
+
 ```bash
 npm install -D husky lint-staged
 npx husky install
@@ -436,12 +478,14 @@ npx husky install
 ## 📝 Roadmap
 
 ### Fase 1 - Lanzamiento ✅
+
 - [x] Diseño luxury responsive
 - [x] Navegación completa
 - [x] Galería de colecciones
 - [x] Despliegue en Netlify
 
 ### Fase 2 - Strapi CMS Integration (En Progreso)
+
 - [ ] Configuración de infraestructura Strapi
 - [ ] Migración de colecciones (NOVIA, XV, NOCHE, CORTOS, PRIMAVERA, ALQUILER)
 - [ ] Contenido Red Carpet dinámico
@@ -450,12 +494,14 @@ npx husky install
 - [ ] Blog/Noticias dinámico
 
 ### Fase 3 - E-commerce
+
 - [ ] Carrito de compras
 - [ ] Pasarela de pagos (Stripe)
 - [ ] Gestión de inventario
 - [ ] Citas y consultas online
 
 ### Fase 4 - Avanzado
+
 - [ ] Realidad aumentada (try-on virtual)
 - [ ] Chat en vivo
 - [ ] Multi-idioma (ES/EN)
@@ -476,6 +522,7 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 ## 📞 Contacto
 
 **Alberto Rodríguez Couture**
+
 - 📍 Av. Vallarta #1300, Guadalajara, Jalisco, México
 - 📞 (33) 3826 2041
 - 📱 WhatsApp: +52 33 3196 8024
@@ -484,4 +531,4 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
 ---
 
-*Desarrollado con ❤️ para Alberto Rodríguez Couture*
+_Desarrollado con ❤️ para Alberto Rodríguez Couture_

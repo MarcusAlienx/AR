@@ -147,7 +147,7 @@ const Contact = () => {
       <section className="relative h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757933446/259307_10151151540912267_997551934_o-1024x680_qnmhg0.jpg"
+            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1757933446/259307_10151151540912267_997551934_o-1024x680_qnmhg0.jpg"
             alt="Contacto Alberto Rodríguez"
             className="w-full h-full object-cover"
           />

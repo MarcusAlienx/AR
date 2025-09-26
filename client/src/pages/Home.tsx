@@ -18,7 +18,7 @@ const Home = () => {
     {
       title: 'NOVIA',
       subtitle: 'COLECCIÓN ETERNA',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973406/novias_1_d4748af80d.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973406/novias_1_d4748af80d.jpg',
       href: '/collections#novia',
       gallery: [
         {
@@ -47,7 +47,7 @@ const Home = () => {
     {
       title: 'XV AÑOS',
       subtitle: 'MOMENTO PRINCESA',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973728/xv_3_0dca4fbaff.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973728/xv_3_0dca4fbaff.jpg',
       href: '/collections#xv',
       gallery: [
         {
@@ -69,7 +69,7 @@ const Home = () => {
     {
       title: 'NOCHE',
       subtitle: 'ELEGANCIA IMPERIAL',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/large_noche_14_5d97d1c3ad.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/large_noche_14_5d97d1c3ad.jpg',
       href: '/collections#noche',
       gallery: [
         {
@@ -91,7 +91,7 @@ const Home = () => {
     {
       title: 'CORTOS',
       subtitle: 'SOFISTICACIÓN DORADA',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1756973127/cortos_4_5514996d00.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/cortos_3_0058c31947.jpg',
       href: '/collections#cortos',
       gallery: [
         {
@@ -109,7 +109,7 @@ const Home = () => {
     {
       title: 'CELEBRITIES',
       subtitle: 'ESTRELLAS INTERNACIONALES',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/celebrities_11_ubte2h.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/celebrities_11_ubte2h.jpg',
       category: 'celebrities' as const,
       gallery: [
         {
@@ -152,7 +152,7 @@ const Home = () => {
     {
       title: 'CLIENTAS',
       subtitle: 'MOMENTOS ESPECIALES',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757675008/clientas_14_vqyciu.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1757675008/clientas_14_vqyciu.jpg',
       category: 'clientas' as const,
       gallery: [
         {
@@ -188,7 +188,7 @@ const Home = () => {
     {
       title: 'FASHION WEEK',
       subtitle: 'PASARELAS INTERNACIONALES',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758580482/fashionweek_a7su8b.avif',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1758580482/fashionweek_a7su8b.avif',
       category: 'fashion-week' as const,
       gallery: [
         {
@@ -224,7 +224,7 @@ const Home = () => {
     {
       title: 'DESFILES',
       subtitle: 'ALTA COSTURA MEXICANA',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758581713/Alberto_Rodrguez_pasarela_bsftzo.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1758581713/Alberto_Rodrguez_pasarela_bsftzo.jpg',
       category: 'desfiles' as const,
       gallery: [
         {
@@ -434,14 +434,14 @@ const Home = () => {
               transition={{ duration: 0.8 }}
             >
               <img
-                src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189126/fashion-model-fallback_2_tcfnxd.jpg"
+                src="https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1758189126/fashion-model-fallback_2_tcfnxd.jpg"
                 alt="Luxury fashion atelier workspace"
                 className="w-full h-64 object-cover"
                 loading="lazy"
               />
               
               <img
-                src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189202/value-exclusivity_w1sonw.jpg"
+                src="https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1758189202/value-exclusivity_w1sonw.jpg"
                 alt="Premium fashion accessories display"
                 className="w-full h-48 object-cover"
                 loading="lazy"
@@ -491,7 +491,7 @@ const Home = () => {
               transition={{ duration: 0.8 }}
             >
               <img
-                src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1757933446/259307_10151151540912267_997551934_o-1024x680_qnmhg0.jpg"
+                src="https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1757933446/259307_10151151540912267_997551934_o-1024x680_qnmhg0.jpg"
                 alt="Luxury fashion boutique interior"
                 className="w-full h-96 object-cover"
                 loading="lazy"
@@ -523,6 +523,7 @@ const Home = () => {
                   <h3 className="font-medium text-lg mb-2 tracking-luxury">HORARIOS</h3>
                   <p className="text-gray-600">
                     Lunes a Viernes: 10:00 AM - 3:00 PM y 4:00 PM - 7:00 PM<br />
+                    Lunes a Viernes: 10:00 AM - 2:00 PM<br />
                     Sábados: 10:00 AM - 3:00 PM<br />
                     <span className="text-luxury-gold">Atención con cita previa</span>
                   </p>

@@ -106,7 +106,7 @@ const About = () => {
       <section className="relative h-[70vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189126/alberto_rodriguez_nk5gsz.jpg"
+            src="https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1758189126/alberto_rodriguez_nk5gsz.jpg"
             alt="Alberto Rodríguez"
             className="w-full h-full object-cover object-center"
           />
@@ -332,28 +332,28 @@ Hoy, después de décadas de trayectoria, Alberto Rodríguez ha definido un leng
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189126/fashion-model-fallback_pezpft.jpg"
+                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1758189126/fashion-model-fallback_pezpft.jpg"
                     alt="Atelier Interior"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189175/value-atelier_rswhpl.jpg"
+                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1758189175/value-atelier_rswhpl.jpg"
                     alt="Design Process"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189202/value-materials_f1ucgm.jpg"
+                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1758189202/value-materials_f1ucgm.jpg"
                     alt="Fabric Selection"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/v1758189175/value-craftsmanship.jpg"
+                    src="https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1758189175/value-craftsmanship.jpg"
                     alt="Final Details"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
