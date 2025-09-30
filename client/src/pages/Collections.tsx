@@ -45,7 +45,7 @@ const Collections = () => {
       id: 1,
       title: 'Novias Eternas',
       description: 'Vestidos de novia únicos diseñados para el día más importante. Cada pieza es creada a medida con las mejores telas y técnicas de alta costura.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/alquiler032_s8xpus.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/novia145_srlpmh.jpg',
       category: 'novia',
       season: 'Colección 2025',
     },

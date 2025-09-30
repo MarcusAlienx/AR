@@ -18,7 +18,7 @@ const Home = () => {
     {
       title: 'NOVIA',
       subtitle: 'COLECCIÓN ETERNA',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/alquiler032_s8xpus.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/novia145_srlpmh.jpg',
       href: '/collections#novia',
       gallery: [
         {
