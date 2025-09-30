@@ -14,7 +14,7 @@ interface CollectionPageProps {
 const CollectionPage = ({ slug }: CollectionPageProps) => {
   const formattedTitle = formatSlug(slug);
 
-  const { data: images, error, isLoading } = useQuery({
+  const { data: media, error, isLoading } = useQuery({
     queryKey: ['collectionImages', slug],
     queryFn: () => fetchImagesByFolder(slug!),
     enabled: !!slug, // Solo ejecutar la consulta si el slug existe
@@ -22,14 +22,14 @@ const CollectionPage = ({ slug }: CollectionPageProps) => {
 
   useEffect(() => {
     if (isLoading) {
-      console.log(`[FRONTEND] Cargando imágenes para la colección: ${slug}`);
+      console.log(`[FRONTEND] Cargando medios para la colección: ${slug}`);
     } else if (error) {
       console.error(`[FRONTEND] Error al cargar la colección ${slug}:`, error);
     } else {
-      console.log(`[FRONTEND] Datos recibidos para la colección ${slug}. Total: ${images?.length}`);
-      console.log(JSON.stringify(images, null, 2));
+      console.log(`[FRONTEND] Datos recibidos para la colección ${slug}. Total: ${media?.length}`);
+      console.log(JSON.stringify(media, null, 2));
     }
-  }, [slug, images, isLoading, error]);
+  }, [slug, media, isLoading, error]);
 
   if (isLoading) {
     return (
@@ -48,7 +48,7 @@ const CollectionPage = ({ slug }: CollectionPageProps) => {
     return <div className="text-center py-10">Error al cargar la colección: {error.message}</div>;
   }
 
-  if (!images || images.length === 0) {
+  if (!media || media.length === 0) {
     return (
       <>
         <Helmet>
@@ -59,7 +59,7 @@ const CollectionPage = ({ slug }: CollectionPageProps) => {
           <h1 className="text-3xl font-medium tracking-luxury mb-4 bg-gradient-to-r from-luxury-gold via-luxury-black to-luxury-gold bg-clip-text text-transparent drop-shadow-lg animate-pulse">
             Colección: {slug?.replace('-', ' ').toUpperCase()}
           </h1>
-          <p className="text-gray-600">No se encontraron imágenes para esta colección.</p>
+          <p className="text-gray-600">No se encontraron medios para esta colección.</p>
         </div>
       </>
     );
@@ -77,14 +77,28 @@ const CollectionPage = ({ slug }: CollectionPageProps) => {
         </h1>
       <PhotoProvider>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images?.map((image, index) => (
-            <PhotoView key={image.public_id} src={image.secure_url}>
-              <img 
-                src={image.secure_url} 
-                alt={`Imagen ${index + 1} de la colección ${slug}`} 
+          {media?.map((item, index) => (
+            item.resource_type === 'video' ? (
+              <video
+                key={item.public_id}
+                src={item.secure_url}
+                controls
+                muted
+                loop
                 className="w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
-              />
-            </PhotoView>
+                poster={item.secure_url.replace('.mov', '.jpg')} // Assuming poster image exists
+              >
+                Tu navegador no soporta el elemento de video.
+              </video>
+            ) : (
+              <PhotoView key={item.public_id} src={item.secure_url}>
+                <img
+                  src={item.secure_url}
+                  alt={`Imagen ${index + 1} de la colección ${slug}`}
+                  className="w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                />
+              </PhotoView>
+            )
           ))}
         </div>
       </PhotoProvider>
