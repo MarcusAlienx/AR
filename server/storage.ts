@@ -31,6 +31,7 @@ export interface IStorage {
   getCollection(id: string): Promise<Collection | undefined>;
   getCollectionBySlug(slug: string): Promise<Collection | undefined>;
   createCollection(collection: InsertCollection): Promise<Collection>;
+  deleteCollection(id: string): Promise<void>;
   
   // Project methods
   getProjects(): Promise<Project[]>;
@@ -84,6 +85,10 @@ export class DrizzleStorage implements IStorage {
   async createCollection(collection: InsertCollection): Promise<Collection> {
     const results = await db.insert(collectionsTable).values(collection).returning();
     return results[0];
+  }
+
+  async deleteCollection(id: string): Promise<void> {
+    await db.delete(collectionsTable).where(eq(collectionsTable.id, id));
   }
 
   // --- Gallery Methods ---

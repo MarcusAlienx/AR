@@ -94,13 +94,6 @@ const Footer = () => {
                   </span>
                 </Link>
               </li>
-              <li>
-                <Link href="/collections/alquiler">
-                  <span className="text-gray-600 hover:text-luxury-gold transition-colors duration-300 cursor-pointer">
-                    Alquiler
-                  </span>
-                </Link>
-              </li>
             </ul>
           </div>
 

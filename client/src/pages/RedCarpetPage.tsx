@@ -72,8 +72,8 @@ const RedCarpetPage = ({ slug }: RedCarpetPageProps) => {
           <meta name="description" content={`Galería de eventos Red Carpet con diseños de Alberto Rodríguez en la categoría ${formattedTitle}.`} />
         </Helmet>
         <div className="container mx-auto px-4 py-8 pt-24 text-center">
-          <h1 className="text-3xl font-medium tracking-luxury mb-4 capitalize">
-            Red Carpet: {slug?.replace('-', ' ')}
+          <h1 className="text-3xl font-medium tracking-luxury mb-4 bg-gradient-to-r from-luxury-gold via-luxury-black to-luxury-gold bg-clip-text text-transparent drop-shadow-lg animate-pulse">
+            Red Carpet: {slug?.replace('-', ' ').toUpperCase()}
           </h1>
           <p className="text-gray-600">No se encontraron imágenes para esta categoría.</p>
         </div>
@@ -88,8 +88,8 @@ const RedCarpetPage = ({ slug }: RedCarpetPageProps) => {
         <meta name="description" content={`Explora la galería de eventos Red Carpet con diseños de alta costura de Alberto Rodríguez en la categoría ${formattedTitle}.`} />
       </Helmet>
       <div className="container mx-auto px-4 py-8 pt-24">
-      <h1 className="text-3xl font-medium tracking-luxury text-center mb-8 capitalize">
-        Red Carpet: {slug?.replace('-', ' ')}
+      <h1 className="text-3xl font-medium tracking-luxury text-center mb-8 bg-gradient-to-r from-luxury-gold via-luxury-black to-luxury-gold bg-clip-text text-transparent drop-shadow-lg animate-pulse">
+        Red Carpet: {slug?.replace('-', ' ').toUpperCase()}
       </h1>
 
       {/* Videos Section */}

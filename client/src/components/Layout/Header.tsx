@@ -21,7 +21,6 @@ const collections = [
   { title: "Noche", href: "/collections/noche", description: "Elegancia y sofisticación para eventos especiales.", category: "noche" },
   { title: "Cortos", href: "/collections/cortos", description: "La perfecta combinación entre elegancia y versatilidad.", category: "cortos" },
   { title: "Primavera", href: "/collections/primavera", description: "Diseños frescos y vibrantes que celebran la temporada.", category: "primavera" },
-  { title: "Alquiler", href: "/collections/alquiler", description: "Servicio de alquiler de vestidos de alta costura.", category: "alquiler" },
 ];
 
 const Header = () => {

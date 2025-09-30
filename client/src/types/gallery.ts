@@ -19,7 +19,7 @@ export interface Collection {
   description: string
   image: string
   link: string
-  category: 'novia' | 'xv' | 'noche' | 'cortos' | 'primavera' | 'alquiler'
+  category: 'novia' | 'xv' | 'noche' | 'cortos' | 'primavera'
   season: string
   pieces: number
   gallery: GalleryImage[]

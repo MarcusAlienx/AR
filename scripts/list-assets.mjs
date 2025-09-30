@@ -37,6 +37,31 @@ async function listAllAssets() {
     console.log(`
 Total assets found: ${allAssets.length}`);
 
+    // Fetch videos separately
+    console.log('Fetching videos...');
+    let allVideos = [];
+    nextCursor = null;
+
+    do {
+      const result = await cloudinary.api.resources({
+        type: 'upload',
+        resource_type: 'video',
+        max_results: 500,
+        next_cursor: nextCursor,
+      });
+
+      allVideos = allVideos.concat(result.resources);
+      nextCursor = result.next_cursor;
+
+      console.log(`Fetched ${result.resources.length} videos. Total videos: ${allVideos.length}. More available: ${!!nextCursor}`);
+
+    } while (nextCursor);
+
+    console.log(`Total videos found: ${allVideos.length}`);
+
+    // Combine all assets
+    allAssets = allAssets.concat(allVideos);
+
     // Generate Markdown content
     let markdownContent = `# Cloudinary Asset Report\n\n`;
     markdownContent += `*Generated on: ${new Date().toUTCString()}*

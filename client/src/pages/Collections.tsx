@@ -9,7 +9,7 @@ const Collections = () => {
 
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
-    if (hash && ['novia', 'xv', 'noche', 'cortos', 'primavera', 'alquiler'].includes(hash)) {
+    if (hash && ['novia', 'xv', 'noche', 'cortos', 'primavera'].includes(hash)) {
       setSelectedCategory(hash);
       setTimeout(() => {
         window.scrollTo({ top: 300, behavior: 'smooth' });
@@ -18,7 +18,7 @@ const Collections = () => {
 
     const handleHashChange = () => {
       const newHash = window.location.hash.replace('#', '');
-      if (newHash && ['novia', 'xv', 'noche', 'cortos', 'primavera', 'alquiler'].includes(newHash)) {
+      if (newHash && ['novia', 'xv', 'noche', 'cortos', 'primavera'].includes(newHash)) {
         setSelectedCategory(newHash);
         setTimeout(() => {
           window.scrollTo({ top: 300, behavior: 'smooth' });
@@ -36,8 +36,7 @@ const Collections = () => {
     { id: 'xv', label: 'XV' },
     { id: 'noche', label: 'NOCHE' },
     { id: 'cortos', label: 'CORTOS' },
-    { id: 'primavera', label: 'PRIMAVERA' },
-    { id: 'alquiler', label: 'ALQUILER' }
+    { id: 'primavera', label: 'PRIMAVERA' }
   ];
 
   const collections = [
@@ -80,14 +79,6 @@ const Collections = () => {
       image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973491/primavera_17_2ae317c57e.jpg',
       category: 'primavera',
       season: 'Colección Primavera 2025',
-    },
-    {
-      id: 6,
-      title: 'Alquiler Premium',
-      description: 'Servicio de alquiler de vestidos de alta costura. Elegancia accesible para ocasiones especiales sin comprometer la calidad.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/alquiler032_s8xpus.jpg',
-      category: 'alquiler',
-      season: 'Disponible Todo el Año',
     }
   ];
 
@@ -96,7 +87,7 @@ const Collections = () => {
     : collections.filter(collection => collection.category === selectedCategory);
 
   const stats = [
-    { icon: Star, label: 'Colecciones', value: '6' },
+    { icon: Star, label: 'Colecciones', value: '5' },
     { icon: User, label: 'Diseños Únicos', value: '124+' },
     { icon: Calendar, label: 'Años de Experiencia', value: '35+' },
   ];
@@ -194,7 +185,6 @@ const Collections = () => {
       <section id="noche" className="py-2"></section>
       <section id="cortos" className="py-2"></section>
       <section id="primavera" className="py-2"></section>
-      <section id="alquiler" className="py-2"></section>
 
       {/* Collections Grid */}
       <section id="collections-grid" className="py-16">

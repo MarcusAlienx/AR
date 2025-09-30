@@ -61,6 +61,20 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
     }
   }
 
+  // Handle DELETE requests
+  if (event.httpMethod === "DELETE") {
+    // DELETE /api/collections/:id
+    if (subpath.length === 1) {
+      try {
+        await storage.deleteCollection(subpath[0]);
+        return { statusCode: 204, body: "" };
+      } catch (error) {
+        console.error("Error deleting collection:", error);
+        return { statusCode: 500, body: JSON.stringify({ error: "Failed to delete collection" }) };
+      }
+    }
+  }
+
   return { statusCode: 404, body: "Route not found" };
 };
 

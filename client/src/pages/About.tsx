@@ -47,7 +47,7 @@ const About = () => {
     {
       year: '2005',
       title: 'Expansión Internacional',
-      description: 'Participación en Miami Fashion Week y primeras clientas internacionales.'
+      description: 'participación en el Fashion Week y primeras clientas internacionales.'
     },
     {
       year: '2015',
@@ -377,8 +377,8 @@ Hoy, después de décadas de trayectoria, Alberto Rodríguez ha definido un leng
                   creatividad y facilitar el proceso artesanal que caracteriza nuestro trabajo.
                 </p>
                 <p className="text-lg">
-                  Contamos con las mejores telas importadas de Europa, herramientas de precisión 
-                  y un equipo de artesanos especializados que dominan técnicas tradicionales 
+                  Contamos con las mejores telas importadas, herramientas de precisión
+                  y un equipo de artesanos especializados que dominan técnicas tradicionales
                   transmitidas de generación en generación.
                 </p>
                 <p className="text-lg">
