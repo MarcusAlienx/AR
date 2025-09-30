@@ -38,20 +38,26 @@ export async function getImagesFromFolder(prefix: string): Promise<CloudinaryIma
   try {
     // Para 'desfiles', buscar también videos
     const resourceTypes = lowerCasePrefix === 'desfiles' ? ['image', 'video'] : ['image'];
+    console.log(`[SERVER] Resource types to search: ${resourceTypes.join(', ')}`);
 
     const allResources: CloudinaryResource[] = [];
 
     for (const resourceType of resourceTypes) {
+      console.log(`[SERVER] Searching for resource_type: ${resourceType} with prefix: ${lowerCasePrefix}`);
       const { resources } = await cloudinary.api.resources({
         type: 'upload',
         resource_type: resourceType,
         prefix: lowerCasePrefix,
         max_results: 500,
       });
+      console.log(`[SERVER] Found ${resources.length} resources for ${resourceType}`);
       allResources.push(...resources);
     }
 
-    console.log(`[SERVER] Cloudinary encontró ${allResources.length} recursos con el prefijo '${lowerCasePrefix}'.`);
+    console.log(`[SERVER] Cloudinary encontró ${allResources.length} recursos totales con el prefijo '${lowerCasePrefix}'.`);
+    if (allResources.length > 0) {
+      console.log(`[SERVER] Sample public_ids:`, allResources.slice(0, 5).map((r: CloudinaryResource) => r.public_id));
+    }
 
     // Filtramos para excluir variaciones de tamaño como 'large_*', 'medium_*' y 'thumb*'
     const filteredResources = allResources.filter((res: CloudinaryResource) =>
@@ -63,8 +69,8 @@ export async function getImagesFromFolder(prefix: string): Promise<CloudinaryIma
       index === self.findIndex((r: CloudinaryResource) => r.public_id === res.public_id)
     );
 
-    console.log(`[SERVER] Después de filtrar variaciones de tamaño y duplicados, quedan ${uniqueResources.length} imágenes.`);
-    console.log(`[SERVER] Cloudinary API Result (first 5):`, uniqueResources.slice(0, 5).map((r: CloudinaryResource) => r.public_id));
+    console.log(`[SERVER] Después de filtrar variaciones de tamaño y duplicados, quedan ${uniqueResources.length} recursos únicos.`);
+    console.log(`[SERVER] Final Cloudinary API Result (first 5):`, uniqueResources.slice(0, 5).map((r: CloudinaryResource) => ({ public_id: r.public_id, resource_type: r.resource_type })));
 
     return uniqueResources.map((res: CloudinaryResource) => ({
       public_id: res.public_id,

@@ -17,13 +17,16 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
   // e.g., /.netlify/functions/gallery/my-folder -> my-folder
   const pathParts = event.path.split('/');
   const folderName = pathParts[pathParts.length - 1];
+  console.log(`[gallery.ts] Received request for folder: ${folderName}`);
 
   if (!folderName) {
     return { statusCode: 400, body: JSON.stringify({ error: "Folder name is required" }) };
   }
 
   try {
+    console.log(`[gallery.ts] Calling storage.getGalleryImages with folderName: ${folderName}`);
     const images = await storage.getGalleryImages(folderName);
+    console.log(`[gallery.ts] storage.getGalleryImages returned ${images.length} images`);
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
