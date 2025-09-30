@@ -28,11 +28,14 @@ const formatSlug = (slug: string = '') => {
 const RedCarpetPage = ({ slug }: RedCarpetPageProps) => {
   const formattedTitle = formatSlug(slug);
 
-  const { data: images, error, isLoading } = useQuery({
-    queryKey: ['redCarpetImages', slug],
+  const { data: media, error, isLoading } = useQuery({
+    queryKey: ['redCarpetMedia', slug],
     queryFn: () => fetchImagesByFolder(slug!),
     enabled: !!slug,
   });
+
+  const images = media?.filter(item => item.resource_type === 'image') || [];
+  const videos = media?.filter(item => item.resource_type === 'video') || [];
 
   useEffect(() => {
     if (isLoading) {
@@ -88,19 +91,48 @@ const RedCarpetPage = ({ slug }: RedCarpetPageProps) => {
       <h1 className="text-3xl font-medium tracking-luxury text-center mb-8 capitalize">
         Red Carpet: {slug?.replace('-', ' ')}
       </h1>
-      <PhotoProvider>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images?.map((image, index) => (
-            <PhotoView key={image.public_id} src={image.secure_url}>
-              <img 
-                src={image.secure_url} 
-                alt={`Imagen ${index + 1} de Red Carpet: ${slug}`}
-                className="w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
-              />
-            </PhotoView>
-          ))}
+
+      {/* Videos Section */}
+      {videos.length > 0 && (
+        <div className="mb-12">
+          <h2 className="text-2xl font-medium tracking-luxury mb-6">Videos</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {videos.map((video, index) => (
+              <div key={video.public_id} className="aspect-video">
+                <video
+                  controls
+                  className="w-full h-full object-cover"
+                  poster={video.secure_url.replace(/\.[^.]+$/, '.jpg').replace('/upload/', '/upload/so_0/')} // Add blur for poster
+                >
+                  <source src={video.secure_url.replace(/\.[^.]+$/, '.mp4')} type="video/mp4" />
+                  Tu navegador no soporta el elemento de video.
+                </video>
+                <p className="text-sm text-gray-600 mt-2">Video {index + 1}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </PhotoProvider>
+      )}
+
+      {/* Images Section */}
+      {images.length > 0 && (
+        <div>
+          <h2 className="text-2xl font-medium tracking-luxury mb-6">Imágenes</h2>
+          <PhotoProvider>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {images.map((image, index) => (
+                <PhotoView key={image.public_id} src={image.secure_url}>
+                  <img
+                    src={image.secure_url}
+                    alt={`Imagen ${index + 1} de Red Carpet: ${slug}`}
+                    className="w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  />
+                </PhotoView>
+              ))}
+            </div>
+          </PhotoProvider>
+        </div>
+      )}
     </div>
     </>
   );

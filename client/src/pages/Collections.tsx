@@ -9,7 +9,7 @@ const Collections = () => {
 
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
-    if (hash && ['novias', 'gala', 'coctel', 'rtw'].includes(hash)) {
+    if (hash && ['novia', 'xv', 'noche', 'cortos', 'primavera', 'alquiler'].includes(hash)) {
       setSelectedCategory(hash);
       setTimeout(() => {
         window.scrollTo({ top: 300, behavior: 'smooth' });
@@ -18,7 +18,7 @@ const Collections = () => {
 
     const handleHashChange = () => {
       const newHash = window.location.hash.replace('#', '');
-      if (newHash && ['novias', 'gala', 'coctel', 'rtw'].includes(newHash)) {
+      if (newHash && ['novia', 'xv', 'noche', 'cortos', 'primavera', 'alquiler'].includes(newHash)) {
         setSelectedCategory(newHash);
         setTimeout(() => {
           window.scrollTo({ top: 300, behavior: 'smooth' });
@@ -45,7 +45,7 @@ const Collections = () => {
       id: 1,
       title: 'Novias Eternas',
       description: 'Vestidos de novia únicos diseñados para el día más importante. Cada pieza es creada a medida con las mejores telas y técnicas de alta costura.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973406/novias_1_d4748af80d.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/alquiler032_s8xpus.jpg',
       category: 'novia',
       season: 'Colección 2025',
     },
@@ -53,7 +53,7 @@ const Collections = () => {
       id: 2,
       title: 'XV Años Princesa',
       description: 'Vestidos de quinceañera que marcan el paso a la feminidad. Diseños que capturan la magia de este momento único.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973728/xv_3_0dca4fbaff.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/xv090_mc1wtd.jpg',
       category: 'xv',
       season: 'Colección 2025',
     },
@@ -69,7 +69,7 @@ const Collections = () => {
       id: 4,
       title: 'Vestidos Cortos',
       description: 'Diseños sofisticados para ocasiones semi-formales. La perfecta combinación entre elegancia y versatilidad para la mujer moderna.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/cortos_3_0058c31947.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/cortos241_qmgzsn.jpg',
       category: 'cortos',
       season: 'Colección 2025',
     },
@@ -85,7 +85,7 @@ const Collections = () => {
       id: 6,
       title: 'Alquiler Premium',
       description: 'Servicio de alquiler de vestidos de alta costura. Elegancia accesible para ocasiones especiales sin comprometer la calidad.',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756972727/alquiler_3_cef249d16e.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/alquiler032_s8xpus.jpg',
       category: 'alquiler',
       season: 'Disponible Todo el Año',
     }
@@ -189,10 +189,12 @@ const Collections = () => {
       </section>
 
       {/* Individual Collection Sections */}
-      <section id="novias" className="py-2"></section>
-      <section id="gala" className="py-2"></section>
-      <section id="coctel" className="py-2"></section>
-      <section id="rtw" className="py-2"></section>
+      <section id="novia" className="py-2"></section>
+      <section id="xv" className="py-2"></section>
+      <section id="noche" className="py-2"></section>
+      <section id="cortos" className="py-2"></section>
+      <section id="primavera" className="py-2"></section>
+      <section id="alquiler" className="py-2"></section>
 
       {/* Collections Grid */}
       <section id="collections-grid" className="py-16">
@@ -233,7 +235,7 @@ const Collections = () => {
                             </div>
                             
                             <h3 className="font-serif text-2xl font-light mb-4 tracking-luxury">
-                            {collection.title}
+                            {collection.title.toUpperCase()}
                             </h3>
                             
                             <p className="text-gray-600 text-sm leading-relaxed mb-6">

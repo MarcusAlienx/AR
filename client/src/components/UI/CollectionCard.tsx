@@ -75,7 +75,7 @@ const CollectionCard = ({
         
         <div className="pt-6 text-center">
           <h3 className="font-serif text-2xl font-light mb-2 tracking-luxury group-hover:text-luxury-gold transition-colors duration-300">
-            {title}
+            {title.toUpperCase()}
           </h3>
           <p className="text-sm text-gray-600 tracking-luxury">
             {subtitle}

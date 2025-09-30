@@ -18,7 +18,7 @@ const Home = () => {
     {
       title: 'NOVIA',
       subtitle: 'COLECCIÓN ETERNA',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973406/novias_1_d4748af80d.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/alquiler032_s8xpus.jpg',
       href: '/collections#novia',
       gallery: [
         {
@@ -47,7 +47,7 @@ const Home = () => {
     {
       title: 'XV AÑOS',
       subtitle: 'MOMENTO PRINCESA',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/v1756973728/xv_3_0dca4fbaff.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/xv090_mc1wtd.jpg',
       href: '/collections#xv',
       gallery: [
         {
@@ -91,7 +91,7 @@ const Home = () => {
     {
       title: 'CORTOS',
       subtitle: 'SOFISTICACIÓN DORADA',
-      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/cortos_3_0058c31947.jpg',
+      image: 'https://res.cloudinary.com/dyzlfyyv3/image/upload/f_auto,q_auto/cortos241_qmgzsn.jpg',
       href: '/collections#cortos',
       gallery: [
         {

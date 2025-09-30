@@ -13,6 +13,7 @@ export interface CloudinaryImage {
   secure_url: string;
   width: number;
   height: number;
+  resource_type?: string;
 }
 
 // Interface for the raw resource object from Cloudinary API
@@ -21,40 +22,56 @@ interface CloudinaryResource {
   secure_url: string;
   width: number;
   height: number;
+  resource_type?: string;
 }
 
 /**
- * Fetches all images from a specific folder in Cloudinary.
+ * Fetches all images (and videos for desfiles) from a specific folder in Cloudinary.
  * @param prefix The prefix to search for (e.g., 'noche').
- * @returns A promise that resolves to an array of image resources.
+ * @returns A promise that resolves to an array of image/video resources.
  */
 export async function getImagesFromFolder(prefix: string): Promise<CloudinaryImage[]> {
   const lowerCasePrefix = prefix.toLowerCase();
-  console.log(`[SERVER] Buscando imágenes en Cloudinary con el prefijo original: ${prefix} (normalizado a: ${lowerCasePrefix})`);
+  console.log(`[SERVER] Buscando recursos en Cloudinary con el prefijo original: ${prefix} (normalizado a: ${lowerCasePrefix})`);
   console.log(`[SERVER] Cloudinary Config: Cloud Name - ${process.env.CLOUDINARY_CLOUD_NAME}, API Key - ${process.env.CLOUDINARY_API_KEY ? 'Set' : 'Not Set'}`);
 
   try {
-    const { resources } = await cloudinary.api.resources({
-      type: 'upload',
-      prefix: lowerCasePrefix, // Usamos el prefijo en minúsculas para búsqueda case-insensitive
-      max_results: 500, // Aumentamos el límite al máximo permitido
-    });
+    // Para 'desfiles', buscar también videos
+    const resourceTypes = lowerCasePrefix === 'desfiles' ? ['image', 'video'] : ['image'];
 
-    console.log(`[SERVER] Cloudinary encontró ${resources.length} imágenes con el prefijo '${lowerCasePrefix}'.`);
+    const allResources: CloudinaryResource[] = [];
 
-    // Filtramos para excluir variaciones de tamaño como 'large_*' y 'medium_*'
-    const filteredResources = resources.filter((res: CloudinaryResource) => 
-      !res.public_id.includes('large_') && !res.public_id.includes('medium_')
+    for (const resourceType of resourceTypes) {
+      const { resources } = await cloudinary.api.resources({
+        type: 'upload',
+        resource_type: resourceType,
+        prefix: lowerCasePrefix,
+        max_results: 500,
+      });
+      allResources.push(...resources);
+    }
+
+    console.log(`[SERVER] Cloudinary encontró ${allResources.length} recursos con el prefijo '${lowerCasePrefix}'.`);
+
+    // Filtramos para excluir variaciones de tamaño como 'large_*', 'medium_*' y 'thumb*'
+    const filteredResources = allResources.filter((res: CloudinaryResource) =>
+      !res.public_id.includes('large_') && !res.public_id.includes('medium_') && !res.public_id.includes('thumb')
     );
 
-    console.log(`[SERVER] Después de filtrar 'large_' y 'medium_', quedan ${filteredResources.length} imágenes.`);
-    console.log(`[SERVER] Cloudinary API Result (first 5):`, filteredResources.slice(0, 5).map((r: CloudinaryResource) => r.public_id));
+    // Eliminamos duplicados basados en public_id (por si acaso)
+    const uniqueResources = filteredResources.filter((res: CloudinaryResource, index: number, self: CloudinaryResource[]) =>
+      index === self.findIndex((r: CloudinaryResource) => r.public_id === res.public_id)
+    );
 
-    return filteredResources.map((res: CloudinaryResource) => ({
+    console.log(`[SERVER] Después de filtrar variaciones de tamaño y duplicados, quedan ${uniqueResources.length} imágenes.`);
+    console.log(`[SERVER] Cloudinary API Result (first 5):`, uniqueResources.slice(0, 5).map((r: CloudinaryResource) => r.public_id));
+
+    return uniqueResources.map((res: CloudinaryResource) => ({
       public_id: res.public_id,
       secure_url: res.secure_url,
       width: res.width,
       height: res.height,
+      resource_type: res.resource_type || 'image',
     }));
   } catch (error) {
     console.error(`[SERVER] Error fetching images from Cloudinary with prefix "${prefix}":`, error);

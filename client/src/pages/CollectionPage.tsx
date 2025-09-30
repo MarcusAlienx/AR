@@ -56,8 +56,8 @@ const CollectionPage = ({ slug }: CollectionPageProps) => {
           <meta name="description" content={`Galería de la colección ${formattedTitle} de Alberto Rodríguez.`} />
         </Helmet>
         <div className="container mx-auto px-4 py-8 pt-24 text-center">
-          <h1 className="text-3xl font-medium tracking-luxury mb-4 capitalize">
-            Colección: {slug?.replace('-', ' ')}
+          <h1 className="text-3xl font-medium tracking-luxury mb-4 bg-gradient-to-r from-luxury-gold via-luxury-black to-luxury-gold bg-clip-text text-transparent drop-shadow-lg animate-pulse">
+            Colección: {slug?.replace('-', ' ').toUpperCase()}
           </h1>
           <p className="text-gray-600">No se encontraron imágenes para esta colección.</p>
         </div>
@@ -72,9 +72,9 @@ const CollectionPage = ({ slug }: CollectionPageProps) => {
         <meta name="description" content={`Explora la galería de la colección de alta costura ${formattedTitle} del diseñador Alberto Rodríguez.`} />
       </Helmet>
       <div className="container mx-auto px-4 py-8 pt-24">
-      <h1 className="text-3xl font-medium tracking-luxury text-center mb-8 capitalize">
-        Colección: {slug?.replace('-', ' ')}
-      </h1>
+        <h1 className="text-3xl font-medium tracking-luxury text-center mb-8 bg-gradient-to-r from-luxury-gold via-luxury-black to-luxury-gold bg-clip-text text-transparent drop-shadow-lg animate-pulse">
+          Colección: {slug?.replace('-', ' ').toUpperCase()}
+        </h1>
       <PhotoProvider>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images?.map((image, index) => (

@@ -110,4 +110,7 @@ export type UseGalleryStateReturn = GalleryState & GalleryStateActions
 export type CloudinaryImage = {
   public_id: string;
   secure_url: string;
+  width?: number;
+  height?: number;
+  resource_type?: string;
 };
