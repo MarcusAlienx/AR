@@ -148,18 +148,27 @@ const About = () => {
               <h2 className="font-serif text-4xl md:text-5xl font-light mb-8 tracking-luxury">
                 Una Historia de Elegancia
               </h2>
-              <div className="space-y-6 text-gray-700 leading-relaxed">
+              <div className="space-y-6 text-gray-700 leading-relaxed ml-4 md:ml-6 lg:ml-8">
                 <p className="text-lg">
-La casa de modas Alberto Rodríguez nace en 1986, en pleno auge de la revolución creativa de los años 80, una era vibrante que vio emerger a grandes firmas internacionales como Lacroix, Mugler, Herrera, Versace y Armani. En ese entorno efervescente, el diseñador tapatío Alberto Rodríguez encontró su vocación, transitando del mundo del diseño gráfico y la publicidad hacia la alta moda, inspirado por su primer contacto directo con piezas de Chanel, Dior y Oscar de la Renta durante un viaje a Nueva York.
+La firma Alberto Rodríguez nació en 1986, justo en medio de la explosión de moda de los años 80. Fue el boom que despedía la época disco y le daba la bienvenida a grandes nombres que dominarían la moda internacional, como Lacroix, Mugler, Herrera, Versace y Armani.
                 </p>
                 <p className="text-lg">
-Movido por la pasión y la mística de la alta costura, inició su camino profesional con estudios de corte y confección, creando piezas a medida para clientas particulares. Su enfoque meticuloso, la observación directa de los grandes maestros y su constante experimentación con proporciones, cortes y volúmenes, fueron forjando su estilo propio: barroco, audaz y profundamente romántico.
+Esta revolución atrapó por completo a Alberto Rodríguez, que en ese momento trabajaba en diseño gráfico y publicidad. La chispa real se encendió años antes, durante un viaje a Nueva York, donde tuvo en sus manos diseños de Chanel, Dior y Oscar de la Renta. Fue ahí que sintió esa magia y poder que solo la alta costura puede transmitir.
                 </p>
                 <p className="text-lg">
-Su talento pronto lo llevó a escenarios relevantes de la moda en México, desde certámenes como Nuestra Belleza México, hasta plataformas icónicas como la Muestra de Alta Moda y Fashion International View de la institución Jannette Klein. También participó en espacios de televisión nacional y presentó sus colecciones en foros internacionales en San Antonio, Texas y Vancouver, Canadá.
+Tras años de práctica intensa, sus diseños empezaron a destacar. Se enfocó en un estilo de inspiración barroca que fue muy innovador para Guadalajara en ese momento. Sus creaciones impactaron a la sociedad tapatía y, como era de esperarse, llegaron las invitaciones a eventos top: desde concursos de belleza locales hasta el Nuestra Belleza México, y plataformas de renombre como la Muestra de Alta Moda o el Fashion International View, así como 8 temporadas en Mercedes-Benz Fashion Week.
                 </p>
                 <p className="text-lg">
-Hoy, después de décadas de trayectoria, Alberto Rodríguez ha definido un lenguaje estético único, que fusiona la tradición del patronaje clásico con la innovación contemporánea. Sus creaciones se distinguen por acabados prolijos, decorados vanguardistas y un sello emocional que exalta la elegancia, la fuerza femenina y la belleza sin concesiones. Cada prenda es una declaración de arte, identidad y legado.
+Además, apareció en programas de televisión a nivel nacional, culminando con la presentación de sus colecciones en el extranjero, en ciudades como San Antonio, Texas; Vancouver, Canadá; París, Francia; y Nueva York, Estados Unidos.
+                </p>
+                <p className="text-lg">
+Con el tiempo y toda esa experiencia en alta costura, su estilo evolucionó y se consolidó. Hoy es un sello único y original, que se distingue por su diversidad, la pulcritud de sus acabados y esos detalles románticos que le dan su toque especial.
+                </p>
+                <p className="text-lg">
+Su colaboración con la Casa Swarovski fue el mayor evento de trascendencia, pues aparecer al lado de grandes como Galliano, Vera Wang, Armani o Elie Saab, por mencionar solo algunos, confirma la importancia de su paso por la moda internacional y la importancia de su firma de moda.
+                </p>
+                <p className="text-lg">
+Su moda es una mezcla vanguardista que une lo mejor de las técnicas tradicionales de alta costura (como el patronaje antiguo) con decoraciones modernas y una gran transformación en cada prenda.
                 </p>
               </div>
               
